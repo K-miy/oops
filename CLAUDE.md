@@ -3,6 +3,9 @@
 Application web mobile (PWA) pour aider les parents à reprendre une activité physique régulière.
 Fonctionne entièrement en local, sans serveur, sans collecte de données.
 
+> **Branding** : voir [`BRANDING.md`](BRANDING.md) pour l'identité visuelle, la voix éditoriale,
+> et le brief destiné aux LLMs / designers.
+
 ---
 
 ## Vision
