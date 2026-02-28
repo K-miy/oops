@@ -81,9 +81,10 @@ export function renderOnboarding(container, { onComplete }) {
         $content.querySelectorAll('.choice-card').forEach((c) => c.classList.remove('selected'));
         card.classList.add('selected');
         draft.lang = card.dataset.value;
-        // Rechargement dynamique des traductions
         await initI18n(draft.lang);
+        // Re-render pour appliquer les nouvelles traductions, puis auto-avance
         renderStep();
+        setTimeout(advance, 350);
       });
     });
   }
@@ -156,6 +157,7 @@ export function renderOnboarding(container, { onComplete }) {
         $content.querySelectorAll('.choice-card').forEach((c) => c.classList.remove('selected'));
         card.classList.add('selected');
         draft.fitness_level = card.dataset.value;
+        setTimeout(advance, 300);
       });
     });
   }
@@ -205,11 +207,15 @@ export function renderOnboarding(container, { onComplete }) {
   // ── Étape 5 : Conditions spéciales ──
   function renderConditionsStep() {
     const injuries = ['lower_back', 'knee', 'shoulder', 'wrist'];
+    // Un homme ne peut pas être en post-partum
+    const showPostpartum = draft.sex !== 'male';
+    if (!showPostpartum) draft.is_postpartum = false;
 
     $content.innerHTML = `
+      ${showPostpartum ? `
       <div class="onboarding-question">
         <h2>${t('onboarding.is_postpartum.label')}</h2>
-        <div class="choice-list">
+        <div class="choice-list" id="postpartum-choices">
           <button class="choice-card${draft.is_postpartum === true ? ' selected' : ''}" data-value="true">
             <div class="choice-title">${t('onboarding.is_postpartum.yes')}</div>
           </button>
@@ -218,7 +224,8 @@ export function renderOnboarding(container, { onComplete }) {
           </button>
         </div>
       </div>
-      <div class="onboarding-question mt-24">
+      ` : ''}
+      <div class="onboarding-question${showPostpartum ? ' mt-24' : ''}">
         <h2>${t('onboarding.injuries.label')}</h2>
         <div class="chip-group" id="injury-chips">
           ${injuries.map((inj) => `
@@ -228,13 +235,15 @@ export function renderOnboarding(container, { onComplete }) {
         </div>
       </div>`;
 
-    $content.querySelectorAll('[data-value="true"], [data-value="false"]').forEach((card) => {
-      card.addEventListener('click', () => {
-        $content.querySelectorAll('.choice-list .choice-card').forEach((c) => c.classList.remove('selected'));
-        card.classList.add('selected');
-        draft.is_postpartum = card.dataset.value === 'true';
+    if (showPostpartum) {
+      $content.querySelectorAll('#postpartum-choices .choice-card').forEach((card) => {
+        card.addEventListener('click', () => {
+          $content.querySelectorAll('#postpartum-choices .choice-card').forEach((c) => c.classList.remove('selected'));
+          card.classList.add('selected');
+          draft.is_postpartum = card.dataset.value === 'true';
+        });
       });
-    });
+    }
 
     $content.querySelectorAll('#injury-chips .chip').forEach((chip) => {
       chip.addEventListener('click', () => {
@@ -261,6 +270,17 @@ export function renderOnboarding(container, { onComplete }) {
     return true;
   }
 
+  // ── Avancement ──
+  function advance() {
+    if (!validateStep()) return;
+    if (step < TOTAL_STEPS) {
+      step++;
+      renderStep();
+    } else {
+      onComplete(draft);
+    }
+  }
+
   // ── Navigation ──
   $nextBtn.addEventListener('click', () => {
     if (!validateStep()) {
@@ -268,12 +288,7 @@ export function renderOnboarding(container, { onComplete }) {
       setTimeout(() => $nextBtn.classList.remove('shake'), 400);
       return;
     }
-    if (step < TOTAL_STEPS) {
-      step++;
-      renderStep();
-    } else {
-      onComplete(draft);
-    }
+    advance();
   });
 
   $backBtn.addEventListener('click', () => {

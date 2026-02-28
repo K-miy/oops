@@ -66,19 +66,19 @@ test.describe('Onboarding — Création de profil', () => {
   });
 
   test('naviguer jusqu\'à la fin crée le profil et mène à l\'accueil', async ({ page }) => {
-    // Étape 1 : langue
+    // Étape 1 : langue — auto-avance après sélection (350ms)
     await page.locator('.choice-card[data-value="fr"]').click();
-    await page.locator('#onboarding-next-btn').click();
+    await page.waitForSelector('#input-age', { timeout: 2000 }); // attend l'étape 2
 
-    // Étape 2 : infos perso
+    // Étape 2 : infos perso — bouton Next requis (champs texte)
     await page.locator('.choice-card[data-value="female"]').click();
     await page.locator('#input-age').fill('32');
     await page.locator('#input-weight').fill('65');
     await page.locator('#onboarding-next-btn').click();
 
-    // Étape 3 : niveau
+    // Étape 3 : niveau — auto-avance après sélection (300ms)
     await page.locator('.choice-card[data-value="beginner"]').click();
-    await page.locator('#onboarding-next-btn').click();
+    await page.waitForSelector('#freq-chips', { timeout: 2000 }); // attend l'étape 4
 
     // Étape 4 : fréquence
     await page.locator('#freq-chips .chip[data-value="3"]').click();
@@ -95,9 +95,12 @@ test.describe('Onboarding — Création de profil', () => {
   });
 
   test('le bouton Retour ramène à l\'étape précédente', async ({ page }) => {
-    await page.locator('#onboarding-next-btn').click(); // → étape 2
+    // Step 1 auto-avance → on attend step 2
+    await page.locator('.choice-card[data-value="fr"]').click();
+    await page.waitForSelector('#input-age', { timeout: 2000 });
     await expect(page.locator('#onboarding-back-btn')).toBeVisible();
-    await page.locator('#onboarding-back-btn').click(); // → étape 1
+    // Retour → step 1
+    await page.locator('#onboarding-back-btn').click();
     await expect(page.locator('.choice-card[data-value="fr"]')).toBeVisible();
   });
 });
