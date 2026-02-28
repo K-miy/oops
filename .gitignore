@@ -1,0 +1,31 @@
+# Rust / WASM
+/target/
+Cargo.lock
+*.wasm
+pkg/
+
+# Trunk build output
+dist/
+
+# Node / tooling
+node_modules/
+.npm/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/settings.json
+*.swp
+*.swo
+
+# Env
+.env
+.env.local
