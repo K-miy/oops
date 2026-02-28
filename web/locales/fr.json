@@ -1,0 +1,99 @@
+{
+  "app": {
+    "name": "OOPS",
+    "tagline": "Out of Parent's Shape",
+    "loading": "Chargement des exercices…"
+  },
+  "disclaimer": {
+    "title": "Avertissement médical",
+    "body": "Cette application ne remplace pas un avis médical. Consultez votre médecin avant de commencer tout programme d'exercice, particulièrement en période post-partum, en cas de douleurs chroniques ou de pathologies connues.",
+    "checkbox": "Je confirme avoir lu et compris cet avertissement. Je consulterai un médecin en cas de doute.",
+    "accept": "J'ai compris, continuer"
+  },
+  "onboarding": {
+    "title": "Bienvenue dans OOPS",
+    "subtitle": "Quelques questions pour personnaliser votre programme",
+    "next": "Suivant",
+    "back": "Retour",
+    "finish": "Commencer !",
+    "lang": {
+      "label": "Choisissez votre langue"
+    },
+    "sex": {
+      "label": "Sexe biologique",
+      "male": "Homme",
+      "female": "Femme",
+      "other": "Autre / Ne pas préciser"
+    },
+    "age": {
+      "label": "Âge",
+      "placeholder": "32"
+    },
+    "weight": {
+      "label": "Poids (kg)",
+      "placeholder": "70"
+    },
+    "fitness_level": {
+      "label": "Niveau de forme actuel",
+      "beginner": "Débutant(e)",
+      "beginner_desc": "Je n'ai pas fait de sport régulier depuis plus de 3 mois",
+      "intermediate": "Intermédiaire",
+      "intermediate_desc": "Je fais parfois du sport mais sans programme structuré"
+    },
+    "sessions_per_week": {
+      "label": "Combien de séances par semaine ?"
+    },
+    "minutes_per_session": {
+      "label": "Durée souhaitée par séance"
+    },
+    "is_postpartum": {
+      "label": "Êtes-vous en période post-partum ?",
+      "yes": "Oui (moins de 12 mois après l'accouchement)",
+      "no": "Non"
+    },
+    "injuries": {
+      "label": "Zones sensibles ou blessures (optionnel)",
+      "lower_back": "Bas du dos",
+      "knee": "Genou(x)",
+      "shoulder": "Épaule(s)",
+      "wrist": "Poignet(s)"
+    }
+  },
+  "home": {
+    "today": "Séance du jour",
+    "start": "Commencer la séance",
+    "redo": "Refaire la séance",
+    "done": "Faite",
+    "rest_day": "Jour de repos",
+    "rest_day_desc": "Vous n'avez pas de séance prévue aujourd'hui. Profitez-en pour récupérer !",
+    "streak": "Série en cours",
+    "streak_day": "jour consécutif",
+    "streak_days": "jours consécutifs",
+    "more_exercises": "autres exercices"
+  },
+  "session": {
+    "title": "Séance en cours",
+    "done": "Exercice terminé ✓",
+    "finish": "Terminer la séance",
+    "skip_rest": "Passer au suivant",
+    "skip_rpe": "Ignorer",
+    "rpe_prompt": "Comment vous sentez-vous ?",
+    "rpe_subtitle": "Niveau d'effort perçu (1 = très facile, 10 = maximum)",
+    "rpe_easy": "Très facile",
+    "rpe_hard": "Maximum",
+    "rest": "Repos",
+    "abort_confirm": "Abandonner la séance en cours ?"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "lang": "Langue",
+    "profile": "Modifier le profil",
+    "reset": "Réinitialiser l'application",
+    "reset_confirm": "Toutes vos données seront supprimées. Continuer ?"
+  },
+  "nav": {
+    "home": "Accueil",
+    "history": "Historique",
+    "settings": "Paramètres"
+  }
+}

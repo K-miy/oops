@@ -1,0 +1,99 @@
+{
+  "app": {
+    "name": "OOPS",
+    "tagline": "Out of Parent's Shape",
+    "loading": "Loading exercises…"
+  },
+  "disclaimer": {
+    "title": "Medical disclaimer",
+    "body": "This app does not replace medical advice. Consult your doctor before starting any exercise program, especially postpartum, if you experience chronic pain, or have any known health conditions.",
+    "checkbox": "I confirm that I have read and understood this disclaimer. I will consult a doctor when in doubt.",
+    "accept": "I understand, continue"
+  },
+  "onboarding": {
+    "title": "Welcome to OOPS",
+    "subtitle": "A few questions to personalise your program",
+    "next": "Next",
+    "back": "Back",
+    "finish": "Let's go!",
+    "lang": {
+      "label": "Choose your language"
+    },
+    "sex": {
+      "label": "Biological sex",
+      "male": "Male",
+      "female": "Female",
+      "other": "Other / Prefer not to say"
+    },
+    "age": {
+      "label": "Age",
+      "placeholder": "32"
+    },
+    "weight": {
+      "label": "Weight (kg)",
+      "placeholder": "70"
+    },
+    "fitness_level": {
+      "label": "Current fitness level",
+      "beginner": "Beginner",
+      "beginner_desc": "I haven't exercised regularly in over 3 months",
+      "intermediate": "Intermediate",
+      "intermediate_desc": "I occasionally exercise but without a structured program"
+    },
+    "sessions_per_week": {
+      "label": "How many sessions per week?"
+    },
+    "minutes_per_session": {
+      "label": "Preferred session duration"
+    },
+    "is_postpartum": {
+      "label": "Are you in the postpartum period?",
+      "yes": "Yes (within 12 months of giving birth)",
+      "no": "No"
+    },
+    "injuries": {
+      "label": "Sensitive areas or injuries (optional)",
+      "lower_back": "Lower back",
+      "knee": "Knee(s)",
+      "shoulder": "Shoulder(s)",
+      "wrist": "Wrist(s)"
+    }
+  },
+  "home": {
+    "today": "Today's session",
+    "start": "Start session",
+    "redo": "Redo session",
+    "done": "Done",
+    "rest_day": "Rest day",
+    "rest_day_desc": "No session scheduled today. Rest up and recover!",
+    "streak": "Current streak",
+    "streak_day": "consecutive day",
+    "streak_days": "consecutive days",
+    "more_exercises": "more exercises"
+  },
+  "session": {
+    "title": "Session in progress",
+    "done": "Exercise done ✓",
+    "finish": "Finish session",
+    "skip_rest": "Skip to next",
+    "skip_rpe": "Skip",
+    "rpe_prompt": "How did that feel?",
+    "rpe_subtitle": "Rate of perceived exertion (1 = very easy, 10 = maximum)",
+    "rpe_easy": "Very easy",
+    "rpe_hard": "Maximum",
+    "rest": "Rest",
+    "abort_confirm": "Abandon the current session?"
+  },
+  "settings": {
+    "title": "Settings",
+    "lang": "Language",
+    "profile": "Edit profile",
+    "reset": "Reset app",
+    "reset_confirm": "All your data will be deleted. Continue?"
+  },
+  "nav": {
+    "home": "Home",
+    "history": "History",
+    "settings": "Settings"
+  }
+}

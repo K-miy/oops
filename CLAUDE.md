@@ -20,14 +20,20 @@ Fonctionne entièrement en local, sans serveur, sans collecte de données.
 | Couche | Choix | Justification |
 |---|---|---|
 | Logique métier | Rust → WASM via `wasm-bindgen` | Performance, type-safety, testabilité |
-| Build WASM | `Trunk` | Standard de fait pour Rust WASM web |
+| Build WASM | `wasm-pack build --target web` | Génère ES modules propres, compatible importmap |
+| Serve dev | `python3 -m http.server 8080 --directory web` | Zéro dépendance, localhost = contexte sécurisé |
 | UI | HTML + CSS + JS vanilla | KISS, pas de framework, contrôle total |
-| Stockage | IndexedDB via `Dexie.js` | Natif navigateur, offline, zéro dépendance serveur |
+| Résolution modules | `importmap` dans `index.html` | Pas de bundler JS, native browser |
+| Stockage | IndexedDB via `Dexie.js` (CDN, caché par SW) | Natif navigateur, offline, zéro dépendance serveur |
 | Tests Rust | `cargo test` + `wasm-pack test` | Unit + intégration WASM |
 | Tests E2E | `Playwright` (viewport mobile) | Simulation iPhone/Android dans les tests |
 | i18n | Fichiers JSON FR/EN + fonction `t()` JS minimale | Simple, extensible |
 | Base exercices | Fichiers JSON dans `data/exercises/` | Éditables sans toucher au code |
 | Notifications | **Post-MVP** — Web Push API + Service Worker | Débloqué après MVP stable |
+
+> **Pourquoi pas Trunk ?** Trunk est optimisé pour les projets Yew/Dioxus. Pour une UI vanilla HTML/JS,
+> `wasm-pack` + `importmap` est plus simple et plus prévisible. L'importmap dans `index.html` mappe
+> `"oops"` vers `"./pkg/oops.js"` — app.js fait `import init, { build_session } from 'oops'` directement.
 
 ---
 
@@ -35,6 +41,10 @@ Fonctionne entièrement en local, sans serveur, sans collecte de données.
 
 ```
 oops/
+├── Cargo.toml              # Config Rust + dépendances wasm-bindgen/serde
+├── Makefile                # build / dev / test / clean
+├── package.json            # Playwright (devDependency uniquement)
+├── playwright.config.js    # Config tests E2E (viewport mobile)
 ├── src/                    # Rust (logique métier → WASM)
 │   ├── lib.rs              # Point d'entrée WASM (wasm-bindgen exports)
 │   ├── profile.rs          # Profil utilisateur, calculs (TDEE, BMI, niveau)
@@ -193,9 +203,15 @@ Tous les exercices MVP sont **sans matériel**, organisés par **patron de mouve
 
 ### Lancement des tests
 ```bash
-cargo test                          # Tests unitaires Rust
-wasm-pack test --headless --firefox # Tests WASM dans navigateur
-npx playwright test                 # Tests E2E
+cargo test                           # Tests unitaires Rust (rapide, pas de browser)
+wasm-pack test --headless --firefox  # Tests WASM dans navigateur headless
+npx playwright test                  # Tests E2E (nécessite `make build` avant)
+
+# Ou via Makefile :
+make test-rust    # cargo test
+make test-wasm    # wasm-pack test
+make test-e2e     # playwright test
+make test         # rust + e2e
 ```
 
 ---

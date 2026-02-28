@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#2D6A4F" />
+  <meta name="description" content="Out of Parent's Shape — programme fitness personnalisé, 100% local" />
+
+  <title>OOPS</title>
+
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <!-- importmap : résout les modules ES sans bundler -->
+  <script type="importmap">
+  {
+    "imports": {
+      "oops": "./pkg/oops.js",
+      "dexie": "https://cdn.jsdelivr.net/npm/dexie@3.2.6/dist/dexie.mjs"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- ─── CHARGEMENT ─── -->
+    <div id="screen-loading" class="screen active" role="status" aria-live="polite">
+      <div class="loading-inner">
+        <div class="loading-logo">OOPS</div>
+        <div class="loading-spinner" aria-hidden="true"></div>
+        <p class="loading-msg" id="loading-msg">Chargement…</p>
+      </div>
+    </div>
+
+    <!-- ─── DISCLAIMER ─── -->
+    <div id="screen-disclaimer" class="screen" aria-labelledby="disclaimer-title">
+      <div class="screen-content">
+        <header class="screen-header">
+          <h1 id="disclaimer-title" data-i18n="disclaimer.title">Avertissement médical</h1>
+        </header>
+        <main class="disclaimer-body">
+          <div class="disclaimer-icon" aria-hidden="true">⚠️</div>
+          <p data-i18n="disclaimer.body"></p>
+          <label class="checkbox-label">
+            <input type="checkbox" id="disclaimer-checkbox" />
+            <span data-i18n="disclaimer.checkbox"></span>
+          </label>
+        </main>
+        <footer class="screen-footer">
+          <button id="disclaimer-accept-btn" class="btn btn-primary" disabled data-i18n="disclaimer.accept">
+            J'ai compris, continuer
+          </button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- ─── ONBOARDING ─── -->
+    <div id="screen-onboarding" class="screen" aria-labelledby="onboarding-title">
+      <div class="screen-content">
+        <header class="screen-header">
+          <button id="onboarding-back-btn" class="btn-icon" aria-label="Retour" hidden>‹</button>
+          <h1 id="onboarding-title" data-i18n="onboarding.title">Bienvenue dans OOPS</h1>
+          <div class="step-indicator" id="step-indicator" aria-label="Étape 1 sur 5">
+            <span class="step active"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+          </div>
+        </header>
+        <main id="onboarding-step-content" class="onboarding-content">
+          <!-- Rendu dynamiquement par onboarding.js -->
+        </main>
+        <footer class="screen-footer">
+          <button id="onboarding-next-btn" class="btn btn-primary" data-i18n="onboarding.next">Suivant</button>
+        </footer>
+      </div>
+    </div>
+
+    <!-- ─── ACCUEIL ─── -->
+    <div id="screen-home" class="screen" aria-labelledby="home-title">
+      <div class="screen-content">
+        <header class="screen-header">
+          <h1 id="home-title">OOPS</h1>
+          <button class="btn-icon" id="home-settings-btn" aria-label="Paramètres">⚙</button>
+        </header>
+        <main id="home-main" class="home-content">
+          <!-- Rendu dynamiquement par home.js -->
+        </main>
+        <nav class="bottom-nav" role="navigation" aria-label="Navigation principale">
+          <button class="nav-item active" data-screen="home" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">🏠</span>
+            <span class="nav-label" data-i18n="nav.home">Accueil</span>
+          </button>
+          <button class="nav-item" data-screen="history" aria-label="Historique">
+            <span class="nav-icon" aria-hidden="true">📊</span>
+            <span class="nav-label" data-i18n="nav.history">Historique</span>
+          </button>
+          <button class="nav-item" data-screen="settings" aria-label="Paramètres">
+            <span class="nav-icon" aria-hidden="true">⚙</span>
+            <span class="nav-label" data-i18n="nav.settings">Paramètres</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ─── SÉANCE ACTIVE ─── -->
+    <div id="screen-session" class="screen" aria-labelledby="session-title">
+      <div class="screen-content">
+        <header class="screen-header">
+          <button id="session-close-btn" class="btn-icon" aria-label="Fermer la séance">✕</button>
+          <h1 id="session-title" data-i18n="session.title">Séance en cours</h1>
+          <div id="session-progress" class="session-progress" aria-live="polite"></div>
+        </header>
+        <main id="session-main" class="session-content">
+          <!-- Rendu dynamiquement par session.js -->
+        </main>
+        <footer class="screen-footer" id="session-footer">
+          <!-- Boutons dynamiques -->
+        </footer>
+      </div>
+    </div>
+
+    <!-- ─── PARAMÈTRES ─── -->
+    <div id="screen-settings" class="screen" aria-labelledby="settings-title">
+      <div class="screen-content">
+        <header class="screen-header">
+          <button class="btn-icon" id="settings-back-btn" aria-label="Retour">‹</button>
+          <h1 id="settings-title" data-i18n="settings.title">Paramètres</h1>
+        </header>
+        <main id="settings-main" class="settings-content">
+          <!-- Rendu dynamiquement -->
+        </main>
+      </div>
+    </div>
+
+  </div><!-- #app -->
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
