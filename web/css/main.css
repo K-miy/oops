@@ -607,6 +607,9 @@ body {
 }
 
 /* ── Bottom navigation (fixe globale) ── */
+/* L'attribut HTML `hidden` est overridé par display:flex — on le force ici */
+#bottom-nav[hidden] { display: none; }
+
 #bottom-nav {
   position: fixed;
   bottom: 0;

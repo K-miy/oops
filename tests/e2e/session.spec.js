@@ -1,41 +1,51 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
 
-// Helper : créer un profil en base pour bypasser l'onboarding
+// Lundi 6 janvier 2025 à 12h00 — jour de workout pour 3 séances/semaine (L/Me/Ve)
+const MONDAY_TS = new Date('2025-01-06T12:00:00').getTime();
+
+// Helper : créer un profil via l'onboarding complet
 async function setupProfile(page) {
+  // Figer la date à un lundi pour garantir un jour d'entraînement
+  await page.addInitScript(`Date.now = () => ${MONDAY_TS}`);
+
   await page.goto('/');
-  await page.evaluate(async () => {
-    // Injecte un profil directement dans IndexedDB
-    const { default: Dexie } = await import('/js/db.js');
-    // Alternative : appel direct à la DB
-  });
-  // On passe par l'onboarding complet (plus fiable que l'injection directe)
-  await page.waitForSelector('#screen-disclaimer.active');
-  await page.locator('#disclaimer-checkbox').check();
+  await page.waitForSelector('#screen-disclaimer.active', { timeout: 10_000 });
   await page.locator('#disclaimer-accept-btn').click();
   await page.waitForSelector('#screen-onboarding.active');
 
+  // Étape 1 : langue — auto-avance après sélection
   await page.locator('.choice-card[data-value="fr"]').click();
-  await page.locator('#onboarding-next-btn').click();
+  await page.waitForSelector('#input-age', { timeout: 2000 });
+
+  // Étape 2 : infos perso — bouton Next requis
   await page.locator('.choice-card[data-value="male"]').click();
   await page.locator('#input-age').fill('35');
   await page.locator('#input-weight').fill('80');
   await page.locator('#onboarding-next-btn').click();
+
+  // Étape 3 : niveau — auto-avance après sélection
   await page.locator('.choice-card[data-value="intermediate"]').click();
-  await page.locator('#onboarding-next-btn').click();
+  await page.waitForSelector('#freq-chips', { timeout: 2000 });
+
+  // Étape 4 : fréquence + durée
   await page.locator('#freq-chips .chip[data-value="3"]').click();
   await page.locator('#duration-chips .chip[data-value="30"]').click();
   await page.locator('#onboarding-next-btn').click();
+
+  // Étape 5 : post-partum
   await page.locator('.choice-card[data-value="false"]').click();
   await page.locator('#onboarding-next-btn').click();
+
   await page.waitForSelector('#screen-home.active', { timeout: 10_000 });
 }
 
 test.describe('Écran d\'accueil', () => {
   test.beforeEach(async ({ page }) => {
+    await page.goto('/');
     await page.evaluate(async () => {
       const dbs = await indexedDB.databases?.() ?? [];
-      for (const db of dbs) indexedDB.deleteDatabase(db.name);
+      for (const db of dbs) if (db.name) indexedDB.deleteDatabase(db.name);
     });
     await setupProfile(page);
   });
@@ -55,9 +65,10 @@ test.describe('Écran d\'accueil', () => {
 
 test.describe('Séance active', () => {
   test.beforeEach(async ({ page }) => {
+    await page.goto('/');
     await page.evaluate(async () => {
       const dbs = await indexedDB.databases?.() ?? [];
-      for (const db of dbs) indexedDB.deleteDatabase(db.name);
+      for (const db of dbs) if (db.name) indexedDB.deleteDatabase(db.name);
     });
     await setupProfile(page);
     await page.locator('#start-session-btn').click();
@@ -73,14 +84,12 @@ test.describe('Séance active', () => {
   });
 
   test('marquer un exercice met à jour le compteur', async ({ page }) => {
-    const firstDoneBtn = page.locator('.exercise-done-btn').first();
-    await firstDoneBtn.click();
+    await page.locator('.exercise-done-btn').first().click();
     await expect(page.locator('#session-progress')).toHaveText(/1\s*\/\s*\d+/);
   });
 
   test('terminer tous les exercices affiche le bouton Terminer', async ({ page }) => {
-    const doneBtns = page.locator('.exercise-done-btn');
-    const count = await doneBtns.count();
+    const count = await page.locator('.exercise-done-btn').count();
     for (let i = 0; i < count; i++) {
       await page.locator('.exercise-done-btn').first().click();
     }
@@ -88,8 +97,7 @@ test.describe('Séance active', () => {
   });
 
   test('terminer la séance affiche l\'écran RPE', async ({ page }) => {
-    const doneBtns = page.locator('.exercise-done-btn');
-    const count = await doneBtns.count();
+    const count = await page.locator('.exercise-done-btn').count();
     for (let i = 0; i < count; i++) {
       await page.locator('.exercise-done-btn').first().click();
     }
@@ -98,8 +106,7 @@ test.describe('Séance active', () => {
   });
 
   test('ignorer le RPE retourne à l\'accueil', async ({ page }) => {
-    const doneBtns = page.locator('.exercise-done-btn');
-    const count = await doneBtns.count();
+    const count = await page.locator('.exercise-done-btn').count();
     for (let i = 0; i < count; i++) {
       await page.locator('.exercise-done-btn').first().click();
     }

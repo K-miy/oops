@@ -1,9 +1,8 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
 
-// Chaque test repart d'une IndexedDB vide (reset via API custom ou en ouvrant en navigation privée)
+// Chaque test repart d'une IndexedDB vide
 test.beforeEach(async ({ page }) => {
-  // Reset IndexedDB avant chaque test
   await page.goto('/');
   await page.evaluate(async () => {
     const dbs = await indexedDB.databases?.() ?? [];
@@ -21,24 +20,15 @@ test.describe('Premier lancement — Disclaimer', () => {
     await expect(page.locator('#screen-disclaimer')).toBeVisible();
   });
 
-  test('le bouton Continuer est désactivé sans cocher la case', async ({ page }) => {
+  test('le bouton Confirmer est visible et actif', async ({ page }) => {
     await page.goto('/');
     await page.waitForSelector('#screen-disclaimer.active');
-    const btn = page.locator('#disclaimer-accept-btn');
-    await expect(btn).toBeDisabled();
-  });
-
-  test('cocher la case active le bouton Continuer', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForSelector('#screen-disclaimer.active');
-    await page.locator('#disclaimer-checkbox').check();
     await expect(page.locator('#disclaimer-accept-btn')).toBeEnabled();
   });
 
-  test('accepter le disclaimer mène à l\'onboarding', async ({ page }) => {
+  test('confirmer le disclaimer mène à l\'onboarding', async ({ page }) => {
     await page.goto('/');
     await page.waitForSelector('#screen-disclaimer.active');
-    await page.locator('#disclaimer-checkbox').check();
     await page.locator('#disclaimer-accept-btn').click();
     await page.waitForSelector('#screen-onboarding.active');
     await expect(page.locator('#screen-onboarding')).toBeVisible();
@@ -47,10 +37,8 @@ test.describe('Premier lancement — Disclaimer', () => {
 
 test.describe('Onboarding — Création de profil', () => {
   test.beforeEach(async ({ page }) => {
-    // Arriver directement à l'onboarding
     await page.goto('/');
     await page.waitForSelector('#screen-disclaimer.active');
-    await page.locator('#disclaimer-checkbox').check();
     await page.locator('#disclaimer-accept-btn').click();
     await page.waitForSelector('#screen-onboarding.active');
   });
