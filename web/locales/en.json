@@ -69,7 +69,13 @@
     "streak": "Current streak",
     "streak_day": "consecutive day",
     "streak_days": "consecutive days",
-    "more_exercises": "more exercises"
+    "more_exercises": "more exercises",
+    "week": "This week",
+    "rest_short": "Rest"
+  },
+  "history": {
+    "empty_title": "No sessions yet",
+    "empty_desc": "Complete your first session to see it here."
   },
   "session": {
     "title": "Session in progress",

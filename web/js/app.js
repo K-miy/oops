@@ -10,12 +10,13 @@
 
 import init, { build_session } from 'oops';
 import { initI18n, t, applyToDOM, getLang } from './i18n.js';
-import { getProfile, saveProfile, getSetting, setSetting, resetAll, saveSession, getTodaySession, getCurrentStreak } from './db.js';
+import { getProfile, saveProfile, getSetting, setSetting, resetAll, saveSession, getTodaySession, getCurrentStreak, getRecentSessions } from './db.js';
 import { renderDisclaimer } from './ui/disclaimer.js';
 import { renderOnboarding } from './ui/onboarding.js';
 import { renderHome } from './ui/home.js';
 import { renderSession } from './ui/session.js';
 import { renderSettings } from './ui/settings.js';
+import { renderHistory } from './ui/history.js';
 
 // ────────────────────────────────────────────────
 // État global de l'app (lecture seule depuis l'extérieur)
@@ -30,6 +31,7 @@ const state = {
 // ────────────────────────────────────────────────
 // Navigation
 // ────────────────────────────────────────────────
+const NAV_SCREENS = new Set(['home', 'history', 'settings']);
 let _currentScreen = 'loading';
 
 export function showScreen(name) {
@@ -42,6 +44,29 @@ export function showScreen(name) {
   }
   next.classList.add('active');
   _currentScreen = name;
+
+  // Affiche/cache la nav globale
+  const nav = document.getElementById('bottom-nav');
+  if (nav) {
+    nav.hidden = !NAV_SCREENS.has(name);
+    // Sync l'état actif de chaque bouton
+    nav.querySelectorAll('.nav-item[data-screen]').forEach((btn) => {
+      const isActive = btn.dataset.screen === name;
+      btn.classList.toggle('active', isActive);
+      if (isActive) btn.setAttribute('aria-current', 'page');
+      else btn.removeAttribute('aria-current');
+    });
+  }
+}
+
+async function navigateTo(screen) {
+  if (screen === 'home') {
+    await routeToHome();
+  } else if (screen === 'history') {
+    await routeToHistory();
+  } else if (screen === 'settings') {
+    openSettings();
+  }
 }
 
 // ────────────────────────────────────────────────
@@ -66,7 +91,25 @@ async function loadExercises() {
 }
 
 // ────────────────────────────────────────────────
-// Génération de la séance du jour
+// Logique jour d'entraînement vs repos
+// ────────────────────────────────────────────────
+
+/** Patterns jours d'entraînement (Mon=0 … Sun=6) selon fréquence hebdo. */
+const WORKOUT_PATTERNS = {
+  2: [1, 4],           // Mar, Ven
+  3: [0, 2, 4],        // Lun, Mer, Ven
+  4: [0, 1, 3, 4],     // Lun, Mar, Jeu, Ven
+  5: [0, 1, 2, 3, 4],  // Lun → Ven
+};
+
+function isWorkoutDay(date, sessionsPerWeek) {
+  const mon0 = (date.getDay() + 6) % 7; // Mon=0 … Sun=6
+  const pattern = WORKOUT_PATTERNS[sessionsPerWeek] ?? WORKOUT_PATTERNS[3];
+  return pattern.includes(mon0);
+}
+
+// ────────────────────────────────────────────────
+// Génération de séances (aujourd'hui + aperçu semaine)
 // ────────────────────────────────────────────────
 export function generateTodayPlan(profile, exercises) {
   const daySeed = Math.floor(Date.now() / 86_400_000);
@@ -76,6 +119,33 @@ export function generateTodayPlan(profile, exercises) {
     daySeed
   );
   return JSON.parse(planJson);
+}
+
+/** Génère un aperçu des 7 prochains jours (index 0 = aujourd'hui). */
+function generateWeekPreview(profile, exercises) {
+  const dayMs = 86_400_000;
+  const now = Date.now();
+  const preview = [];
+
+  for (let i = 0; i < 7; i++) {
+    const dayTs = now + i * dayMs;
+    const date = new Date(dayTs);
+    const daySeed = Math.floor(dayTs / dayMs);
+    const isWorkout = isWorkoutDay(date, profile.sessions_per_week);
+
+    let plan = null;
+    if (isWorkout) {
+      try {
+        plan = JSON.parse(build_session(JSON.stringify(profile), JSON.stringify(exercises), daySeed));
+      } catch (e) {
+        console.warn('[app] generateWeekPreview error day', i, e);
+      }
+    }
+
+    preview.push({ date, isWorkout, plan });
+  }
+
+  return preview;
 }
 
 // ────────────────────────────────────────────────
@@ -114,7 +184,6 @@ async function boot() {
 
 async function route() {
   if (!state.profile) {
-    // Première utilisation → disclaimer puis onboarding
     renderDisclaimer(document.getElementById('screen-disclaimer'), {
       onAccept: () => {
         renderOnboarding(document.getElementById('screen-onboarding'), {
@@ -132,20 +201,24 @@ async function route() {
     return;
   }
 
-  // Profil existant → accueil
   await routeToHome();
 }
 
 async function routeToHome() {
   const today = new Date().toISOString().slice(0, 10);
-  let todaySession = await getTodaySession(today);
-  const streak = await getCurrentStreak();
+  const [todaySession, streak] = await Promise.all([
+    getTodaySession(today),
+    getCurrentStreak(),
+  ]);
 
-  if (!todaySession) {
-    // Générer la séance du jour
-    state.currentPlan = generateTodayPlan(state.profile, state.exercises);
+  const weekPreview = generateWeekPreview(state.profile, state.exercises);
+  const todayEntry = weekPreview[0];
+
+  if (todayEntry.isWorkout) {
+    // Réutilise le plan déjà calculé dans weekPreview[0] si pas de séance sauvegardée
+    state.currentPlan = todaySession ? todaySession.plan : todayEntry.plan;
   } else {
-    state.currentPlan = todaySession.plan;
+    state.currentPlan = null; // jour de repos
   }
 
   renderHome(document.getElementById('home-main'), {
@@ -155,20 +228,31 @@ async function routeToHome() {
     streak,
     lang: getLang(),
     exercises: state.exercises,
+    weekPreview,
     onStartSession: () => startSession(),
-    onOpenSettings: () => showScreen('settings'),
+    onOpenSettings: () => openSettings(),
   });
 
   showScreen('home');
 }
 
+async function routeToHistory() {
+  const sessions = await getRecentSessions(50);
+  renderHistory(document.getElementById('history-main'), {
+    sessions,
+    exercises: state.exercises,
+    lang: getLang(),
+  });
+  showScreen('history');
+}
+
 function startSession() {
+  if (!state.currentPlan) return;
   renderSession(document.getElementById('screen-session'), {
     plan: state.currentPlan,
     exercises: state.exercises,
     lang: getLang(),
     onComplete: async (result) => {
-      // result = { completed_exercise_ids, rpe, duration_actual_s }
       const today = new Date().toISOString().slice(0, 10);
       await saveSession({
         date: today,
@@ -190,7 +274,6 @@ function openSettings() {
   renderSettings(document.getElementById('settings-main'), {
     profile: state.profile,
     onLangChange: async (newLang) => {
-      // Relance le rendu de l'écran actif avec la nouvelle langue
       await routeToHome();
       showScreen('settings');
       openSettings();
@@ -212,14 +295,9 @@ document.getElementById('session-close-btn')?.addEventListener('click', () => {
   }
 });
 
-// Bottom nav
-document.querySelectorAll('.nav-item[data-screen]').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const target = btn.dataset.screen;
-    document.querySelectorAll('.nav-item').forEach((b) => b.classList.remove('active'));
-    btn.classList.add('active');
-    showScreen(target);
-  });
+// Bottom nav global
+document.getElementById('bottom-nav')?.querySelectorAll('.nav-item[data-screen]').forEach((btn) => {
+  btn.addEventListener('click', () => navigateTo(btn.dataset.screen));
 });
 
 // ────────────────────────────────────────────────

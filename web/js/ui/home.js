@@ -1,5 +1,5 @@
 /**
- * home.js — Écran d'accueil : séance du jour + streak
+ * home.js — Écran d'accueil : séance du jour + aperçu semaine + streak
  */
 import { t } from '../i18n.js';
 
@@ -7,16 +7,17 @@ import { t } from '../i18n.js';
  * @param {HTMLElement} container - #home-main
  * @param {{
  *   profile: object,
- *   plan: object,          // SessionPlan { exercises: [] }
+ *   plan: object|null,        // SessionPlan { exercises: [] } ou null (jour de repos)
  *   todaySession: object|null,
  *   streak: number,
  *   lang: string,
- *   exercises: object[],   // catalogue complet
+ *   exercises: object[],      // catalogue complet
+ *   weekPreview: object[],    // 7 jours [{ date, isWorkout, plan }]
  *   onStartSession: () => void,
  *   onOpenSettings: () => void,
  * }} opts
  */
-export function renderHome(container, { profile, plan, todaySession, streak, lang, exercises, onStartSession }) {
+export function renderHome(container, { profile, plan, todaySession, streak, lang, exercises, weekPreview, onStartSession }) {
   const exerciseMap = Object.fromEntries(exercises.map((e) => [e.id, e]));
   const alreadyDone = !!todaySession;
   const today = new Date();
@@ -43,7 +44,7 @@ export function renderHome(container, { profile, plan, todaySession, streak, lan
   const moreCount = (plan?.exercises.length ?? 0) - 4;
 
   container.innerHTML = `
-    <div class="home-greeting animate-in">${greeting(lang)}, ${profile.sex === 'other' ? '' : ''} 💪</div>
+    <div class="home-greeting animate-in">${greeting(lang)}, 💪</div>
     <div class="home-date animate-in">${capitalise(dateStr)}</div>
 
     ${plan && plan.exercises.length > 0 ? `
@@ -79,9 +80,41 @@ export function renderHome(container, { profile, plan, todaySession, streak, lan
         <div class="streak-label">${streak === 1 ? t('home.streak_day') : t('home.streak_days')}</div>
       </div>
     </div>
+
+    ${weekPreview?.length ? renderWeekPreview(weekPreview, lang) : ''}
   `;
 
   container.querySelector('#start-session-btn')?.addEventListener('click', onStartSession);
+}
+
+function renderWeekPreview(weekPreview, lang) {
+  const days = weekPreview.map((entry, i) => {
+    const dayName = entry.date.toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-GB', { weekday: 'short' });
+    const isToday = i === 0;
+    const exCount = entry.plan?.exercises?.length ?? 0;
+    const todayClass = isToday ? ' day-card-today' : '';
+
+    if (entry.isWorkout) {
+      return `
+        <div class="day-card${todayClass}">
+          <div class="day-card-name">${dayName}</div>
+          <div class="day-card-icon">💪</div>
+          <div class="day-card-count">${exCount} ex</div>
+        </div>`;
+    }
+    return `
+      <div class="day-card day-card-rest${todayClass}">
+        <div class="day-card-name">${dayName}</div>
+        <div class="day-card-icon">🛋️</div>
+        <div class="day-card-count">${t('home.rest_short')}</div>
+      </div>`;
+  }).join('');
+
+  return `
+    <div class="week-preview animate-in">
+      <div class="week-preview-title">${t('home.week')}</div>
+      <div class="week-scroll">${days}</div>
+    </div>`;
 }
 
 function greeting(lang) {

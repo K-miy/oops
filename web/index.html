@@ -90,20 +90,18 @@
         <main id="home-main" class="home-content">
           <!-- Rendu dynamiquement par home.js -->
         </main>
-        <nav class="bottom-nav" role="navigation" aria-label="Navigation principale">
-          <button class="nav-item active" data-screen="home" aria-current="page">
-            <span class="nav-icon" aria-hidden="true">🏠</span>
-            <span class="nav-label" data-i18n="nav.home">Accueil</span>
-          </button>
-          <button class="nav-item" data-screen="history" aria-label="Historique">
-            <span class="nav-icon" aria-hidden="true">📊</span>
-            <span class="nav-label" data-i18n="nav.history">Historique</span>
-          </button>
-          <button class="nav-item" data-screen="settings" aria-label="Paramètres">
-            <span class="nav-icon" aria-hidden="true">⚙</span>
-            <span class="nav-label" data-i18n="nav.settings">Paramètres</span>
-          </button>
-        </nav>
+      </div>
+    </div>
+
+    <!-- ─── HISTORIQUE ─── -->
+    <div id="screen-history" class="screen" aria-labelledby="history-title">
+      <div class="screen-content">
+        <header class="screen-header">
+          <h1 id="history-title" data-i18n="nav.history">Historique</h1>
+        </header>
+        <main id="history-main" class="history-content">
+          <!-- Rendu dynamiquement par history.js -->
+        </main>
       </div>
     </div>
 
@@ -138,6 +136,22 @@
     </div>
 
   </div><!-- #app -->
+
+  <!-- Navigation globale (hors #app pour éviter le clipping overflow:hidden) -->
+  <nav id="bottom-nav" class="bottom-nav" role="navigation" aria-label="Navigation principale" hidden>
+    <button class="nav-item active" data-screen="home" aria-current="page">
+      <span class="nav-icon" aria-hidden="true">🏠</span>
+      <span class="nav-label" data-i18n="nav.home">Accueil</span>
+    </button>
+    <button class="nav-item" data-screen="history">
+      <span class="nav-icon" aria-hidden="true">📊</span>
+      <span class="nav-label" data-i18n="nav.history">Historique</span>
+    </button>
+    <button class="nav-item" data-screen="settings">
+      <span class="nav-icon" aria-hidden="true">⚙</span>
+      <span class="nav-label" data-i18n="nav.settings">Paramètres</span>
+    </button>
+  </nav>
 
   <script type="module" src="/js/app.js"></script>
 </body>

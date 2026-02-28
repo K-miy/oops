@@ -69,7 +69,13 @@
     "streak": "Série en cours",
     "streak_day": "jour consécutif",
     "streak_days": "jours consécutifs",
-    "more_exercises": "autres exercices"
+    "more_exercises": "autres exercices",
+    "week": "Cette semaine",
+    "rest_short": "Repos"
+  },
+  "history": {
+    "empty_title": "Pas encore de séance",
+    "empty_desc": "Terminez votre première séance pour la voir apparaître ici."
   },
   "session": {
     "title": "Séance en cours",
