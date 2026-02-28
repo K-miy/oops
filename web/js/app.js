@@ -15,6 +15,7 @@ import { renderDisclaimer } from './ui/disclaimer.js';
 import { renderOnboarding } from './ui/onboarding.js';
 import { renderHome } from './ui/home.js';
 import { renderSession } from './ui/session.js';
+import { renderSettings } from './ui/settings.js';
 
 // ────────────────────────────────────────────────
 // État global de l'app (lecture seule depuis l'extérieur)
@@ -185,7 +186,25 @@ function startSession() {
 // ────────────────────────────────────────────────
 // Boutons globaux
 // ────────────────────────────────────────────────
-document.getElementById('home-settings-btn')?.addEventListener('click', () => showScreen('settings'));
+function openSettings() {
+  renderSettings(document.getElementById('settings-main'), {
+    profile: state.profile,
+    onLangChange: async (newLang) => {
+      // Relance le rendu de l'écran actif avec la nouvelle langue
+      await routeToHome();
+      showScreen('settings');
+      openSettings();
+    },
+    onReset: () => {
+      state.profile = null;
+      state.currentPlan = null;
+      window.location.reload();
+    },
+  });
+  showScreen('settings');
+}
+
+document.getElementById('home-settings-btn')?.addEventListener('click', openSettings);
 document.getElementById('settings-back-btn')?.addEventListener('click', () => showScreen('home'));
 document.getElementById('session-close-btn')?.addEventListener('click', () => {
   if (confirm(t('session.abort_confirm') ?? 'Abandonner la séance ?')) {

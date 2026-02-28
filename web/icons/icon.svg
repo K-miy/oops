@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" shape-rendering="geometricPrecision">
+  <defs>
+    <radialGradient id="bg" cx="40%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#3A8A65"/>
+      <stop offset="100%" stop-color="#1B4332"/>
+    </radialGradient>
+    <radialGradient id="face" cx="42%" cy="38%" r="60%">
+      <stop offset="0%" stop-color="#F8B882"/>
+      <stop offset="100%" stop-color="#E8924A"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ── Background (rounded square) ── -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+
+  <!-- ── Subtle shine top-left ── -->
+  <ellipse cx="160" cy="120" rx="120" ry="80" fill="white" opacity="0.06"/>
+
+  <!-- ══════════════════════════════════
+       FIGURE — Parent en squat célébration
+       ══════════════════════════════════ -->
+
+  <!-- Bras gauche levé -->
+  <line x1="232" y1="210" x2="165" y2="142" stroke="#F4A261" stroke-width="38" stroke-linecap="round"/>
+  <!-- Main gauche -->
+  <circle cx="152" cy="130" r="28" fill="#F4A261"/>
+
+  <!-- Bras droit levé -->
+  <line x1="280" y1="210" x2="347" y2="142" stroke="#F4A261" stroke-width="38" stroke-linecap="round"/>
+  <!-- Main droite -->
+  <circle cx="360" cy="130" r="28" fill="#F4A261"/>
+
+  <!-- Torse -->
+  <rect x="222" y="196" width="68" height="90" rx="22" fill="#F4A261"/>
+
+  <!-- Jambe gauche (squat) -->
+  <line x1="238" y1="286" x2="193" y2="372" stroke="#F4A261" stroke-width="40" stroke-linecap="round"/>
+  <!-- Pied gauche -->
+  <ellipse cx="185" cy="381" rx="34" ry="18" fill="#F4A261"/>
+
+  <!-- Jambe droite (squat) -->
+  <line x1="274" y1="286" x2="319" y2="372" stroke="#F4A261" stroke-width="40" stroke-linecap="round"/>
+  <!-- Pied droit -->
+  <ellipse cx="327" cy="381" rx="34" ry="18" fill="#F4A261"/>
+
+  <!-- ══════════════════════════════════
+       TÊTE — Expression "OOPS!" amusée
+       ══════════════════════════════════ -->
+
+  <!-- Tête (cercle principal) -->
+  <circle cx="256" cy="138" r="62" fill="url(#face)"/>
+
+  <!-- Œil gauche — grand ouvert (surpris) -->
+  <circle cx="234" cy="128" r="17" fill="white"/>
+  <circle cx="237" cy="131" r="9" fill="#1B4332"/>
+  <circle cx="241" cy="128" r="3" fill="white"/>
+
+  <!-- Œil droit — grand ouvert (surpris) -->
+  <circle cx="278" cy="128" r="17" fill="white"/>
+  <circle cx="281" cy="131" r="9" fill="#1B4332"/>
+  <circle cx="285" cy="128" r="3" fill="white"/>
+
+  <!-- Sourcils relevés (surprise) -->
+  <path d="M 220 108 Q 234 100 248 106" stroke="#1B4332" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M 264 106 Q 278 100 292 108" stroke="#1B4332" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- Bouche ouverte en "O" (OOPS!) -->
+  <ellipse cx="256" cy="162" rx="14" ry="17" fill="#1B4332"/>
+  <ellipse cx="256" cy="165" rx="9" ry="10" fill="#C0504A" opacity="0.7"/>
+
+  <!-- Joues roses -->
+  <ellipse cx="218" cy="152" rx="12" ry="8" fill="#FF8C69" opacity="0.35"/>
+  <ellipse cx="294" cy="152" rx="12" ry="8" fill="#FF8C69" opacity="0.35"/>
+
+  <!-- Goutte de sueur (effort !) -->
+  <path d="M 328 82 Q 341 62 348 82 Q 348 98 338 98 Q 328 98 328 82 Z"
+        fill="white" opacity="0.80"/>
+
+  <!-- ══════════════════════════════════
+       Lignes de mouvement
+       ══════════════════════════════════ -->
+  <line x1="112" y1="190" x2="138" y2="190" stroke="white" stroke-width="7" stroke-linecap="round" opacity="0.40"/>
+  <line x1="104" y1="216" x2="133" y2="216" stroke="white" stroke-width="7" stroke-linecap="round" opacity="0.30"/>
+  <line x1="374" y1="190" x2="400" y2="190" stroke="white" stroke-width="7" stroke-linecap="round" opacity="0.40"/>
+  <line x1="379" y1="216" x2="408" y2="216" stroke="white" stroke-width="7" stroke-linecap="round" opacity="0.30"/>
+
+  <!-- ══════════════════════════════════
+       Texte OOPS
+       ══════════════════════════════════ -->
+  <text x="256" y="462"
+        font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif"
+        font-weight="900"
+        font-size="82"
+        fill="white"
+        text-anchor="middle"
+        letter-spacing="6"
+        opacity="0.95">OOPS</text>
+</svg>

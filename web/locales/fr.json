@@ -88,8 +88,10 @@
     "title": "Paramètres",
     "lang": "Langue",
     "profile": "Modifier le profil",
+    "buy_coffee": "Soutenir le projet",
     "reset": "Réinitialiser l'application",
-    "reset_confirm": "Toutes vos données seront supprimées. Continuer ?"
+    "reset_confirm": "Toutes vos données seront supprimées définitivement. Continuer ?",
+    "privacy_note": "100% local, zéro donnée envoyée."
   },
   "nav": {
     "home": "Accueil",

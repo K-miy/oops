@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Version simplifiée pour favicon (32×32) -->
+  <rect width="32" height="32" rx="7" fill="#2D6A4F"/>
+  <!-- Corps simplifié -->
+  <circle cx="16" cy="9" r="4.5" fill="#F4A261"/>
+  <!-- Yeux -->
+  <circle cx="14.5" cy="8.2" r="1" fill="white"/>
+  <circle cx="17.5" cy="8.2" r="1" fill="white"/>
+  <!-- Bouche O -->
+  <ellipse cx="16" cy="10.5" rx="1" ry="1.2" fill="#1B4332"/>
+  <!-- Bras -->
+  <line x1="14" y1="14" x2="10" y2="11" stroke="#F4A261" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="18" y1="14" x2="22" y2="11" stroke="#F4A261" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Torse -->
+  <rect x="13" y="13" width="6" height="6" rx="2" fill="#F4A261"/>
+  <!-- Jambes squat -->
+  <line x1="14.5" y1="19" x2="11" y2="25" stroke="#F4A261" stroke-width="3" stroke-linecap="round"/>
+  <line x1="17.5" y1="19" x2="21" y2="25" stroke="#F4A261" stroke-width="3" stroke-linecap="round"/>
+</svg>

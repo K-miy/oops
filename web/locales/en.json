@@ -88,8 +88,10 @@
     "title": "Settings",
     "lang": "Language",
     "profile": "Edit profile",
+    "buy_coffee": "Support this project",
     "reset": "Reset app",
-    "reset_confirm": "All your data will be deleted. Continue?"
+    "reset_confirm": "All your data will be permanently deleted. Continue?",
+    "privacy_note": "100% local, zero data sent."
   },
   "nav": {
     "home": "Home",
