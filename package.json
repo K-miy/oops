@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Out of Parent's Shape — offline-first PWA",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "make build",
     "dev": "make dev",

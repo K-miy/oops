@@ -22,12 +22,16 @@ test-rust:
 test-wasm:
 	wasm-pack test --headless --firefox
 
+# Unit tests JS (Node.js built-in, no browser needed)
+test-js:
+	node --test tests/js/*.mjs
+
 # End-to-end tests
 test-e2e:
 	npx playwright test
 
 # All tests
-test: test-rust test-e2e
+test: test-rust test-js test-e2e
 
 clean:
 	rm -rf web/pkg dist target node_modules

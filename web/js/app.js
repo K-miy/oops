@@ -9,7 +9,8 @@
  */
 
 import init, { build_session } from 'oops';
-import { initI18n, t, applyToDOM, getLang } from './i18n.js';
+import { initI18n, t, getLang } from './i18n.js';
+import { isWorkoutDay } from './schedule.js';
 import { getProfile, saveProfile, getSetting, setSetting, resetAll, saveSession, getTodaySession, getCurrentStreak, getRecentSessions } from './db.js';
 import { renderDisclaimer } from './ui/disclaimer.js';
 import { renderOnboarding } from './ui/onboarding.js';
@@ -88,24 +89,6 @@ async function loadExercises() {
     )
   );
   return results.flat();
-}
-
-// ────────────────────────────────────────────────
-// Logique jour d'entraînement vs repos
-// ────────────────────────────────────────────────
-
-/** Patterns jours d'entraînement (Mon=0 … Sun=6) selon fréquence hebdo. */
-const WORKOUT_PATTERNS = {
-  2: [1, 4],           // Mar, Ven
-  3: [0, 2, 4],        // Lun, Mer, Ven
-  4: [0, 1, 3, 4],     // Lun, Mar, Jeu, Ven
-  5: [0, 1, 2, 3, 4],  // Lun → Ven
-};
-
-function isWorkoutDay(date, sessionsPerWeek) {
-  const mon0 = (date.getDay() + 6) % 7; // Mon=0 … Sun=6
-  const pattern = WORKOUT_PATTERNS[sessionsPerWeek] ?? WORKOUT_PATTERNS[3];
-  return pattern.includes(mon0);
 }
 
 // ────────────────────────────────────────────────
