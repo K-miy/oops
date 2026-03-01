@@ -21,6 +21,26 @@ import { renderHistory } from './ui/history.js';
 import { renderAbout } from './ui/about.js';
 
 // ────────────────────────────────────────────────
+// SW update banner — enregistré immédiatement (avant boot)
+// pour ne pas rater l'event controllerchange si le nouveau SW
+// s'active pendant le chargement de l'app.
+// ────────────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    const banner = document.getElementById('sw-update-banner');
+    const text   = document.getElementById('sw-update-text');
+    if (!banner || !banner.hidden) return;
+    // t() peut retourner la clé-string si i18n n'est pas encore chargée :
+    // on utilise l'attribut data du DOM comme fallback garanti.
+    if (text) {
+      const msg = t('app.update_available');
+      text.textContent = msg === 'app.update_available' ? text.textContent : msg;
+    }
+    banner.hidden = false;
+  });
+}
+
+// ────────────────────────────────────────────────
 // État global de l'app (lecture seule depuis l'extérieur)
 // ────────────────────────────────────────────────
 const state = {
@@ -167,20 +187,19 @@ async function boot() {
     navigator.serviceWorker.register('/service-worker.js').catch((err) => {
       console.warn('[app] SW non enregistré:', err);
     });
-
-    // Bannière de mise à jour : affichée quand un nouveau SW prend le contrôle
-    navigator.serviceWorker.addEventListener('controllerchange', () => {
-      const banner = document.getElementById('sw-update-banner');
-      const text   = document.getElementById('sw-update-text');
-      if (banner) {
-        if (text) text.textContent = t('app.update_available') ?? 'Nouvelle version disponible';
-        banner.hidden = false;
-      }
-    });
   }
 
   // 6. Routing initial
   await route();
+
+  // 7. Bannière install PWA (si l'event est arrivé avant que i18n soit prête)
+  if (_installPrompt) showInstallBanner();
+
+  // 8. Mise à jour du texte SW si la bannière est apparue avant i18n
+  const $swText = document.getElementById('sw-update-text');
+  if ($swText) $swText.textContent = t('app.update_available');
+
+  _booted = true;
 }
 
 async function route() {
@@ -345,17 +364,22 @@ document.getElementById('bottom-nav')?.querySelectorAll('.nav-item[data-screen]'
 // PWA install prompt
 // ────────────────────────────────────────────────
 let _installPrompt = null;
+let _booted = false;
+
+function showInstallBanner() {
+  const banner = document.getElementById('pwa-install-banner');
+  const text   = document.getElementById('pwa-install-text');
+  if (!banner) return;
+  if (text) text.textContent = t('settings.install_prompt');
+  banner.hidden = false;
+}
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   _installPrompt = e;
-  const banner = document.getElementById('pwa-install-banner');
-  const text   = document.getElementById('pwa-install-text');
-  if (banner) {
-    // Texte localisé si i18n déjà chargée, sinon fallback
-    if (text) text.textContent = t('settings.install_prompt') ?? 'Installer OOPS sur votre écran d\'accueil ?';
-    banner.hidden = false;
-  }
+  // Affiche la bannière seulement si i18n est prête (boot terminé)
+  // sinon boot() appellera showInstallBanner() lui-même à la fin
+  if (_booted) showInstallBanner();
 });
 
 document.getElementById('pwa-install-btn')?.addEventListener('click', async () => {
