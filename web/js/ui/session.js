@@ -276,11 +276,11 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
           <span>${t('session.rpe_hard')}</span>
         </div>
         <div class="rpe-hint" id="rpe-hint"></div>
+        <button class="btn-finish" id="finish-btn">I did it again</button>
       </div>`;
 
     $footer.innerHTML = `
-      <button class="btn-finish" id="finish-btn">I did it again</button>
-      <button class="btn btn-ghost btn-skip-rpe" id="skip-rpe-btn" style="margin-top:8px">${t('session.skip_rpe')}</button>`;
+      <button class="btn btn-ghost btn-skip-rpe" id="skip-rpe-btn">${t('session.skip_rpe')}</button>`;
 
     let selectedRpe = null;
 
