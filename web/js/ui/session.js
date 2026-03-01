@@ -150,12 +150,15 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
 
     state.timeLeft = setDuration(ex);
 
+    const imgUrl = getInfo(ex)?.image_url ?? null;
+
     $main.innerHTML = `
       <div class="session-exercise animate-in">
         <div class="session-ex-meta">
           <span class="session-ex-counter">${exLabel}</span>
           <span class="session-ex-setlabel">${setLabel}</span>
         </div>
+        ${imgUrl ? `<img class="session-ex-img" src="${imgUrl}" alt="${exName(ex)}" loading="lazy" />` : ''}
         <div class="session-ex-name">${exName(ex)}</div>
         <div class="session-timer">
           <span class="session-timer-value" id="timer-value">${state.timeLeft}s</span>

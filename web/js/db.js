@@ -130,4 +130,20 @@ export async function resetAll() {
   await db.delete();
 }
 
+// ════════════════════════ EXPORT ════════════════════════
+
+/** Exporte toutes les données en un objet JSON sérialisable. */
+export async function exportData() {
+  const [profile, sessions] = await Promise.all([
+    getProfile(),
+    db.sessions.orderBy('date').toArray(),
+  ]);
+  return {
+    exported_at:  new Date().toISOString(),
+    app_version:  '0.1.0',
+    profile,
+    sessions,
+  };
+}
+
 export default db;

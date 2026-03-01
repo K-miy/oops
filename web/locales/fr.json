@@ -143,6 +143,7 @@
     "reset": "Réinitialiser l'application",
     "reset_confirm": "Toutes vos données seront supprimées définitivement. Continuer ?",
     "privacy_note": "100% local, zéro donnée envoyée.",
+    "export": "Exporter mes données",
     "install_prompt": "Installer OOPS sur votre écran d'accueil ?"
   },
   "nav": {

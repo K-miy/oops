@@ -143,6 +143,7 @@
     "reset": "Reset app",
     "reset_confirm": "All your data will be permanently deleted. Continue?",
     "privacy_note": "100% local, zero data sent.",
+    "export": "Export my data",
     "install_prompt": "Install OOPS on your home screen?"
   },
   "nav": {

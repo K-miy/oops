@@ -1015,6 +1015,53 @@ body {
   gap: 8px;
 }
 
+.history-month-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  padding: 4px 0 8px;
+  border-bottom: 1px solid var(--color-border, #e8ede8);
+  margin-bottom: 8px;
+}
+
+.history-month { margin-bottom: 24px; }
+
+.history-item-badges {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.history-item-exercises {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin: 4px 0 6px;
+  line-height: 1.4;
+}
+
+.history-item-footer {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* RPE badges colorés */
+.rpe-badge-easy   { background: color-mix(in srgb, #aaa 15%, transparent); }
+.rpe-badge-target { background: color-mix(in srgb, var(--color-primary) 15%, transparent); color: var(--color-primary); }
+.rpe-badge-hard   { background: color-mix(in srgb, var(--color-accent) 15%, transparent); color: var(--color-accent); }
+
+/* Image exercice dans la séance */
+.session-ex-img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  margin-bottom: 8px;
+  background: var(--color-surface-alt, #f0f4ef);
+}
+
 /* ── Week preview ── */
 .week-preview {
   margin-top: 20px;

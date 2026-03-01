@@ -2,7 +2,7 @@
  * settings.js — Écran des paramètres
  */
 import { t, initI18n, getLang } from '../i18n.js';
-import { getSetting, setSetting, resetAll } from '../db.js';
+import { getSetting, setSetting, resetAll, exportData } from '../db.js';
 
 /**
  * @param {HTMLElement} container - #settings-main
@@ -51,6 +51,17 @@ export function renderSettings(container, { profile, onLangChange, onReset, onEd
       </a>
     </div>
 
+    <!-- ── Export ── -->
+    <div class="settings-section">
+      <div class="settings-row" id="settings-export-row">
+        <span class="settings-row-label" style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:1.1rem">💾</span>
+          <span>${t('settings.export')}</span>
+        </span>
+        <span class="settings-row-value">›</span>
+      </div>
+    </div>
+
     <!-- ── Zone danger ── -->
     <div class="settings-section settings-danger">
       <div class="settings-row" id="settings-reset-row">
@@ -82,6 +93,18 @@ export function renderSettings(container, { profile, onLangChange, onReset, onEd
   // ── À propos ──
   container.querySelector('#settings-about-row').addEventListener('click', () => {
     if (onAbout) onAbout();
+  });
+
+  // ── Export ──
+  container.querySelector('#settings-export-row').addEventListener('click', async () => {
+    const data = await exportData();
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = `oops-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
   });
 
   // ── Reset ──
