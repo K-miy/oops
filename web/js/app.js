@@ -18,6 +18,7 @@ import { renderHome } from './ui/home.js';
 import { renderSession } from './ui/session.js';
 import { renderSettings } from './ui/settings.js';
 import { renderHistory } from './ui/history.js';
+import { renderAbout } from './ui/about.js';
 
 // ────────────────────────────────────────────────
 // État global de l'app (lecture seule depuis l'extérieur)
@@ -277,12 +278,17 @@ function openSettings() {
       });
       showScreen('onboarding');
     },
+    onAbout: () => {
+      renderAbout(document.getElementById('about-main'));
+      showScreen('about');
+    },
   });
   showScreen('settings');
 }
 
 document.getElementById('home-settings-btn')?.addEventListener('click', openSettings);
 document.getElementById('settings-back-btn')?.addEventListener('click', () => showScreen('home'));
+document.getElementById('about-back-btn')?.addEventListener('click', () => showScreen('settings'));
 document.getElementById('session-close-btn')?.addEventListener('click', () => {
   if (confirm(t('session.abort_confirm') ?? 'Abandonner la séance ?')) {
     showScreen('home');

@@ -2,7 +2,7 @@
 // Phase 1 : offline shell + assets
 // Phase 3 : notifications push
 
-const CACHE_VERSION = 'oops-v6';
+const CACHE_VERSION = 'oops-v7';
 
 const PRECACHE_URLS = [
   '/',
@@ -19,6 +19,7 @@ const PRECACHE_URLS = [
   '/js/ui/session.js',
   '/js/ui/history.js',
   '/js/ui/settings.js',
+  '/js/ui/about.js',
   '/locales/fr.json',
   '/locales/en.json',
   // WASM (généré par wasm-pack)

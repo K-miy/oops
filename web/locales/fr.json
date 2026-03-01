@@ -128,6 +128,7 @@
     "title": "Paramètres",
     "lang": "Langue",
     "profile": "Modifier le profil",
+    "about": "À propos du programme",
     "buy_coffee": "Soutenir le projet",
     "reset": "Réinitialiser l'application",
     "reset_confirm": "Toutes vos données seront supprimées définitivement. Continuer ?",
@@ -137,5 +138,32 @@
     "home": "Accueil",
     "history": "Historique",
     "settings": "Paramètres"
+  },
+  "about": {
+    "title": "À propos du programme",
+    "what": {
+      "title": "C'est quoi OOPS ?",
+      "body": "Out of Parent's Shape — un programme de remise en forme conçu pour les parents qui manquent de temps. Séances courtes, sans matériel, basées sur la science. Tout fonctionne hors-ligne, aucune donnée n'est envoyée nulle part."
+    },
+    "method": {
+      "title": "La méthode",
+      "body": "Le programme repose sur les principes FITT-VP (Fréquence, Intensité, Temps, Type, Volume, Progression) validés en kinésiologie :",
+      "patterns_label": "5 patrons de mouvement.",
+      "patterns_body": "Push, Pull, Squat, Hinge, Core & Mobilité — tous les muscles sont couverts sans répétition inutile.",
+      "overload_label": "Surcharge progressive.",
+      "overload_body": "On augmente le volume (répétitions, séries) avant l'intensité. Votre corps s'adapte à son propre rythme.",
+      "rpe_label": "RPE (effort perçu).",
+      "rpe_body": "Cible débutant : 5–7 / 10. Vous devez ressentir l'effort sans vous épuiser.",
+      "recovery_label": "Récupération.",
+      "recovery_body": "48h minimum entre deux séances sollicitant les mêmes groupes musculaires. Le repos fait partie du programme."
+    },
+    "postpartum": {
+      "title": "Programme post-partum",
+      "body": "En période post-partum, les exercices abdominaux classiques (crunchs) sont écartés pour éviter le risque de diastase. La priorité est donnée au plancher pelvien et à une progression plus lente sur 6 semaines minimum. Consultez votre médecin avant de commencer."
+    },
+    "privacy": {
+      "title": "Vos données",
+      "body": "OOPS ne collecte aucune donnée. Votre profil, vos séances et votre historique sont stockés uniquement sur votre appareil via IndexedDB. Aucun serveur, aucun compte, aucun tracking."
+    }
   }
 }

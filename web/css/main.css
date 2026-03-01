@@ -875,6 +875,49 @@ body {
 }
 
 /* ── Animations ── */
+/* ── About screen ── */
+.about-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 16px;
+}
+
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.about-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.about-section p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.about-list li {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  padding-left: 12px;
+  border-left: 3px solid var(--color-success-soft);
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }

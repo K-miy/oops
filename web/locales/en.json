@@ -128,6 +128,7 @@
     "title": "Settings",
     "lang": "Language",
     "profile": "Edit profile",
+    "about": "About the program",
     "buy_coffee": "Support this project",
     "reset": "Reset app",
     "reset_confirm": "All your data will be permanently deleted. Continue?",
@@ -137,5 +138,32 @@
     "home": "Home",
     "history": "History",
     "settings": "Settings"
+  },
+  "about": {
+    "title": "About the program",
+    "what": {
+      "title": "What is OOPS?",
+      "body": "Out of Parent's Shape — a fitness program built for time-strapped parents. Short sessions, no equipment, science-backed. Everything works offline and no data is ever sent anywhere."
+    },
+    "method": {
+      "title": "The method",
+      "body": "The program is based on FITT-VP principles (Frequency, Intensity, Time, Type, Volume, Progression) from kinesiology:",
+      "patterns_label": "5 movement patterns.",
+      "patterns_body": "Push, Pull, Squat, Hinge, Core & Mobility — all muscle groups covered without unnecessary repetition.",
+      "overload_label": "Progressive overload.",
+      "overload_body": "We increase volume (reps, sets) before intensity. Your body adapts at its own pace.",
+      "rpe_label": "RPE (perceived effort).",
+      "rpe_body": "Beginner target: 5–7 / 10. You should feel the effort without burning out.",
+      "recovery_label": "Recovery.",
+      "recovery_body": "48h minimum between sessions targeting the same muscle groups. Rest is part of the program."
+    },
+    "postpartum": {
+      "title": "Postpartum program",
+      "body": "Postpartum profiles exclude classic ab exercises (crunches) to avoid diastasis recti risk. Priority goes to pelvic floor work and a slower ramp-up over at least 6 weeks. Always consult your doctor before starting."
+    },
+    "privacy": {
+      "title": "Your data",
+      "body": "OOPS collects no data. Your profile, sessions and history are stored only on your device via IndexedDB. No server, no account, no tracking."
+    }
   }
 }
