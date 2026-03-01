@@ -67,13 +67,13 @@ export function renderSettings(container, { profile, onLangChange, onReset, onEd
     <!-- ── Taille du texte ── -->
     <div class="settings-section">
       <div class="settings-row-font">
-        <span class="settings-row-label">${t('settings.font_size') ?? 'Taille du texte'}</span>
+        <span class="settings-row-label">${t('settings.font_size')}</span>
         <div class="font-size-control" style="padding:8px 0 0">
           <span class="font-label-sm">Aa</span>
           <input type="range" id="settings-font-slider"
                  min="0.8" max="1.4" step="0.05"
                  value="${parseFloat(localStorage.getItem('oops_font_scale') || '1')}"
-                 aria-label="${t('settings.font_size') ?? 'Taille du texte'}">
+                 aria-label="${t('settings.font_size')}">
           <span class="font-label-lg">Aa</span>
         </div>
       </div>

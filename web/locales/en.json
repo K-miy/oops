@@ -8,8 +8,7 @@
   "disclaimer": {
     "title": "Medical disclaimer",
     "body": "This app does not replace medical advice. Consult your doctor before starting any exercise program, especially postpartum, if you experience chronic pain, or have any known health conditions.",
-    "accept": "I confirm",
-    "font_size": "Text size"
+    "accept": "I confirm"
   },
   "onboarding": {
     "title": "Welcome to OOPS",

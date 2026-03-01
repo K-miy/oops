@@ -8,8 +8,7 @@
   "disclaimer": {
     "title": "Avertissement médical",
     "body": "Cette application ne remplace pas un avis médical. Consultez votre médecin avant de commencer tout programme d'exercice, particulièrement en période post-partum, en cas de douleurs chroniques ou de pathologies connues.",
-    "accept": "Je confirme",
-    "font_size": "Taille du texte"
+    "accept": "Je confirme"
   },
   "onboarding": {
     "title": "Bienvenue dans OOPS",

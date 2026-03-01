@@ -28,7 +28,7 @@ export function renderDisclaimer(container, { onAccept }) {
     <input type="range" id="font-scale-slider"
            min="0.8" max="1.4" step="0.05"
            value="${savedScale}"
-           aria-label="${t('disclaimer.font_size') ?? 'Taille du texte'}">
+           aria-label="Taille du texte">
     <span class="font-label-lg">Aa</span>`;
   $main.appendChild($slider);
 
