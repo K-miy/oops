@@ -719,6 +719,40 @@ body {
 }
 .session-swap-btn { flex: 1; max-width: 140px; }
 
+/* ── Lecture pré-exercice ── */
+.session-reading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 16px;
+  gap: 12px;
+}
+
+.session-reading-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.session-reading #reading-timer {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--color-success-soft);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Quick Workout (repos) ── */
+.quick-workout-warn {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 16px 0 4px;
+}
+
 /* ── Repos ── */
 .session-rest {
   display: flex;

@@ -17,7 +17,7 @@ import { t, tRandom } from '../i18n.js';
  *   onOpenSettings: () => void,
  * }} opts
  */
-export function renderHome(container, { plan, todaySession, streak, lang, exercises, weekPreview, isDeload, onStartSession }) {
+export function renderHome(container, { plan, todaySession, streak, lang, exercises, weekPreview, isDeload, onStartSession, onQuickSession }) {
   const exerciseMap = Object.fromEntries(exercises.map((e) => [e.id, e]));
   const alreadyDone = !!todaySession;
   const today = new Date();
@@ -75,6 +75,10 @@ export function renderHome(container, { plan, todaySession, streak, lang, exerci
       <div class="empty-state-icon">🛋️</div>
       <div class="empty-state-title">${t('home.rest_day')}</div>
       <div class="empty-state-desc">${tRandom('home.rest_day_messages')}</div>
+      ${onQuickSession ? `
+        <p class="quick-workout-warn">${t('home.quick_workout_warn')}</p>
+        <button class="btn btn-ghost" id="quick-session-btn">${t('home.quick_workout')}</button>
+      ` : ''}
     </div>
     `}
 
@@ -90,6 +94,7 @@ export function renderHome(container, { plan, todaySession, streak, lang, exerci
   `;
 
   container.querySelector('#start-session-btn')?.addEventListener('click', onStartSession);
+  container.querySelector('#quick-session-btn')?.addEventListener('click', onQuickSession);
 
   // Détails exercices dans l'aperçu semaine
   container.querySelectorAll('.day-card[data-day-idx]').forEach((card) => {

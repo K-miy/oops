@@ -86,53 +86,6 @@ export async function getCurrentStreak() {
   return streak;
 }
 
-// ════════════════════════ LOGS DÉTAILLÉS ════════════════════════
-
-/** Enregistre le détail d'un exercice d'une séance. */
-export async function saveExerciseLog(log) {
-  return db.exercise_logs.add(log);
-}
-
-/** Récupère les logs pour une séance donnée. */
-export async function getSessionLogs(sessionId) {
-  return db.exercise_logs.where('session_id').equals(sessionId).toArray();
-}
-
-/**
- * Retourne les statistiques RPE moyennes par exercice.
- * { exercise_id: { avg_rpe: number, count: number } }
- */
-export async function getExerciseRpeStats() {
-  const logs = await db.exercise_logs.toArray();
-  const map = {};
-  for (const log of logs) {
-    if (log.rpe == null) continue;
-    if (!map[log.exercise_id]) map[log.exercise_id] = { sum: 0, count: 0 };
-    map[log.exercise_id].sum   += log.rpe;
-    map[log.exercise_id].count += 1;
-  }
-  const result = {};
-  for (const [id, { sum, count }] of Object.entries(map)) {
-    result[id] = { avg_rpe: sum / count, count };
-  }
-  return result;
-}
-
-// ════════════════════════ POIDS ════════════════════════
-
-/** Enregistre une pesée. */
-export async function saveBodyWeight(weightKg) {
-  return db.body_weight_logs.add({
-    date: new Date().toISOString().slice(0, 10),
-    weight_kg: weightKg,
-  });
-}
-
-/** Retourne l'historique de poids (du plus récent au plus ancien). */
-export async function getBodyWeightLogs() {
-  return db.body_weight_logs.orderBy('date').reverse().toArray();
-}
-
 // ════════════════════════ PARAMÈTRES ════════════════════════
 
 export async function getSetting(key) {

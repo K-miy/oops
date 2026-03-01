@@ -225,5 +225,39 @@
     "instructions_en": "Place one knee against the base of a couch or wall, foot folded back against it. Other foot flat on the floor in front. Stand tall. Feel the stretch across the front of the hip and thigh. Alternate sides.",
     "progression_to": null,
     "image_url": "/icons/exercises/couch_stretch.png"
+  },
+  {
+    "id": "downward_dog",
+    "name_fr": "Chien tête en bas",
+    "name_en": "Downward dog",
+    "category": "mobility",
+    "movement_pattern": "mobility",
+    "difficulty": 1,
+    "duration_s": 30,
+    "equipment_required": false,
+    "postpartum_only": false,
+    "contraindications": [
+      "wrist"
+    ],
+    "instructions_fr": "À quatre pattes, poussez le sol pour lever les hanches vers le plafond, bras et jambes tendus. Formez un V inversé. Poussez les talons vers le sol (sans forcer). Relâchez la nuque, respirez profondément. Alterne légère flexion/extension des genoux si les ischiojambiers sont serrés.",
+    "instructions_en": "From hands and knees, press the floor to lift hips toward the ceiling, arms and legs straight. Form an inverted V. Press heels toward the floor (without forcing). Release the neck, breathe deeply. Gently bend/straighten knees if hamstrings are tight.",
+    "image_url": "/icons/exercises/downward_dog.png"
+  },
+  {
+    "id": "standing_quad_stretch",
+    "name_fr": "Étirement quadriceps debout",
+    "name_en": "Standing quad stretch",
+    "category": "mobility",
+    "movement_pattern": "mobility",
+    "difficulty": 1,
+    "duration_s": 30,
+    "equipment_required": false,
+    "postpartum_only": false,
+    "contraindications": [
+      "knee"
+    ],
+    "instructions_fr": "Debout, pliez un genou en ramenant le pied vers la fesse, saisissez la cheville. Gardez les genoux alignés et le buste droit. Appuyez-vous sur un mur si besoin pour l'équilibre. Changez de côté à mi-durée.",
+    "instructions_en": "Stand on one leg, bend the other knee bringing your foot toward your glute, hold the ankle. Keep knees aligned and torso upright. Hold a wall for balance if needed. Switch sides at mid-duration.",
+    "image_url": "/icons/exercises/standing_quad_stretch.png"
   }
 ]

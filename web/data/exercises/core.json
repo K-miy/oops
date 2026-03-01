@@ -238,5 +238,23 @@
     "instructions_en": "In a high plank position. Lift one hand to tap the opposite shoulder. Replace, alternate. Keep hips level and resist rotating.",
     "progression_to": null,
     "image_url": "/icons/exercises/plank_shoulder_tap.png"
+  },
+  {
+    "id": "plank_walkout",
+    "name_fr": "Sortie en planche debout",
+    "name_en": "Standing plank walkout",
+    "category": "core",
+    "movement_pattern": "core_anti_extension",
+    "difficulty": 3,
+    "duration_s": 30,
+    "equipment_required": false,
+    "postpartum_only": false,
+    "contraindications": [
+      "wrist",
+      "back"
+    ],
+    "instructions_fr": "Debout, jambes légèrement fléchies. Penchez-vous pour poser les mains au sol, puis avancez avec les mains jusqu'en position de planche complète. Maintenez une seconde, corps bien droit. Revenez en marchant les mains vers les pieds et redressez-vous.",
+    "instructions_en": "Stand with soft knees. Hinge to place hands on the floor, then walk hands forward until a full plank. Hold one second, body straight. Walk hands back to feet and stand back up.",
+    "image_url": "/icons/exercises/plank_walkout.png"
   }
 ]

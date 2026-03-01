@@ -169,5 +169,51 @@
     "instructions_en": "In a high plank position (arms straight). Without bending elbows, let your chest sink as shoulder blades pinch together, then push the floor to spread them apart. Scapular control work.",
     "progression_to": null,
     "image_url": "/icons/exercises/scapular_pushup.png"
+  },
+  {
+    "id": "prone_t_raise",
+    "name_fr": "Relevé en T (ventre)",
+    "name_en": "Prone T raise",
+    "category": "pull",
+    "movement_pattern": "horizontal_pull",
+    "difficulty": 1,
+    "duration_s": 30,
+    "equipment_required": false,
+    "postpartum_only": false,
+    "contraindications": [],
+    "instructions_fr": "Allongez-vous face au sol, bras tendus sur les côtés à hauteur des épaules, pouces vers le haut (position en T). Soulevez les bras en serrant les omoplates l'une vers l'autre. Tenez 2 secondes puis redescendez lentement. Le visage reste vers le sol.",
+    "instructions_en": "Lie face down, arms extended to the sides at shoulder height, thumbs up (T position). Lift arms by squeezing shoulder blades together. Hold 2 seconds then lower slowly. Face stays toward the floor.",
+    "progression_to": "prone_y_raise",
+    "image_url": "/icons/exercises/prone_t_raise.png"
+  },
+  {
+    "id": "prone_y_raise",
+    "name_fr": "Relevé en Y (ventre)",
+    "name_en": "Prone Y raise",
+    "category": "pull",
+    "movement_pattern": "horizontal_pull",
+    "difficulty": 2,
+    "duration_s": 30,
+    "equipment_required": false,
+    "postpartum_only": false,
+    "contraindications": [],
+    "instructions_fr": "Allongez-vous face au sol, bras tendus en diagonale vers le haut (position en Y), pouces vers le haut. Soulevez les bras en contractant les trapèzes inférieurs. Évitez de hausser les épaules — l'effort vient du bas du dos, pas du cou.",
+    "instructions_en": "Lie face down, arms extended diagonally overhead (Y position), thumbs up. Lift arms by contracting lower traps. Avoid shrugging — the effort comes from mid-back, not the neck.",
+    "image_url": "/icons/exercises/prone_y_raise.png"
+  },
+  {
+    "id": "table_row_single_arm",
+    "name_fr": "Tirage unilatéral (table)",
+    "name_en": "Single-arm table row",
+    "category": "pull",
+    "movement_pattern": "horizontal_pull",
+    "difficulty": 3,
+    "duration_s": 30,
+    "equipment_required": false,
+    "postpartum_only": false,
+    "contraindications": [],
+    "instructions_fr": "Glissez sous une table solide. Saisissez le bord d'une seule main, corps en planche. Tirez la poitrine en tournant légèrement le torse vers la main de tirage. L'autre bras est le long du corps. Alternez les bras à mi-durée.",
+    "instructions_en": "Slide under a sturdy table. Grip the edge with one hand, body in a plank position. Pull chest up with a slight torso rotation toward the pulling hand. Other arm along your body. Switch arms at mid-duration.",
+    "image_url": "/icons/exercises/table_row_single_arm.png"
   }
 ]

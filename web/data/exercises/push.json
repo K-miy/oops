@@ -219,5 +219,23 @@
     "instructions_en": "Wide hand placement. As you lower, bend one elbow and extend the other arm straight to the side. Alternate sides each rep.",
     "progression_to": null,
     "image_url": "/icons/exercises/push_archer.png"
+  },
+  {
+    "id": "push_wall",
+    "name_fr": "Pompe contre le mur",
+    "name_en": "Wall push-up",
+    "category": "push",
+    "movement_pattern": "horizontal_push",
+    "difficulty": 1,
+    "duration_s": 30,
+    "equipment_required": false,
+    "postpartum_only": false,
+    "contraindications": [
+      "wrist"
+    ],
+    "instructions_fr": "Face au mur, mains à plat à hauteur d'épaules, légèrement plus larges. Corps aligné des talons à la tête. Fléchissez les coudes pour approcher la poitrine du mur, puis poussez pour revenir. Idéal pour apprendre le mouvement sans porter tout son poids.",
+    "instructions_en": "Facing the wall, hands flat at shoulder height, slightly wider than shoulders. Body aligned from heels to head. Bend elbows to bring chest toward the wall, then push back. Great for learning the push-up pattern with minimal load.",
+    "progression_to": "push_incline",
+    "image_url": "/icons/exercises/push_wall.png"
   }
 ]

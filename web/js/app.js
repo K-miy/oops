@@ -301,6 +301,7 @@ async function routeToHome() {
     exercises: state.exercises,
     weekPreview,
     onStartSession: () => startSession(),
+    onQuickSession: () => startQuickSession(),
     onOpenSettings: () => openSettings(),
   });
 
@@ -344,6 +345,20 @@ function startSession() {
     onAbort: () => showScreen('home'),
   });
   showScreen('session');
+}
+
+function startQuickSession() {
+  const filteredExercises = getFilteredExercises(state.exercises, state.profile);
+  const daySeed = Math.floor(Date.now() / 86_400_000);
+  let plan;
+  try {
+    plan = JSON.parse(build_session(JSON.stringify(state.profile), JSON.stringify(filteredExercises), daySeed));
+  } catch (e) {
+    console.error('[app] startQuickSession error:', e);
+    return;
+  }
+  state.currentPlan = plan;
+  startSession();
 }
 
 // ────────────────────────────────────────────────

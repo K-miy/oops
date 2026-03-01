@@ -132,7 +132,7 @@
     "contraindications": [],
     "instructions_fr": "Debout à 15 cm d'un mur, pieds dans l'axe des hanches. Poussez les fesses vers le mur en gardant le dos plat et les genoux légèrement fléchis. Revenez debout en contractant les fessiers.",
     "instructions_en": "Stand 6 inches from a wall, feet hip-width apart. Push hips back to touch the wall while keeping your back flat and knees soft. Drive hips forward and squeeze glutes to stand.",
-    "progression_to": "glute_bridge",
+    "progression_to": "frog_pump",
     "image_url": "/icons/exercises/hip_hinge_wall.png"
   },
   {
@@ -198,5 +198,21 @@
     "instructions_en": "Wide stance, toes pointed out. Hands between legs. Push hips back and lower hands toward the floor with a flat back. Drive through the floor to stand, squeezing glutes at the top.",
     "progression_to": "rdl_single",
     "image_url": "/icons/exercises/sumo_deadlift_bw.png"
+  },
+  {
+    "id": "frog_pump",
+    "name_fr": "Pompe grenouille",
+    "name_en": "Frog pump",
+    "category": "hinge",
+    "movement_pattern": "hip_hinge",
+    "difficulty": 1,
+    "duration_s": 30,
+    "equipment_required": false,
+    "postpartum_only": false,
+    "contraindications": [],
+    "instructions_fr": "Allongez-vous sur le dos. Ramenez les pieds en les collant l'un à l'autre près des fessiers, genoux ouverts vers l'extérieur (comme une grenouille). Appuyez les pieds l'un contre l'autre et soulevez les hanches en contractant les fessiers. Excellent pour l'activation fessière douce.",
+    "instructions_en": "Lie on your back. Bring feet together toward your glutes, knees open outward (frog position). Press feet together and lift hips by squeezing glutes. Excellent gentle glute activation, great before heavier hip hinge work.",
+    "progression_to": "glute_bridge",
+    "image_url": "/icons/exercises/frog_pump.png"
   }
 ]

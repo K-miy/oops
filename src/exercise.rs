@@ -34,6 +34,7 @@ pub enum Contraindication {
     Postpartum,
     LowerBack,
     Knee,
+    Hip,
     Shoulder,
     Wrist,
     DiastasisRecti,

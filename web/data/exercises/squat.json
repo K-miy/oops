@@ -231,5 +231,41 @@
     "instructions_en": "Hold a door or wall for support. On one leg, extend the other leg forward. Lower as deep as possible. Drive back up, using slight support if needed.",
     "progression_to": null,
     "image_url": "/icons/exercises/pistol_squat_assisted.png"
+  },
+  {
+    "id": "heel_elevated_squat",
+    "name_fr": "Squat talons surélevés",
+    "name_en": "Heel-elevated squat",
+    "category": "squat",
+    "movement_pattern": "squat",
+    "difficulty": 2,
+    "duration_s": 30,
+    "equipment_required": false,
+    "postpartum_only": false,
+    "contraindications": [
+      "knee"
+    ],
+    "instructions_fr": "Placez les talons sur un livre épais ou une serviette enroulée (5-7 cm). Pieds à largeur d'épaules. Descendez profondément en gardant le buste vertical et les genoux dans l'axe des orteils. L'élévation facilite la profondeur et cible davantage les quadriceps.",
+    "instructions_en": "Place heels on a thick book or rolled towel (5-7 cm). Feet shoulder-width apart. Descend deeply keeping torso upright and knees tracking over toes. Heel elevation helps depth and increases quad engagement.",
+    "progression_to": "squat_pulse",
+    "image_url": "/icons/exercises/heel_elevated_squat.png"
+  },
+  {
+    "id": "squat_cossack",
+    "name_fr": "Squat cosaque",
+    "name_en": "Cossack squat",
+    "category": "squat",
+    "movement_pattern": "squat",
+    "difficulty": 3,
+    "duration_s": 30,
+    "equipment_required": false,
+    "postpartum_only": false,
+    "contraindications": [
+      "knee",
+      "hip"
+    ],
+    "instructions_fr": "Pieds très écartés (plus que la largeur des épaules). Descendez sur un côté en pliant un genou, l'autre jambe reste tendue avec le pied à plat ou orteils relevés. Revenez au centre et alternez. Travaille intensément les adducteurs et la mobilité de hanche.",
+    "instructions_en": "Feet very wide apart (wider than shoulders). Shift weight to one side, bending that knee while the other leg stays straight with foot flat or toes up. Return to center and alternate. Intense adductor and hip mobility work.",
+    "image_url": "/icons/exercises/squat_cossack.png"
   }
 ]

@@ -133,8 +133,50 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
       if (state.activeList.length === 0) { finishSession(null); return; }
       state.exIdx  = 0;
       state.setIdx = 0;
+      showReading(state.activeList[0]);
+    });
+  }
+
+  /** Choisit lecture (nouveau ex) ou exercice direct (même ex, set suivant). */
+  function startNextStep() {
+    const ex = state.activeList[state.exIdx];
+    if (state.setIdx === 0) showReading(ex);
+    else showExercise();
+  }
+
+  // ── PHASE : READING (15s avant le 1er set de chaque exercice) ──
+  function showReading(ex) {
+    state.phase = 'reading';
+    stopTimer();
+    state.timeLeft = 15;
+
+    const imgUrl = getInfo(ex)?.image_url ?? null;
+    const instructions = exInstructions(ex);
+
+    $main.innerHTML = `
+      <div class="session-reading animate-in">
+        <div class="session-ex-meta">
+          <span class="session-ex-counter">${state.exIdx + 1} / ${state.activeList.length}</span>
+          <span class="session-reading-label">${t('session.reading')}</span>
+        </div>
+        ${imgUrl ? `<img class="session-ex-img" src="${imgUrl}" alt="${exName(ex)}" loading="lazy" />` : ''}
+        <div class="session-ex-name">${exName(ex)}</div>
+        <div class="session-rest-timer" id="reading-timer">${state.timeLeft}s</div>
+        ${instructions ? `<p class="session-ex-instructions">${instructions}</p>` : ''}
+      </div>`;
+
+    setFooterBtn(t('session.start_now'), 'start-exercise-btn');
+    document.getElementById('start-exercise-btn').addEventListener('click', () => {
+      stopTimer();
       showExercise();
     });
+
+    state.timer = setInterval(() => {
+      state.timeLeft--;
+      const $rt = document.getElementById('reading-timer');
+      if ($rt) $rt.textContent = `${state.timeLeft}s`;
+      if (state.timeLeft <= 0) { stopTimer(); showExercise(); }
+    }, 1000);
   }
 
   // ── PHASE : EXERCISING ──
@@ -243,7 +285,7 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
     setFooterBtn(t('session.skip_rest'), 'skip-rest-btn', true);
     document.getElementById('skip-rest-btn').addEventListener('click', () => {
       stopTimer();
-      showExercise();
+      startNextStep();
     });
 
     stopTimer();
@@ -251,7 +293,7 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
       state.timeLeft--;
       const $rt = document.getElementById('rest-timer');
       if ($rt) $rt.textContent = `${state.timeLeft}s`;
-      if (state.timeLeft <= 0) { stopTimer(); showExercise(); }
+      if (state.timeLeft <= 0) { stopTimer(); startNextStep(); }
     }, 1000);
   }
 

@@ -108,9 +108,6 @@
       "Mission complete. Back to Parent Mode.",
       "Consistency beats motivation. You just proved both."
     ],
-    "progression_title": "Ready to level up?",
-    "progression_desc": "Your recent sessions suggest you're ready for the next step:",
-    "level_up_btn": "Switch to intermediate program",
     "deload_badge": "Deload",
     "deload_desc": "Reduced volume this week — your body recovers and gets stronger.",
     "streak": "Current streak",
@@ -119,7 +116,8 @@
     "more_exercises": "more exercises",
     "week": "This week",
     "rest_short": "Rest",
-    "exercises_label": "Exercises"
+    "quick_workout": "Quick workout",
+    "quick_workout_warn": "Not a training day — but one more rep never hurt."
   },
   "history": {
     "empty_title": "No sessions yet",
@@ -136,6 +134,8 @@
     "skip_exercise": "Skip",
     "skip_rest": "Skip",
     "swap_exercise": "Swap",
+    "reading": "Get ready",
+    "start_now": "Let's go!",
     "skip_rpe": "Skip",
     "rpe_prompt": "How hard was that?",
     "rpe_subtitle": "5–7 = ideal for progress. Below? Push more next time. Above? Recover.",
