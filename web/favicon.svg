@@ -1,14 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <!-- Fond vert forêt, coins arrondis -->
+  <!-- Fond vert forêt -->
   <rect width="32" height="32" rx="6" fill="#2D6A4F"/>
 
-  <!-- O1 — œil fatigué (orange, paupière tombante) -->
-  <!-- Cercle complet, puis paupière (même couleur que le fond) masque le dessus -->
-  <!-- Path : arc supérieur du cercle + courbe tombante qui signe la paupière -->
+  <!-- O1 — œil fatigué (corrigé : demi-fermé, endormi) -->
   <circle cx="9" cy="17" r="6" fill="#F4A261"/>
-  <path d="M3,17 A6,6 0 0,0 15,17 Q9,16 3,17 Z" fill="#2D6A4F"/>
+  <circle cx="9" cy="17" r="2.5" fill="#302318"/>
+  <circle cx="7.5" cy="15.5" r="1" fill="white"/>
+  
+  <!-- Paupière tombante (masque couleur fond) -->
+  <!-- Courbe plus basse au centre pour effet lourd -->
+  <path d="
+    M3,13
+    Q9,19 15,17
+    L15,3
+    L3,3
+    Z"
+    fill="#2D6A4F"/>
 
-  <!-- O2 — œil ouvert (sauge, pupille vert foncé) -->
+  <!-- O2 — œil ouvert -->
   <circle cx="23" cy="17" r="6" fill="#A3BFA8"/>
   <circle cx="23" cy="17" r="2.5" fill="#1B4332"/>
   <circle cx="21.5" cy="15.5" r="1" fill="white"/>

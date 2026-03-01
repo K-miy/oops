@@ -47,7 +47,7 @@ mod tests {
         "sex": "female",
         "age_bracket": "under_35",
         "fitness_level": "beginner",
-        "sessions_per_week": 3,
+        "workout_days": [0, 2, 4],
         "minutes_per_session": 30,
         "is_postpartum": false,
         "injury_notes": [],

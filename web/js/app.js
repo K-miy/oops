@@ -74,7 +74,7 @@ async function navigateTo(screen) {
 // Chargement catalogue d'exercices
 // ────────────────────────────────────────────────
 async function loadExercises() {
-  const categories = ['push', 'squat', 'hinge', 'core', 'mobility'];
+  const categories = ['push', 'pull', 'squat', 'hinge', 'core', 'mobility'];
   const results = await Promise.all(
     categories.map((cat) =>
       fetch(`/data/exercises/${cat}.json`)
@@ -114,7 +114,7 @@ function generateWeekPreview(profile, exercises) {
     const dayTs = now + i * dayMs;
     const date = new Date(dayTs);
     const daySeed = Math.floor(dayTs / dayMs);
-    const isWorkout = isWorkoutDay(date, profile.sessions_per_week);
+    const isWorkout = isWorkoutDay(date, profile);
 
     let plan = null;
     if (isWorkout) {

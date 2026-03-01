@@ -178,7 +178,7 @@ mod tests {
             sex: Sex::Female,
             age_bracket: AgeBracket::Under35,
             fitness_level: level,
-            sessions_per_week: 3,
+            workout_days: vec![0, 2, 4], // Lun, Mer, Ven
             minutes_per_session: minutes,
             is_postpartum: postpartum,
             injury_notes: vec![],

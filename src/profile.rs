@@ -41,8 +41,10 @@ pub struct Profile {
     pub sex: Sex,
     pub age_bracket: AgeBracket,
     pub fitness_level: FitnessLevel,
-    /// 2–5 séances par semaine
-    pub sessions_per_week: u8,
+    /// Jours d'entraînement choisis par l'utilisateur (0=Lun … 6=Dim).
+    /// `#[serde(default)]` → Vec vide si champ absent (vieux profil) : JS détecte et re-onboard.
+    #[serde(default)]
+    pub workout_days: Vec<u8>,
     /// 15–60 minutes par séance
     pub minutes_per_session: u8,
     pub is_postpartum: bool,
@@ -52,6 +54,11 @@ pub struct Profile {
 }
 
 impl Profile {
+    /// Nombre de séances par semaine — dérivé du nombre de jours sélectionnés.
+    pub fn sessions_per_week(&self) -> u8 {
+        self.workout_days.len() as u8
+    }
+
     /// Difficulté maximale des exercices autorisés.
     /// Les 45+ ont une difficulté max réduite de 1 (récupération plus longue, prudence).
     pub fn max_difficulty(&self) -> u8 {
@@ -105,13 +112,26 @@ mod tests {
             sex: Sex::Female,
             age_bracket: AgeBracket::Under35,
             fitness_level: level,
-            sessions_per_week: 3,
+            workout_days: vec![0, 2, 4], // Lun, Mer, Ven
             minutes_per_session: 30,
             is_postpartum: postpartum,
             injury_notes: vec![],
             lang: Lang::Fr,
             disclaimer_accepted_at: None,
         }
+    }
+
+    #[test]
+    fn sessions_per_week_derived_from_workout_days() {
+        let p = make_profile(FitnessLevel::Beginner, false);
+        assert_eq!(p.sessions_per_week(), 3); // vec![0, 2, 4]
+    }
+
+    #[test]
+    fn sessions_per_week_empty_is_zero() {
+        let mut p = make_profile(FitnessLevel::Beginner, false);
+        p.workout_days = vec![];
+        assert_eq!(p.sessions_per_week(), 0);
     }
 
     #[test]

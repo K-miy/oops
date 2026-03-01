@@ -37,8 +37,13 @@
       "intermediate": "Intermediate",
       "intermediate_desc": "I occasionally exercise but without a structured program"
     },
-    "sessions_per_week": {
-      "label": "How many sessions per week?"
+    "workout_days": {
+      "label": "Your training days",
+      "hint": "Select at least 2 days",
+      "days": {
+        "0": "Mon", "1": "Tue", "2": "Wed",
+        "3": "Thu", "4": "Fri", "5": "Sat", "6": "Sun"
+      }
     },
     "minutes_per_session": {
       "label": "Preferred session duration"

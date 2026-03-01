@@ -2,7 +2,7 @@
 // Phase 1 : offline shell + assets
 // Phase 3 : notifications push
 
-const CACHE_VERSION = 'oops-v5';
+const CACHE_VERSION = 'oops-v6';
 
 const PRECACHE_URLS = [
   '/',
@@ -31,6 +31,7 @@ const PRECACHE_URLS = [
   '/icons/icon-512.png',
   // Exercices
   '/data/exercises/push.json',
+  '/data/exercises/pull.json',
   '/data/exercises/squat.json',
   '/data/exercises/hinge.json',
   '/data/exercises/core.json',

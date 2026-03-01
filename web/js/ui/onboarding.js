@@ -28,7 +28,7 @@ export function renderOnboarding(container, { onComplete, initialProfile = null 
     sex: initialProfile?.sex ?? null,
     age_bracket: initialProfile?.age_bracket ?? null,
     fitness_level: initialProfile?.fitness_level ?? null,
-    sessions_per_week: initialProfile?.sessions_per_week ?? 3,
+    workout_days: initialProfile?.workout_days?.length > 0 ? [...initialProfile.workout_days] : [],
     minutes_per_session: initialProfile?.minutes_per_session ?? 30,
     is_postpartum: initialProfile?.is_postpartum ?? false,
     injury_notes: initialProfile?.injury_notes ?? [],
@@ -172,18 +172,21 @@ export function renderOnboarding(container, { onComplete, initialProfile = null 
     });
   }
 
-  // ── Étape 4 : Fréquence & durée ──
+  // ── Étape 4 : Jours d'entraînement & durée ──
   function renderScheduleStep() {
-    const sessionOptions = [2, 3, 4, 5];
-    const minuteOptions  = [15, 20, 30, 45, 60];
+    // 0=Lun … 6=Dim (ISO, Mon=0)
+    const dayKeys = ['0', '1', '2', '3', '4', '5', '6'];
+    const minuteOptions = [15, 20, 30, 45, 60];
 
     $content.innerHTML = `
       <div class="onboarding-question">
-        <h2>${t('onboarding.sessions_per_week.label')}</h2>
-        <div class="chip-group" id="freq-chips">
-          ${sessionOptions.map((n) => `
-            <button class="chip${draft.sessions_per_week === n ? ' selected' : ''}" data-value="${n}">
-              ${n}×/sem
+        <h2>${t('onboarding.workout_days.label')}</h2>
+        <p class="hint">${t('onboarding.workout_days.hint')}</p>
+        <div class="chip-group" id="day-chips">
+          ${dayKeys.map((d) => `
+            <button class="chip${draft.workout_days.includes(Number(d)) ? ' selected' : ''}"
+                    data-value="${d}" id="day-chip-${d}">
+              ${t('onboarding.workout_days.days.' + d)}
             </button>`).join('')}
         </div>
       </div>
@@ -197,11 +200,17 @@ export function renderOnboarding(container, { onComplete, initialProfile = null 
         </div>
       </div>`;
 
-    $content.querySelectorAll('#freq-chips .chip').forEach((chip) => {
+    // Multi-select : toggle les jours
+    $content.querySelectorAll('#day-chips .chip').forEach((chip) => {
       chip.addEventListener('click', () => {
-        $content.querySelectorAll('#freq-chips .chip').forEach((c) => c.classList.remove('selected'));
-        chip.classList.add('selected');
-        draft.sessions_per_week = parseInt(chip.dataset.value, 10);
+        const val = Number(chip.dataset.value);
+        if (draft.workout_days.includes(val)) {
+          draft.workout_days = draft.workout_days.filter((d) => d !== val);
+          chip.classList.remove('selected');
+        } else {
+          draft.workout_days = [...draft.workout_days, val].sort((a, b) => a - b);
+          chip.classList.add('selected');
+        }
       });
     });
 
@@ -274,7 +283,7 @@ export function renderOnboarding(container, { onComplete, initialProfile = null 
       case 1: return !!draft.lang;
       case 2: return !!draft.sex && !!draft.age_bracket;
       case 3: return !!draft.fitness_level;
-      case 4: return draft.sessions_per_week > 0 && draft.minutes_per_session > 0;
+      case 4: return draft.workout_days.length >= 2 && draft.minutes_per_session > 0;
       case 5: return true; // conditions spéciales = optionnelles
     }
     return true;

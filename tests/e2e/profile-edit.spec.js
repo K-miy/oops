@@ -28,9 +28,11 @@ async function setupProfile(page) {
   // Étape 3 : niveau
   await page.locator('.choice-card[data-value="intermediate"]').click();
 
-  // Étape 4 : fréquence & durée
-  await page.waitForSelector('#freq-chips', { timeout: 2000 });
-  await page.locator('#freq-chips .chip[data-value="3"]').click();
+  // Étape 4 : jours d'entraînement & durée (multi-select, min 2 jours)
+  await page.waitForSelector('#day-chips', { timeout: 2000 });
+  await page.locator('#day-chip-0').click(); // Lun
+  await page.locator('#day-chip-2').click(); // Mer
+  await page.locator('#day-chip-4').click(); // Ven
   await page.locator('#duration-chips .chip[data-value="30"]').click();
   await page.locator('#onboarding-next-btn').click();
 
@@ -76,8 +78,8 @@ test.describe('Modifier le profil', () => {
     await page.locator('#onboarding-next-btn').click(); // étape 2 → 3 (niveau)
 
     // Étape 3 : niveau pré-sélectionné, on avance via Suivant
-    await page.locator('#onboarding-next-btn').click(); // étape 3 → 4 (fréquence)
-    await page.waitForSelector('#freq-chips', { timeout: 2000 });
+    await page.locator('#onboarding-next-btn').click(); // étape 3 → 4 (jours)
+    await page.waitForSelector('#day-chips', { timeout: 2000 });
 
     await page.locator('#onboarding-next-btn').click(); // étape 4 → 5 (conditions)
     await page.locator('#onboarding-next-btn').click(); // étape 5 → terminé
