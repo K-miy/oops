@@ -138,7 +138,8 @@
     "buy_coffee": "Support this project",
     "reset": "Reset app",
     "reset_confirm": "All your data will be permanently deleted. Continue?",
-    "privacy_note": "100% local, zero data sent."
+    "privacy_note": "100% local, zero data sent.",
+    "install_prompt": "Install OOPS on your home screen?"
   },
   "nav": {
     "home": "Home",

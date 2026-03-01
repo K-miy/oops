@@ -165,6 +165,13 @@
     </button>
   </nav>
 
+  <!-- Bannière install PWA (affichée via beforeinstallprompt) -->
+  <div id="pwa-install-banner" class="pwa-install-banner" hidden aria-live="polite">
+    <div class="pwa-install-text" id="pwa-install-text">Installer OOPS sur votre écran d'accueil ?</div>
+    <button class="btn btn-accent pwa-install-btn" id="pwa-install-btn">Installer</button>
+    <button class="btn-icon pwa-install-dismiss" id="pwa-install-dismiss" aria-label="Fermer">✕</button>
+  </div>
+
   <script type="module" src="/js/app.js"></script>
 </body>
 </html>

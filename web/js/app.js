@@ -301,6 +301,44 @@ document.getElementById('bottom-nav')?.querySelectorAll('.nav-item[data-screen]'
 });
 
 // ────────────────────────────────────────────────
+// PWA install prompt
+// ────────────────────────────────────────────────
+let _installPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  _installPrompt = e;
+  const banner = document.getElementById('pwa-install-banner');
+  const text   = document.getElementById('pwa-install-text');
+  if (banner) {
+    // Texte localisé si i18n déjà chargée, sinon fallback
+    if (text) text.textContent = t('settings.install_prompt') ?? 'Installer OOPS sur votre écran d\'accueil ?';
+    banner.hidden = false;
+  }
+});
+
+document.getElementById('pwa-install-btn')?.addEventListener('click', async () => {
+  if (!_installPrompt) return;
+  const banner = document.getElementById('pwa-install-banner');
+  _installPrompt.prompt();
+  const { outcome } = await _installPrompt.userChoice;
+  _installPrompt = null;
+  if (banner) banner.hidden = true;
+});
+
+document.getElementById('pwa-install-dismiss')?.addEventListener('click', () => {
+  const banner = document.getElementById('pwa-install-banner');
+  if (banner) banner.hidden = true;
+  _installPrompt = null;
+});
+
+window.addEventListener('appinstalled', () => {
+  const banner = document.getElementById('pwa-install-banner');
+  if (banner) banner.hidden = true;
+  _installPrompt = null;
+});
+
+// ────────────────────────────────────────────────
 // Démarrage
 // ────────────────────────────────────────────────
 boot().catch((err) => {

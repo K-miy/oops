@@ -138,7 +138,8 @@
     "buy_coffee": "Soutenir le projet",
     "reset": "Réinitialiser l'application",
     "reset_confirm": "Toutes vos données seront supprimées définitivement. Continuer ?",
-    "privacy_note": "100% local, zéro donnée envoyée."
+    "privacy_note": "100% local, zéro donnée envoyée.",
+    "install_prompt": "Installer OOPS sur votre écran d'accueil ?"
   },
   "nav": {
     "home": "Accueil",
