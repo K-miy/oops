@@ -13,6 +13,14 @@
   <link rel="apple-touch-icon" href="/icons/icon-192.png" />
   <link rel="stylesheet" href="/css/main.css" />
 
+  <!-- Applique la taille de police sauvegardée avant le premier paint -->
+  <script>
+    (function () {
+      var s = parseFloat(localStorage.getItem('oops_font_scale') || '1');
+      if (s !== 1) document.documentElement.style.setProperty('--font-scale', s);
+    })();
+  </script>
+
   <!-- importmap : résout les modules ES sans bundler -->
   <script type="importmap">
   {
@@ -172,6 +180,12 @@
       <button class="btn-icon pwa-install-dismiss" id="pwa-install-dismiss" aria-label="Fermer">✕</button>
     </div>
     <button class="btn btn-accent pwa-install-btn" id="pwa-install-btn">Installer</button>
+  </div>
+
+  <!-- Bannière mise à jour SW (affichée au controllerchange) -->
+  <div id="sw-update-banner" class="sw-update-banner" hidden aria-live="polite">
+    <span class="sw-update-text" id="sw-update-text">Nouvelle version disponible</span>
+    <button class="sw-update-btn" id="sw-update-btn">Recharger</button>
   </div>
 
   <script type="module" src="/js/app.js"></script>

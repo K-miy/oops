@@ -2,12 +2,14 @@
   "app": {
     "name": "OOPS",
     "tagline": "Out of Parent's Shape",
-    "loading": "Chargement des exercices…"
+    "loading": "Chargement des exercices…",
+    "update_available": "Nouvelle version disponible"
   },
   "disclaimer": {
     "title": "Avertissement médical",
     "body": "Cette application ne remplace pas un avis médical. Consultez votre médecin avant de commencer tout programme d'exercice, particulièrement en période post-partum, en cas de douleurs chroniques ou de pathologies connues.",
-    "accept": "Je confirme"
+    "accept": "Je confirme",
+    "font_size": "Taille du texte"
   },
   "onboarding": {
     "title": "Bienvenue dans OOPS",
@@ -52,6 +54,13 @@
     "is_postpartum": {
       "label": "Êtes-vous en période post-partum ?",
       "yes": "Oui (moins de 12 mois après l'accouchement)",
+      "no": "Non"
+    },
+    "has_anchor": {
+      "label": "Avez-vous un poteau ou montant fixe chez vous ?",
+      "hint": "Débloque des exercices de tirage avec serviette",
+      "yes": "Oui",
+      "yes_desc": "Poteau, colonne, pied de table robuste, ou montant solide",
       "no": "Non"
     },
     "injuries": {
@@ -139,6 +148,7 @@
   "settings": {
     "title": "Paramètres",
     "lang": "Langue",
+    "font_size": "Taille du texte",
     "profile": "Modifier le profil",
     "about": "À propos du programme",
     "buy_coffee": "Soutenir le projet",

@@ -93,6 +93,13 @@ async function loadExercises() {
 }
 
 // ────────────────────────────────────────────────
+// Filtrage exercices selon profil
+// ────────────────────────────────────────────────
+function getFilteredExercises(exercises, profile) {
+  return exercises.filter((ex) => !ex.requires_anchor || profile.has_anchor);
+}
+
+// ────────────────────────────────────────────────
 // Génération de séances (aujourd'hui + aperçu semaine)
 // ────────────────────────────────────────────────
 export function generateTodayPlan(profile, exercises) {
@@ -160,6 +167,16 @@ async function boot() {
     navigator.serviceWorker.register('/service-worker.js').catch((err) => {
       console.warn('[app] SW non enregistré:', err);
     });
+
+    // Bannière de mise à jour : affichée quand un nouveau SW prend le contrôle
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      const banner = document.getElementById('sw-update-banner');
+      const text   = document.getElementById('sw-update-text');
+      if (banner) {
+        if (text) text.textContent = t('app.update_available') ?? 'Nouvelle version disponible';
+        banner.hidden = false;
+      }
+    });
   }
 
   // 6. Routing initial
@@ -208,7 +225,8 @@ async function routeToHome() {
     }))
     .filter((s) => s.to != null);
 
-  const weekPreview = generateWeekPreview(state.profile, state.exercises);
+  const filteredExercises = getFilteredExercises(state.exercises, state.profile);
+  const weekPreview = generateWeekPreview(state.profile, filteredExercises);
   const todayEntry = weekPreview[0];
 
   if (todayEntry.isWorkout) {
@@ -359,6 +377,13 @@ window.addEventListener('appinstalled', () => {
   const banner = document.getElementById('pwa-install-banner');
   if (banner) banner.hidden = true;
   _installPrompt = null;
+});
+
+// ────────────────────────────────────────────────
+// Bouton rechargement mise à jour SW
+// ────────────────────────────────────────────────
+document.getElementById('sw-update-btn')?.addEventListener('click', () => {
+  window.location.reload();
 });
 
 // ────────────────────────────────────────────────

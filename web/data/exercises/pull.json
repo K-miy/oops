@@ -31,19 +31,20 @@
   },
   {
     "id": "door_row",
-    "name_fr": "Tirage sur chambranle de porte",
-    "name_en": "Door frame row",
+    "name_fr": "Tirage sur poteau",
+    "name_en": "Post row",
     "category": "pull",
     "movement_pattern": "horizontal_pull",
     "difficulty": 2,
     "duration_s": 30,
     "equipment_required": false,
+    "requires_anchor": true,
     "postpartum_only": false,
     "contraindications": [
       "shoulder"
     ],
-    "instructions_fr": "Debout face à une porte ouverte, saisissez les deux montants à mi-hauteur. Fléchissez légèrement les genoux, inclinez le corps en arrière en gardant le corps droit. Tirez en ramenant la poitrine vers la porte. Assurez-vous que la porte est fixée et ne peut pas se refermer.",
-    "instructions_en": "Stand facing an open door, grip both vertical posts at mid-height. Slightly bend knees, lean body back keeping it straight. Pull, bringing chest to the door. Make sure the door is fixed and cannot close.",
+    "instructions_fr": "Debout face à un poteau ou montant vertical solide (pied de table, colonne, coin de mur épais). Saisissez-le à deux mains à mi-hauteur. Fléchissez légèrement les genoux, inclinez le corps en arrière corps droit. Tirez en ramenant la poitrine vers le poteau en serrant les omoplates.",
+    "instructions_en": "Stand facing a solid vertical post (table leg, column, sturdy doorpost). Grip it with both hands at mid-height. Slightly bend knees, lean back keeping body straight. Pull your chest toward the post, squeezing shoulder blades together.",
     "progression_to": "towel_row"
   },
   {
@@ -128,17 +129,18 @@
   },
   {
     "id": "towel_row",
-    "name_fr": "Tirage à la serviette (porte)",
-    "name_en": "Towel door row",
+    "name_fr": "Tirage à la serviette (poteau)",
+    "name_en": "Towel post row",
     "category": "pull",
     "movement_pattern": "horizontal_pull",
     "difficulty": 2,
     "duration_s": 30,
     "equipment_required": false,
+    "requires_anchor": true,
     "postpartum_only": false,
     "contraindications": [],
-    "instructions_fr": "Passez une serviette enroulée autour d'une porte ouverte stable. Saisissez les deux bouts, fléchissez légèrement les genoux et penchez-vous en arrière. Tirez votre buste vers la porte en serrant les omoplates.",
-    "instructions_en": "Loop a rolled towel around a stable open door. Grip both ends, bend knees slightly and lean back. Pull your chest toward the door, squeezing shoulder blades together.",
+    "instructions_fr": "Passez une serviette fine autour d'un poteau ou montant vertical solide. Saisissez les deux bouts, fléchissez légèrement les genoux et penchez-vous en arrière corps droit. Tirez votre buste vers le poteau en serrant les omoplates. Vérifiez que le poteau est fixe.",
+    "instructions_en": "Loop a thin towel around a solid vertical post or column. Grip both ends, bend knees slightly and lean back keeping body straight. Pull your chest toward the post, squeezing shoulder blades. Confirm the post is fixed and immovable.",
     "progression_to": null
   },
   {

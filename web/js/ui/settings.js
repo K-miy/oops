@@ -3,6 +3,7 @@
  */
 import { t, initI18n, getLang } from '../i18n.js';
 import { getSetting, setSetting, resetAll, exportData } from '../db.js';
+import { applyFontScale } from './disclaimer.js';
 
 /**
  * @param {HTMLElement} container - #settings-main
@@ -62,6 +63,21 @@ export function renderSettings(container, { profile, onLangChange, onReset, onEd
       </div>
     </div>
 
+    <!-- ── Taille du texte ── -->
+    <div class="settings-section">
+      <div class="settings-row-font">
+        <span class="settings-row-label">${t('settings.font_size') ?? 'Taille du texte'}</span>
+        <div class="font-size-control" style="padding:8px 0 0">
+          <span class="font-label-sm">Aa</span>
+          <input type="range" id="settings-font-slider"
+                 min="0.8" max="1.4" step="0.05"
+                 value="${parseFloat(localStorage.getItem('oops_font_scale') || '1')}"
+                 aria-label="${t('settings.font_size') ?? 'Taille du texte'}">
+          <span class="font-label-lg">Aa</span>
+        </div>
+      </div>
+    </div>
+
     <!-- ── Zone danger ── -->
     <div class="settings-section settings-danger">
       <div class="settings-row" id="settings-reset-row">
@@ -105,6 +121,11 @@ export function renderSettings(container, { profile, onLangChange, onReset, onEd
     a.download = `oops-backup-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
+  });
+
+  // ── Taille du texte ──
+  container.querySelector('#settings-font-slider')?.addEventListener('input', (e) => {
+    applyFontScale(parseFloat(e.target.value));
   });
 
   // ── Reset ──

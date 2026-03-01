@@ -31,6 +31,7 @@ export function renderOnboarding(container, { onComplete, initialProfile = null 
     workout_days: initialProfile?.workout_days?.length > 0 ? [...initialProfile.workout_days] : [],
     minutes_per_session: initialProfile?.minutes_per_session ?? 30,
     is_postpartum: initialProfile?.is_postpartum ?? false,
+    has_anchor: initialProfile?.has_anchor ?? false,
     injury_notes: initialProfile?.injury_notes ?? [],
     disclaimer_accepted_at: initialProfile?.disclaimer_accepted_at ?? new Date().toISOString().slice(0, 10),
   };
@@ -263,7 +264,20 @@ export function renderOnboarding(container, { onComplete, initialProfile = null 
         </div>
       </div>
       ` : ''}
-      <div class="onboarding-question${showPostpartum ? ' mt-24' : ''}">
+      <div class="onboarding-question mt-24">
+        <h2>${t('onboarding.has_anchor.label')}</h2>
+        <p class="hint">${t('onboarding.has_anchor.hint')}</p>
+        <div class="choice-list" id="anchor-choices">
+          <button class="choice-card${draft.has_anchor === true ? ' selected' : ''}" data-value="true">
+            <div class="choice-title">${t('onboarding.has_anchor.yes')}</div>
+            <div class="choice-desc">${t('onboarding.has_anchor.yes_desc')}</div>
+          </button>
+          <button class="choice-card${draft.has_anchor === false ? ' selected' : ''}" data-value="false">
+            <div class="choice-title">${t('onboarding.has_anchor.no')}</div>
+          </button>
+        </div>
+      </div>
+      <div class="onboarding-question mt-24">
         <h2>${t('onboarding.injuries.label')}</h2>
         <div class="chip-group" id="injury-chips">
           ${injuries.map((inj) => `
@@ -282,6 +296,14 @@ export function renderOnboarding(container, { onComplete, initialProfile = null 
         });
       });
     }
+
+    $content.querySelectorAll('#anchor-choices .choice-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        $content.querySelectorAll('#anchor-choices .choice-card').forEach((c) => c.classList.remove('selected'));
+        card.classList.add('selected');
+        draft.has_anchor = card.dataset.value === 'true';
+      });
+    });
 
     $content.querySelectorAll('#injury-chips .chip').forEach((chip) => {
       chip.addEventListener('click', () => {

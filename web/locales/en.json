@@ -2,12 +2,14 @@
   "app": {
     "name": "OOPS",
     "tagline": "Out of Parent's Shape",
-    "loading": "Loading exercises…"
+    "loading": "Loading exercises…",
+    "update_available": "New version available"
   },
   "disclaimer": {
     "title": "Medical disclaimer",
     "body": "This app does not replace medical advice. Consult your doctor before starting any exercise program, especially postpartum, if you experience chronic pain, or have any known health conditions.",
-    "accept": "I confirm"
+    "accept": "I confirm",
+    "font_size": "Text size"
   },
   "onboarding": {
     "title": "Welcome to OOPS",
@@ -52,6 +54,13 @@
     "is_postpartum": {
       "label": "Are you in the postpartum period?",
       "yes": "Yes (within 12 months of giving birth)",
+      "no": "No"
+    },
+    "has_anchor": {
+      "label": "Do you have a fixed vertical post at home?",
+      "hint": "Unlocks towel rowing exercises",
+      "yes": "Yes",
+      "yes_desc": "A column, sturdy table leg, vertical post, or solid fixed beam",
       "no": "No"
     },
     "injuries": {
@@ -139,6 +148,7 @@
   "settings": {
     "title": "Settings",
     "lang": "Language",
+    "font_size": "Text size",
     "profile": "Edit profile",
     "about": "About the program",
     "buy_coffee": "Support this project",
