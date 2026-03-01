@@ -292,17 +292,9 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
 
         const $hint = document.getElementById('rpe-hint');
         let hint = '';
-        let delay = 350;
-        if (selectedRpe <= 4) {
-          hint = t('session.rpe_hint_easy');
-          delay = 1500;
-        } else if (selectedRpe >= 9) {
-          hint = t('session.rpe_hint_hard');
-          delay = 1500;
-        }
+        if (selectedRpe <= 4)      hint = t('session.rpe_hint_easy');
+        else if (selectedRpe >= 9) hint = t('session.rpe_hint_hard');
         if ($hint && hint) { $hint.textContent = hint; $hint.classList.add('animate-in'); }
-
-        setTimeout(() => finishSession(selectedRpe), delay);
       });
     });
 
