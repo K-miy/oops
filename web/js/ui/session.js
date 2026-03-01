@@ -42,6 +42,20 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
   // ── Utilitaires ──
   function getInfo(ex) { return exerciseMap[ex.exercise_id]; }
 
+  /** Trouve un exercice alternatif de même movement_pattern, non déjà dans la liste active */
+  function findAlternative(ex) {
+    const info = getInfo(ex);
+    if (!info) return null;
+    const usedIds = new Set(state.activeList.map((e) => e.exercise_id));
+    const candidates = exercises.filter((e) =>
+      e.movement_pattern === info.movement_pattern &&
+      !usedIds.has(e.id) &&
+      e.id !== ex.exercise_id
+    );
+    if (candidates.length === 0) return null;
+    return candidates[Math.floor(Math.random() * candidates.length)];
+  }
+
   function exName(ex) {
     const info = getInfo(ex);
     return info ? (lang === 'fr' ? info.name_fr : info.name_en) : ex.exercise_id;
@@ -150,10 +164,22 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
         ${instructions ? `<p class="session-ex-instructions">${instructions}</p>` : ''}
       </div>`;
 
-    setFooterBtn(t('session.skip_rest'), 'skip-set-btn', true);
+    $footer.innerHTML = `
+      <button class="btn btn-ghost session-skip-btn" id="skip-set-btn">${t('session.skip_rest')}</button>
+      <button class="btn btn-ghost session-swap-btn" id="swap-ex-btn">${t('session.swap_exercise')}</button>`;
+
     document.getElementById('skip-set-btn').addEventListener('click', () => {
       stopTimer();
       advanceAfterSet();
+    });
+
+    document.getElementById('swap-ex-btn').addEventListener('click', () => {
+      const alt = findAlternative(ex);
+      if (!alt) return;
+      stopTimer();
+      state.activeList[state.exIdx] = { ...ex, exercise_id: alt.id };
+      state.setIdx = 0;
+      showExercise();
     });
 
     stopTimer();

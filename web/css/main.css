@@ -655,6 +655,14 @@ body {
 
 .session-skip-btn { margin: 0 auto; }
 
+/* Skip + Swap côte à côte pendant l'exercice */
+#session-footer:has(.session-swap-btn) {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.session-swap-btn { flex: 1; max-width: 140px; }
+
 /* ── Repos ── */
 .session-rest {
   display: flex;

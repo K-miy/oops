@@ -80,7 +80,7 @@
     "equipment_required": false,
     "postpartum_only": false,
     "contraindications": ["knee"],
-    "instructions_fr": "Assis au sol, une jambe à 90° devant, l'autre à 90° derrière. Gardez le buste droit. Basculez doucement d'un côté à l'autre. Travail en rotation externe et interne de la hanche.",
+    "instructions_fr": "Assis(e) au sol, une jambe à 90° devant, l'autre à 90° derrière. Gardez le buste droit. Basculez doucement d'un côté à l'autre. Travail en rotation externe et interne de la hanche.",
     "instructions_en": "Seated, one leg at 90° in front, the other at 90° behind. Keep torso upright. Gently shift between sides. Hip external and internal rotation work."
   },
   {
@@ -138,5 +138,47 @@
     "contraindications": ["wrist", "lower_back"],
     "instructions_fr": "Debout, inclinez-vous pour toucher le sol. Marchez sur les mains jusqu'à la planche. Revenez en marchant des mains vers les pieds. Déroulez-vous. Excellent échauffement global.",
     "instructions_en": "Standing, fold forward to touch the floor. Walk hands out to plank. Walk hands back to feet. Roll up. Excellent full-body warm-up."
+  },
+  {
+    "id": "thread_needle",
+    "name_fr": "Fil de l'aiguille",
+    "name_en": "Thread the needle",
+    "category": "mobility",
+    "movement_pattern": "mobility",
+    "difficulty": 1,
+    "duration_s": 40,
+    "equipment_required": false,
+    "postpartum_only": false,
+    "contraindications": ["shoulder"],
+    "instructions_fr": "À quatre pattes. Glissez un bras sous votre corps vers l'autre côté, épaule et joue posées au sol. Tenez et respirez profondément. Alternez les côtés.",
+    "instructions_en": "On all fours. Thread one arm under your body toward the other side, shoulder and cheek resting on the floor. Hold and breathe deeply. Alternate sides."
+  },
+  {
+    "id": "lizard_pose",
+    "name_fr": "Posture du lézard",
+    "name_en": "Lizard pose",
+    "category": "mobility",
+    "movement_pattern": "mobility",
+    "difficulty": 1,
+    "duration_s": 45,
+    "equipment_required": false,
+    "postpartum_only": false,
+    "contraindications": [],
+    "instructions_fr": "Depuis une fente basse, placez le pied avant à l'extérieur de la main du même côté. Restez sur les mains ou descendez sur les avant-bras. Relâchez la hanche de la jambe arrière. Alternez.",
+    "instructions_en": "From a low lunge, place your front foot outside your same-side hand. Stay on hands or lower to forearms. Let the rear hip relax and open. Alternate sides."
+  },
+  {
+    "id": "couch_stretch",
+    "name_fr": "Étirement du canapé (quadriceps/fléchisseur)",
+    "name_en": "Couch stretch",
+    "category": "mobility",
+    "movement_pattern": "mobility",
+    "difficulty": 2,
+    "duration_s": 45,
+    "equipment_required": false,
+    "postpartum_only": false,
+    "contraindications": ["knee"],
+    "instructions_fr": "Mettez un genou contre la base d'un canapé ou d'un mur, pied replié contre le dossier. L'autre pied au sol en avant. Tenez-vous droit. Sentez l'étirement à l'avant de la cuisse. Alternez.",
+    "instructions_en": "Place one knee against the base of a couch or wall, foot folded back against it. Other foot flat on the floor in front. Stand tall. Feel the stretch across the front of the hip and thigh. Alternate sides."
   }
 ]

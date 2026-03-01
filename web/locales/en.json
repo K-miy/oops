@@ -122,6 +122,7 @@
     "next_set": "Next set",
     "skip_exercise": "Skip",
     "skip_rest": "Skip",
+    "swap_exercise": "Swap",
     "skip_rpe": "Skip",
     "rpe_prompt": "How hard was that?",
     "rpe_subtitle": "5–7 = ideal for progress. Below? Push more next time. Above? Recover.",
