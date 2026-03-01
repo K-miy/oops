@@ -39,6 +39,8 @@ pub enum Contraindication {
     Shoulder,
     Wrist,
     DiastasisRecti,
+    #[serde(other)]
+    Unknown,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

@@ -2,7 +2,7 @@
 // Phase 1 : offline shell + assets
 // Phase 3 : notifications push
 
-const CACHE_VERSION = 'oops-v30';
+const CACHE_VERSION = 'oops-v31';
 
 const PRECACHE_URLS = [
   '/',
