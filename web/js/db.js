@@ -4,6 +4,7 @@
  */
 
 import Dexie from 'dexie';
+import { APP_VERSION } from './version.js';
 
 const db = new Dexie('oops');
 
@@ -166,7 +167,7 @@ export async function exportData() {
   ]);
   return {
     exported_at:  new Date().toISOString(),
-    app_version:  '0.1.0',
+    app_version:  APP_VERSION,
     profile,
     sessions,
   };

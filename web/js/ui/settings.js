@@ -4,6 +4,7 @@
 import { t, initI18n, getLang } from '../i18n.js';
 import { getSetting, setSetting, resetAll, exportData } from '../db.js';
 import { applyFontScale } from './disclaimer.js';
+import { APP_VERSION } from '../version.js';
 
 /**
  * @param {HTMLElement} container - #settings-main
@@ -87,7 +88,7 @@ export function renderSettings(container, { profile, onLangChange, onReset, onEd
 
     <!-- ── Infos ── -->
     <p style="text-align:center;font-size:.75rem;color:var(--color-text-muted);margin-top:24px;line-height:1.6">
-      OOPS v0.1.0 — ${t('settings.privacy_note')}<br/>
+      OOPS v${APP_VERSION} — ${t('settings.privacy_note')}<br/>
       <a href="https://github.com/K-miy/oops" target="_blank" rel="noopener"
          style="color:var(--color-primary);text-decoration:none">GitHub ↗</a>
     </p>
