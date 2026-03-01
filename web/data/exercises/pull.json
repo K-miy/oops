@@ -80,24 +80,6 @@
     "progression_to": null
   },
   {
-    "id": "dead_hang_doorway",
-    "name_fr": "Suspension statique (chambranle)",
-    "name_en": "Static hang (door frame)",
-    "category": "pull",
-    "movement_pattern": "vertical_pull",
-    "difficulty": 2,
-    "duration_s": 20,
-    "equipment_required": false,
-    "postpartum_only": false,
-    "contraindications": [
-      "shoulder",
-      "wrist"
-    ],
-    "instructions_fr": "Saisissez le haut d'un chambranle de porte solide à deux mains. Soulevez légèrement vos pieds du sol et maintenez la position. Décompresse la colonne, renforce la prise et les épaules. Utilisez uniquement un chambranle certifié pour supporter votre poids.",
-    "instructions_en": "Grip the top of a sturdy door frame with both hands. Slightly lift your feet off the floor and hold. Decompresses the spine, strengthens grip and shoulders. Use only a door frame certified to support your weight.",
-    "progression_to": null
-  },
-  {
     "id": "prone_cobra",
     "name_fr": "Cobra dorsal (isométrique)",
     "name_en": "Prone cobra hold",

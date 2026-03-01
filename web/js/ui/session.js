@@ -279,8 +279,7 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
         <button class="btn-finish" id="finish-btn">I did it again</button>
       </div>`;
 
-    $footer.innerHTML = `
-      <button class="btn btn-ghost btn-skip-rpe" id="skip-rpe-btn">${t('session.skip_rpe')}</button>`;
+    $footer.innerHTML = '';
 
     let selectedRpe = null;
 
@@ -299,7 +298,6 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
     });
 
     document.getElementById('finish-btn').addEventListener('click', () => finishSession(selectedRpe));
-    document.getElementById('skip-rpe-btn').addEventListener('click', () => finishSession(null));
   }
 
   // ── Fin de séance ──

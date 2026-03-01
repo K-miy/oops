@@ -38,18 +38,23 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg:          #0F1117;
-    --color-surface:     #1A1D2E;
-    --color-surface-alt: #242740;
-    --color-text:        #F0F0F0;
-    --color-text-muted:  #9CA3AF;
-    --color-border:      #2D3748;
+    --color-bg:          #121917;
+    --color-surface:     #1E2922;
+    --color-surface-alt: #263320;
+    --color-text:        #EEF2EE;
+    --color-text-muted:  #9AB09A;
+    --color-border:      #2E3D30;
+    /* Vert primaire plus clair pour rester lisible sur fond sombre */
+    --color-primary:     #74C69D;
+    --color-primary-dk:  #52B788;
+    --color-success-soft: #4A7B5A;
+    --color-surface-alt2: #3A4E35;
   }
 }
 
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+html { font-size: 18px; -webkit-text-size-adjust: 100%; }
 body {
   font-family: var(--font);
   background: var(--color-bg);
@@ -114,8 +119,8 @@ body {
 
 /* ── Screen footer ── */
 .screen-footer {
-  padding: 12px 16px;
-  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  padding: 16px 20px;
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
   flex-shrink: 0;
@@ -557,12 +562,18 @@ body {
   padding: 16px;
 }
 
-/* Progress bar (replaces text counter) */
-.session-progress { width: 100%; }
+/* Progress bar — pleine largeur sous le header */
+.session-progress {
+  width: 100%;
+  padding: 0 16px 10px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
 
 .session-prog-bar {
   width: 100%;
-  height: 5px;
+  height: 10px;
   background: var(--color-border);
   border-radius: 100px;
   overflow: hidden;
@@ -1268,9 +1279,9 @@ body {
   background: var(--color-surface);
   border: 1px solid var(--color-success-soft);
   border-radius: 12px;
-  padding: 12px 16px;
+  padding: 14px 16px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 10px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   z-index: 200;
@@ -1279,22 +1290,29 @@ body {
 
 .pwa-install-banner[hidden] { display: none; }
 
+.pwa-install-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .pwa-install-text {
-  flex: 1;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--color-text);
   line-height: 1.3;
+  font-weight: 500;
 }
 
 .pwa-install-btn {
-  white-space: nowrap;
-  padding: 8px 14px;
-  font-size: 0.85rem;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
 }
 
 .pwa-install-dismiss {
   flex-shrink: 0;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--color-text-muted);
   padding: 4px;
 }

@@ -145,9 +145,15 @@ export async function setSetting(key, value) {
 
 // ════════════════════════ RESET COMPLET ════════════════════════
 
-/** Supprime toutes les données locales. */
+/** Supprime toutes les données locales (vide les tables sans supprimer la DB). */
 export async function resetAll() {
-  await db.delete();
+  await Promise.all([
+    db.profile.clear(),
+    db.sessions.clear(),
+    db.exercise_logs.clear(),
+    db.body_weight_logs.clear(),
+    db.settings.clear(),
+  ]);
 }
 
 // ════════════════════════ EXPORT ════════════════════════

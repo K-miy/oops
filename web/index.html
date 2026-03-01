@@ -110,8 +110,8 @@
         <header class="screen-header">
           <button id="session-close-btn" class="btn-icon" aria-label="Fermer la séance">✕</button>
           <h1 id="session-title" data-i18n="session.title">Séance en cours</h1>
-          <div id="session-progress" class="session-progress" aria-live="polite"></div>
         </header>
+        <div id="session-progress" class="session-progress" aria-live="polite"></div>
         <main id="session-main" class="session-content">
           <!-- Rendu dynamiquement par session.js -->
         </main>
@@ -167,9 +167,11 @@
 
   <!-- Bannière install PWA (affichée via beforeinstallprompt) -->
   <div id="pwa-install-banner" class="pwa-install-banner" hidden aria-live="polite">
-    <div class="pwa-install-text" id="pwa-install-text">Installer OOPS sur votre écran d'accueil ?</div>
+    <div class="pwa-install-top">
+      <div class="pwa-install-text" id="pwa-install-text">Installer OOPS sur votre écran d'accueil ?</div>
+      <button class="btn-icon pwa-install-dismiss" id="pwa-install-dismiss" aria-label="Fermer">✕</button>
+    </div>
     <button class="btn btn-accent pwa-install-btn" id="pwa-install-btn">Installer</button>
-    <button class="btn-icon pwa-install-dismiss" id="pwa-install-dismiss" aria-label="Fermer">✕</button>
   </div>
 
   <script type="module" src="/js/app.js"></script>

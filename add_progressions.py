@@ -34,7 +34,6 @@ CHAINS = {
     'door_row':                'towel_row',
     'towel_row':               None,
     'band_pull_apart_towel':   None,
-    'dead_hang_doorway':       None,
     'prone_cobra':             'reverse_snow_angel',
     'reverse_snow_angel':      None,
     'wall_slide':              None,
