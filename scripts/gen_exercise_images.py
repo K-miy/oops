@@ -11,8 +11,8 @@ The script reads all exercise JSON files, generates one image per exercise
 (skipping those that already have an image_url), saves images as WebP, and
 updates the JSON files in-place with the image_url field.
 
-Images are saved to: web/icons/exercises/<exercise_id>.webp
-image_url in JSON:    /icons/exercises/<exercise_id>.webp
+Images are saved to: web/icons/exercises/<exercise_id>.png
+image_url in JSON:    /icons/exercises/<exercise_id>.png
 
 Requirements:
   pip install google-genai pillow
@@ -33,13 +33,37 @@ EXERCISES_DIR = Path(__file__).parent.parent / "web" / "data" / "exercises"
 OUTPUT_DIR    = Path(__file__).parent.parent / "web" / "icons" / "exercises"
 URL_PREFIX    = "/icons/exercises"
 
-# Prompt template — minimal line art style, consistent across exercises
-PROMPT_TEMPLATE = (
-    "Simple clean line art illustration of a person performing '{name}' exercise. "
-    "Minimal style, white background, no shading, no text, no labels. "
-    "The figure is a gender-neutral adult seen from a 3/4 angle. "
-    "Show proper form clearly. One single frame. Square composition."
+# Prompt template — 3-panel comic strip, OOPS brand colors
+# Matches the style defined in generate_image_prompts.py
+STYLE_PREFIX = (
+    "3-panel horizontal comic strip, minimalist flat illustration style, "
+    "bold black outlines, pure white background. "
+    "The character is a non-gendered rounded figure: smooth oval head, "
+    "no facial features, no hair, gender-neutral body with simple rounded limbs. "
+    "Panels flow left-to-right showing: "
+    "[Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. "
+    "Flat colors only, no gradients, no shadows. "
+    "Accent colors: forest green #2D6A4F for the figure body, "
+    "orange #F4A261 for motion highlights or active limbs. "
+    "No text, no numbers, no labels anywhere. "
+    "Consistent figure size and style across all 3 panels. "
+    "Landscape format 3:1 ratio. "
 )
+STYLE_SUFFIX = (
+    "Clean, friendly, app illustration aesthetic. "
+    "Each panel separated by a thin black line."
+)
+
+def make_prompt(ex):
+    name    = ex.get("name_en") or ex.get("name_fr", ex["id"])
+    instr   = ex.get("instructions_en") or ex.get("instructions_fr", "")
+    cat     = ex.get("category", "")
+    pattern = ex.get("movement_pattern", "")
+    return (
+        f"{STYLE_PREFIX}"
+        f"Exercise: {name} ({cat} / {pattern}). Movement: {instr} "
+        f"{STYLE_SUFFIX}"
+    )
 
 # Safety: never overwrite existing images unless --force
 # Rate limit: ~2 req/s for free tier
@@ -78,8 +102,8 @@ def save_exercises_by_file(exercises):
 
 def generate_image_gemini(api_key, prompt):
     """
-    Generate image using Google GenAI SDK (google-genai package).
-    Returns raw PNG/WebP bytes or raises on failure.
+    Generate image using Nano Banana Pro via generateContent.
+    Returns raw PNG bytes or raises on failure.
     """
     try:
         from google import genai
@@ -90,23 +114,20 @@ def generate_image_gemini(api_key, prompt):
 
     client = genai.Client(api_key=api_key)
 
-    response = client.models.generate_image(
-        model="imagen-3.0-generate-002",
-        prompt=prompt,
-        config=types.GenerateImageConfig(
-            number_of_images=1,
-            aspect_ratio="1:1",
-            output_mime_type="image/webp",
-            safety_filter_level="block_only_high",
+    response = client.models.generate_content(
+        model="nano-banana-pro-preview",
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            response_modalities=["IMAGE", "TEXT"],
         ),
     )
 
-    if not response.generated_images:
-        raise RuntimeError("No image returned by API")
+    for part in response.candidates[0].content.parts:
+        if part.inline_data and part.inline_data.data:
+            data = part.inline_data.data
+            return base64.b64decode(data) if isinstance(data, str) else data
 
-    image_data = response.generated_images[0].image
-    # image.image_bytes contains raw bytes
-    return image_data.image_bytes
+    raise RuntimeError("No image part returned by API")
 
 
 def main():
@@ -133,8 +154,8 @@ def main():
     for ex in exercises:
         ex_id    = ex["id"]
         name_en  = ex.get("name_en", ex_id)
-        out_path = OUTPUT_DIR / f"{ex_id}.webp"
-        url      = f"{URL_PREFIX}/{ex_id}.webp"
+        out_path = OUTPUT_DIR / f"{ex_id}.png"
+        url      = f"{URL_PREFIX}/{ex_id}.png"
 
         # Skip if already has an image and not forcing
         if ex.get("image_url") and not args.force:
@@ -147,7 +168,7 @@ def main():
             skipped += 1
             continue
 
-        prompt = PROMPT_TEMPLATE.format(name=name_en)
+        prompt = make_prompt(ex)
         print(f"[{ex['_category']}] {name_en}")
 
         if args.dry_run:

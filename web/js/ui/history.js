@@ -3,7 +3,7 @@
  */
 import { t } from '../i18n.js';
 
-export function renderHistory(container, { sessions, exercises, lang }) {
+export function renderHistory(container, { sessions, lang }) {
   if (sessions.length === 0) {
     container.innerHTML = `
       <div class="empty-state animate-in">
@@ -14,109 +14,31 @@ export function renderHistory(container, { sessions, exercises, lang }) {
     return;
   }
 
-  const exerciseMap = Object.fromEntries(exercises.map((e) => [e.id, e]));
-  const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
-  const summaryHtml = renderSummary(sessions, lang);
-
-  // Grouper par mois (YYYY-MM)
-  const byMonth = new Map();
-  for (const session of sessions) {
-    const monthKey = session.date.slice(0, 7);
-    if (!byMonth.has(monthKey)) byMonth.set(monthKey, []);
-    byMonth.get(monthKey).push(session);
-  }
-
-  const html = [...byMonth.entries()].map(([monthKey, monthSessions]) => {
-    const monthDate  = new Date(monthKey + '-15T12:00:00');
-    const monthLabel = capitalise(monthDate.toLocaleDateString(locale, { month: 'long', year: 'numeric' }));
-    const count      = monthSessions.length;
-    const countLabel = lang === 'fr'
-      ? `${count} séance${count > 1 ? 's' : ''}`
-      : `${count} session${count > 1 ? 's' : ''}`;
-
-    const items = monthSessions.map((session) => {
-      const date    = new Date(session.date + 'T12:00:00');
-      const dateStr = capitalise(date.toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'short' }));
-
-      const completedIds = session.completed_exercise_ids ?? [];
-      const totalCount   = session.plan?.exercises?.length ?? 0;
-      const mins         = session.duration_actual_s ? Math.round(session.duration_actual_s / 60) : null;
-
-      // Noms des exercices complétés (max 3 + surplus)
-      const names  = completedIds.map((id) => {
-        const info = exerciseMap[id];
-        return info ? (lang === 'fr' ? info.name_fr : info.name_en) : null;
-      }).filter(Boolean);
-      const shown  = names.slice(0, 3);
-      const hidden = names.length - shown.length;
-      const exLine = shown.join(', ') + (hidden > 0 ? ` +${hidden}` : '');
-
-      // RPE coloré selon zone
-      const rpe      = session.rpe;
-      const rpeClass = rpe == null ? '' : rpe <= 4 ? 'rpe-badge-easy' : rpe <= 7 ? 'rpe-badge-target' : 'rpe-badge-hard';
-
-      return `
-        <div class="history-item animate-in">
-          <div class="history-item-header">
-            <div class="history-item-date">${dateStr}</div>
-            <div class="history-item-badges">
-              ${mins != null ? `<span class="session-badge">⏱ ${mins} min</span>` : ''}
-              ${rpe != null ? `<span class="session-badge ${rpeClass}">RPE ${rpe}</span>` : ''}
-            </div>
-          </div>
-          ${exLine ? `<div class="history-item-exercises">${exLine}</div>` : ''}
-          <div class="history-item-footer">${completedIds.length}${totalCount ? `/${totalCount}` : ''} ex.</div>
-        </div>`;
-    }).join('');
-
-    return `
-      <div class="history-month">
-        <div class="history-month-label animate-in">${monthLabel} · ${countLabel}</div>
-        ${items}
-      </div>`;
-  }).join('');
-
-  container.innerHTML = `${summaryHtml}<div class="history-list">${html}</div>`;
+  container.innerHTML = renderCharts(sessions, lang);
 }
 
-function capitalise(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-function renderSummary(sessions, lang) {
-  // Last 8 weeks of session frequency (bar chart)
-  const now     = new Date();
-  const weeks   = Array.from({ length: 8 }, (_, i) => {
+function renderCharts(sessions, lang) {
+  // ── Buckets 8 semaines ──────────────────────────────────────────────────
+  const now   = new Date();
+  const weeks = Array.from({ length: 8 }, (_, i) => {
     const d = new Date(now);
-    d.setDate(d.getDate() - (7 * (7 - i)));
+    d.setDate(d.getDate() - 7 * (7 - i));
     const weekStart = d.toISOString().slice(0, 10);
     const d2 = new Date(d);
     d2.setDate(d2.getDate() + 6);
     const weekEnd = d2.toISOString().slice(0, 10);
-    return { weekStart, weekEnd, count: 0 };
+    return { weekStart, weekEnd, count: 0, rpes: [], mins: [] };
   });
 
   for (const s of sessions) {
     const w = weeks.find((w) => s.date >= w.weekStart && s.date <= w.weekEnd);
-    if (w) w.count++;
+    if (!w) continue;
+    w.count++;
+    if (s.rpe != null) w.rpes.push(s.rpe);
+    if (s.duration_actual_s) w.mins.push(Math.round(s.duration_actual_s / 60));
   }
 
-  const maxCount = Math.max(...weeks.map((w) => w.count), 1);
-
-  const bars = weeks.map((w, i) => {
-    const pct     = Math.round((w.count / maxCount) * 100);
-    const isNow   = i === 7;
-    const label   = isNow ? (lang === 'fr' ? 'Sem.' : 'Wk') : '';
-    return `
-      <div class="history-bar-col" title="${w.count} session${w.count !== 1 ? 's' : ''}">
-        <div class="history-bar-wrap">
-          <div class="history-bar-fill${isNow ? ' history-bar-now' : ''}" style="height:${pct}%"></div>
-        </div>
-        <div class="history-bar-label">${w.count > 0 ? w.count : label}</div>
-      </div>`;
-  }).join('');
-
-  // Stats
+  // ── Stats globales ──────────────────────────────────────────────────────
   const total    = sessions.length;
   const withRpe  = sessions.filter((s) => s.rpe != null);
   const avgRpe   = withRpe.length
@@ -144,9 +66,115 @@ function renderSummary(sessions, lang) {
       </div>` : ''}
     </div>`;
 
+  // ── Histogramme fréquence (7 semaines complètes — exclut la semaine en cours) ──
+  const pastWeeks = weeks.slice(0, 7);
+  const maxCount  = Math.max(...pastWeeks.map((w) => w.count), 1);
+  const freqBars  = pastWeeks.map((w) => {
+    const pct = Math.round((w.count / maxCount) * 100);
+    return `
+      <div class="history-bar-col" title="${w.count} session${w.count !== 1 ? 's' : ''}">
+        <div class="history-bar-wrap">
+          <div class="history-bar-fill" style="height:${pct}%"></div>
+        </div>
+        <div class="history-bar-label">${w.count > 0 ? w.count : ''}</div>
+      </div>`;
+  }).join('');
+
+  const freqHtml = `
+    <div class="history-section-title">${lang === 'fr' ? 'Séances / semaine' : 'Sessions / week'}</div>
+    <div class="history-chart">${freqBars}</div>`;
+
+  // ── Scatter RPE ─────────────────────────────────────────────────────────
+  const rpeHtml = weeks.some((w) => w.rpes.length > 0)
+    ? `<div class="history-section-title">RPE</div>
+       <div class="history-rpe-wrap">${scatterSvg(weeks, {
+          getValues: (w) => w.rpes,
+          yMin: 1, yMax: 10,
+          yTickLabels: [1, 5, 10],
+          dotColor: (v) => v <= 4 ? '#aaa' : v <= 7 ? '#2D6A4F' : '#F4A261',
+          zoneMin: 5, zoneMax: 7,
+        })}</div>`
+    : '';
+
+  // ── Scatter durée ────────────────────────────────────────────────────────
+  const allMins = weeks.flatMap((w) => w.mins);
+  const maxMins = Math.max(...allMins, 1);
+  const durHtml = allMins.length > 0
+    ? `<div class="history-section-title">${lang === 'fr' ? 'Durée / séance (min)' : 'Duration / session (min)'}</div>
+       <div class="history-rpe-wrap">${scatterSvg(weeks, {
+          getValues: (w) => w.mins,
+          yMin: 0, yMax: maxMins,
+          yTickLabels: [0, Math.round(maxMins / 2), maxMins],
+          dotColor: () => '#2D6A4F',
+        })}</div>`
+    : '';
+
   return `
     <div class="history-summary animate-in">
-      <div class="history-chart">${bars}</div>
       ${statsHtml}
+      ${freqHtml}
+      ${rpeHtml}
+      ${durHtml}
     </div>`;
+}
+
+/**
+ * SVG scatter plot réutilisable — scatter + ligne des moyennes hebdo.
+ * @param {Array}  weeks       — buckets semaine
+ * @param {{
+ *   getValues:    (w) => number[],
+ *   yMin:         number,
+ *   yMax:         number,
+ *   yTickLabels:  number[],
+ *   dotColor:     (v: number) => string,
+ *   zoneMin?:     number,
+ *   zoneMax?:     number,
+ * }} cfg
+ */
+function scatterSvg(weeks, cfg) {
+  const { getValues, yMin, yMax, yTickLabels, dotColor, zoneMin, zoneMax } = cfg;
+  const W = 280, H = 120, padY = 8;
+  const chartH = H - padY * 2;
+  const colW   = W / 8;
+
+  const xCenter = (i) => i * colW + colW / 2;
+  const yPos    = (v) => padY + chartH - ((v - yMin) / (yMax - yMin)) * chartH;
+
+  // Zone optionnelle
+  const zoneEl = (zoneMin != null && zoneMax != null)
+    ? `<rect x="0" y="${yPos(zoneMax).toFixed(1)}" width="${W}" height="${(yPos(zoneMin) - yPos(zoneMax)).toFixed(1)}" fill="#A3BFA8" opacity="0.25"/>`
+    : '';
+
+  // Scatter dots
+  const dots = weeks.flatMap((w, i) =>
+    getValues(w).map((v) =>
+      `<circle cx="${xCenter(i).toFixed(1)}" cy="${yPos(v).toFixed(1)}" r="4" fill="${dotColor(v)}" opacity="0.65"/>`
+    )
+  ).join('');
+
+  // Moyenne par semaine + polyline
+  const avgPts = weeks.map((w, i) => {
+    const vals = getValues(w);
+    if (vals.length === 0) return null;
+    const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+    return { x: xCenter(i), y: yPos(avg) };
+  }).filter(Boolean);
+
+  let lineEl = '';
+  if (avgPts.length >= 2) {
+    const pts = avgPts.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+    lineEl = `<polyline points="${pts}" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+  }
+  const avgDots = avgPts.map((p) =>
+    `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="5" fill="#2D6A4F"/>`
+  ).join('');
+
+  // Labels axe Y
+  const yLabels = yTickLabels.map((v) =>
+    `<text x="-3" y="${yPos(v).toFixed(1)}" text-anchor="end" dominant-baseline="middle" font-size="8" fill="#999">${v}</text>`
+  ).join('');
+
+  return `<svg viewBox="-18 0 ${W + 18} ${H}" class="history-rpe-svg" aria-hidden="true">
+    ${zoneEl}${dots}${lineEl}${avgDots}${yLabels}
+  </svg>`;
 }

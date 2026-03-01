@@ -12,7 +12,8 @@
     "contraindications": [],
     "instructions_fr": "Glissez sous une table solide. Saisissez le bord à largeur d'épaules, corps droit des talons aux épaules. Tirez la poitrine vers la table en serrant les omoplates. Descendez lentement. La table doit être stable et capable de supporter votre poids.",
     "instructions_en": "Slide under a sturdy table. Grip the edge shoulder-width, body straight from heels to shoulders. Pull chest toward the table, squeezing shoulder blades. Lower slowly. The table must be stable and able to support your weight.",
-    "progression_to": "chair_assisted_row"
+    "progression_to": "chair_assisted_row",
+    "image_url": "/icons/exercises/incline_row_table.png"
   },
   {
     "id": "incline_row_table_knees",
@@ -27,7 +28,8 @@
     "contraindications": [],
     "instructions_fr": "Même position que le tirage incliné, mais avec les genoux fléchis à 90° et les pieds à plat. Réduit la charge. Idéal pour débuter le mouvement de tirage.",
     "instructions_en": "Same position as the incline row, but with knees bent at 90° and feet flat. Reduces the load. Ideal for learning the pulling movement.",
-    "progression_to": "incline_row_table"
+    "progression_to": "incline_row_table",
+    "image_url": "/icons/exercises/incline_row_table_knees.png"
   },
   {
     "id": "door_row",
@@ -45,7 +47,8 @@
     ],
     "instructions_fr": "Debout face à un poteau ou montant vertical solide (pied de table, colonne, coin de mur épais). Saisissez-le à deux mains à mi-hauteur. Fléchissez légèrement les genoux, inclinez le corps en arrière corps droit. Tirez en ramenant la poitrine vers le poteau en serrant les omoplates.",
     "instructions_en": "Stand facing a solid vertical post (table leg, column, sturdy doorpost). Grip it with both hands at mid-height. Slightly bend knees, lean back keeping body straight. Pull your chest toward the post, squeezing shoulder blades together.",
-    "progression_to": "towel_row"
+    "progression_to": "towel_row",
+    "image_url": "/icons/exercises/door_row.png"
   },
   {
     "id": "chair_assisted_row",
@@ -60,7 +63,8 @@
     "contraindications": [],
     "instructions_fr": "Assis(e) au sol face à une chaise solide, jambes tendues sous la chaise. Saisissez le siège avec les deux mains. Tirez les épaules vers la chaise en soulevant légèrement le buste. Gardez le dos droit. Vérifiez que la chaise ne peut pas glisser.",
     "instructions_en": "Sit on the floor facing a sturdy chair, legs extended under it. Grip the seat with both hands. Pull shoulders toward the chair, slightly lifting your torso. Keep back straight. Ensure the chair cannot slide.",
-    "progression_to": "door_row"
+    "progression_to": "door_row",
+    "image_url": "/icons/exercises/chair_assisted_row.png"
   },
   {
     "id": "band_pull_apart_towel",
@@ -78,7 +82,8 @@
     ],
     "instructions_fr": "Tenez une serviette roulée à deux mains devant vous, bras tendus à hauteur de poitrine. Tirez les extrémités en écartant les bras horizontalement jusqu'au maximum, en serrant les omoplates. Revenez lentement. Excellent pour les rhomboïdes et le milieu du dos.",
     "instructions_en": "Hold a rolled towel with both hands in front, arms extended at chest height. Pull the ends apart horizontally as wide as possible, squeezing shoulder blades together. Return slowly. Excellent for rhomboids and mid-back.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/band_pull_apart_towel.png"
   },
   {
     "id": "prone_cobra",
@@ -93,7 +98,8 @@
     "contraindications": [],
     "instructions_fr": "Allongé(e) face contre terre, bras le long du corps. Serrez les omoplates, levez légèrement la tête et les mains du sol. Tenez la position en respirant normalement.",
     "instructions_en": "Lie face down, arms along your sides. Squeeze shoulder blades, gently lift your head and hands off the floor. Hold and breathe normally.",
-    "progression_to": "reverse_snow_angel"
+    "progression_to": "reverse_snow_angel",
+    "image_url": "/icons/exercises/prone_cobra.png"
   },
   {
     "id": "reverse_snow_angel",
@@ -108,7 +114,8 @@
     "contraindications": [],
     "instructions_fr": "Allongé(e) face contre terre, bras le long du corps, paumes vers le bas. Faites glisser les bras au-dessus de la tête puis revenez. Gardez les bras légèrement décollés du sol tout au long du mouvement.",
     "instructions_en": "Lie face down, arms at your sides, palms facing down. Slide arms up overhead and back down. Keep arms slightly lifted off the floor throughout.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/reverse_snow_angel.png"
   },
   {
     "id": "wall_slide",
@@ -125,7 +132,8 @@
     ],
     "instructions_fr": "Debout, dos et avant-bras appuyés contre un mur. Faites glisser les bras vers le haut en gardant contact avec le mur. Descendez lentement. Gardez le bas du dos plaqué.",
     "instructions_en": "Stand with back and forearms against a wall. Slide arms upward keeping contact with the wall. Lower slowly. Keep lower back flat against the wall.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/wall_slide.png"
   },
   {
     "id": "towel_row",
@@ -141,7 +149,8 @@
     "contraindications": [],
     "instructions_fr": "Passez une serviette fine autour d'un poteau ou montant vertical solide. Saisissez les deux bouts, fléchissez légèrement les genoux et penchez-vous en arrière corps droit. Tirez votre buste vers le poteau en serrant les omoplates. Vérifiez que le poteau est fixe.",
     "instructions_en": "Loop a thin towel around a solid vertical post or column. Grip both ends, bend knees slightly and lean back keeping body straight. Pull your chest toward the post, squeezing shoulder blades. Confirm the post is fixed and immovable.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/towel_row.png"
   },
   {
     "id": "scapular_pushup",
@@ -158,6 +167,7 @@
     ],
     "instructions_fr": "En position de planche sur les mains (bras tendus). Sans plier les coudes, laissez la poitrine s'affaisser entre les omoplates qui se rapprochent, puis poussez le sol pour les écarter. Contrôle de la ceinture scapulaire.",
     "instructions_en": "In a high plank position (arms straight). Without bending elbows, let your chest sink as shoulder blades pinch together, then push the floor to spread them apart. Scapular control work.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/scapular_pushup.png"
   }
 ]

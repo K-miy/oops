@@ -1033,76 +1033,24 @@ body {
   padding-bottom: calc(var(--nav-height) + 16px);
 }
 
-.history-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.history-item {
-  background: var(--color-surface);
-  border-radius: var(--radius-md);
-  padding: 14px 16px;
-  box-shadow: var(--shadow-sm);
-}
-
-.history-item-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
-.history-item-date {
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.history-done-badge {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-success);
-  background: color-mix(in srgb, var(--color-success) 12%, transparent);
-  padding: 2px 8px;
-  border-radius: 100px;
-}
-
-.history-item-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.history-month-label {
-  font-size: 0.75rem;
+.history-section-title {
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-text-muted);
-  padding: 4px 0 8px;
-  border-bottom: 1px solid var(--color-border, #e8ede8);
-  margin-bottom: 8px;
+  margin: 16px 0 8px;
 }
 
-.history-month { margin-bottom: 24px; }
-
-.history-item-badges {
-  display: flex;
-  gap: 6px;
-  align-items: center;
+.history-rpe-wrap {
+  width: 100%;
 }
 
-.history-item-exercises {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  margin: 4px 0 6px;
-  line-height: 1.4;
-}
-
-.history-item-footer {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  margin-top: 2px;
+.history-rpe-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
 }
 
 /* RPE badges colorés */

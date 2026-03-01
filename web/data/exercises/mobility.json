@@ -14,7 +14,8 @@
     ],
     "instructions_fr": "À quatre pattes, alternez l'arrondi du dos (chat) et le creusement (vache) en suivant la respiration. Inspire = vache, expire = chat.",
     "instructions_en": "On all fours, alternate rounding your back (cat) and arching (cow) with your breath. Inhale = cow, exhale = cat.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/cat_cow.png"
   },
   {
     "id": "childs_pose",
@@ -31,7 +32,8 @@
     ],
     "instructions_fr": "À genoux, asseyez-vous sur les talons et tendez les bras devant vous. Respirez profondément, laissez le dos s'allonger.",
     "instructions_en": "Kneel, sit back on heels and extend arms forward. Breathe deeply, let your back lengthen.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/childs_pose.png"
   },
   {
     "id": "hip_flexor_stretch",
@@ -48,7 +50,8 @@
     ],
     "instructions_fr": "Genou arrière au sol, pied avant devant. Poussez légèrement les hanches vers l'avant. Maintenez 30 secondes. Alternez. Essentiel pour ceux qui sont assis toute la journée.",
     "instructions_en": "Rear knee on floor, front foot forward. Gently push hips forward. Hold 30 seconds. Alternate. Essential for desk workers.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/hip_flexor_stretch.png"
   },
   {
     "id": "thoracic_rotation",
@@ -63,7 +66,8 @@
     "contraindications": [],
     "instructions_fr": "À genoux, main derrière la tête. Tournez le coude vers le plafond, suivez avec le regard. Revenez. Excellent contre les douleurs dorsales.",
     "instructions_en": "On knees, hand behind head. Rotate elbow toward ceiling, follow with eyes. Return. Excellent for back pain.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/thoracic_rotation.png"
   },
   {
     "id": "world_greatest_stretch",
@@ -80,7 +84,8 @@
     ],
     "instructions_fr": "En fente avant, pied droit devant. Placez la main droite intérieure. Tournez le bras gauche vers le plafond. Puis posez la main pour une rotation. Alternez les côtés.",
     "instructions_en": "Front lunge, right foot forward. Place right hand inside foot. Rotate left arm to ceiling. Lower hand for rotation. Alternate sides.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/world_greatest_stretch.png"
   },
   {
     "id": "hip_90_90",
@@ -97,7 +102,8 @@
     ],
     "instructions_fr": "Assis(e) au sol, une jambe à 90° devant, l'autre à 90° derrière. Gardez le buste droit. Basculez doucement d'un côté à l'autre. Travail en rotation externe et interne de la hanche.",
     "instructions_en": "Seated, one leg at 90° in front, the other at 90° behind. Keep torso upright. Gently shift between sides. Hip external and internal rotation work.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/hip_90_90.png"
   },
   {
     "id": "ankle_circles",
@@ -112,7 +118,8 @@
     "contraindications": [],
     "instructions_fr": "Assis(e) ou debout, soulevez un pied et dessinez de grands cercles avec le pied, dans les deux sens. Alternez.",
     "instructions_en": "Seated or standing, lift one foot and draw large circles with your foot, both directions. Alternate.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/ankle_circles.png"
   },
   {
     "id": "shoulder_rolls",
@@ -127,7 +134,8 @@
     "contraindications": [],
     "instructions_fr": "Debout ou assis(e), remontez les épaules vers les oreilles, reculez-les, descendez-les, puis avancez-les en grand cercle. Répétez dans les deux sens.",
     "instructions_en": "Standing or seated, raise shoulders to ears, roll back, down, and forward in a big circle. Repeat both ways.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/shoulder_rolls.png"
   },
   {
     "id": "pigeon_pose",
@@ -144,7 +152,8 @@
     ],
     "instructions_fr": "Depuis une position de planche, amenez le genou droit entre vos mains, jambe gauche tendue derrière. Penchez-vous doucement vers l'avant. Excellent pour les fessiers. Alternez.",
     "instructions_en": "From plank, bring right knee between hands, left leg extended behind. Gently lean forward. Excellent for glutes. Alternate.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/pigeon_pose.png"
   },
   {
     "id": "inchworm",
@@ -162,7 +171,8 @@
     ],
     "instructions_fr": "Debout, inclinez-vous pour toucher le sol. Marchez sur les mains jusqu'à la planche. Revenez en marchant des mains vers les pieds. Déroulez-vous. Excellent échauffement global.",
     "instructions_en": "Standing, fold forward to touch the floor. Walk hands out to plank. Walk hands back to feet. Roll up. Excellent full-body warm-up.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/inchworm.png"
   },
   {
     "id": "thread_needle",
@@ -179,7 +189,8 @@
     ],
     "instructions_fr": "À quatre pattes. Glissez un bras sous votre corps vers l'autre côté, épaule et joue posées au sol. Tenez et respirez profondément. Alternez les côtés.",
     "instructions_en": "On all fours. Thread one arm under your body toward the other side, shoulder and cheek resting on the floor. Hold and breathe deeply. Alternate sides.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/thread_needle.png"
   },
   {
     "id": "lizard_pose",
@@ -194,7 +205,8 @@
     "contraindications": [],
     "instructions_fr": "Depuis une fente basse, placez le pied avant à l'extérieur de la main du même côté. Restez sur les mains ou descendez sur les avant-bras. Relâchez la hanche de la jambe arrière. Alternez.",
     "instructions_en": "From a low lunge, place your front foot outside your same-side hand. Stay on hands or lower to forearms. Let the rear hip relax and open. Alternate sides.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/lizard_pose.png"
   },
   {
     "id": "couch_stretch",
@@ -211,6 +223,7 @@
     ],
     "instructions_fr": "Mettez un genou contre la base d'un canapé ou d'un mur, pied replié contre le dossier. L'autre pied au sol en avant. Tenez-vous droit. Sentez l'étirement à l'avant de la cuisse. Alternez.",
     "instructions_en": "Place one knee against the base of a couch or wall, foot folded back against it. Other foot flat on the floor in front. Stand tall. Feel the stretch across the front of the hip and thigh. Alternate sides.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/couch_stretch.png"
   }
 ]

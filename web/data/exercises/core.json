@@ -14,7 +14,8 @@
     ],
     "instructions_fr": "À genoux, appuyez-vous sur les avant-bras. Corps aligné des genoux aux épaules, ventre rentré. Respirez normalement.",
     "instructions_en": "On knees, forearms on the floor. Body aligned from knees to shoulders, core braced. Breathe normally.",
-    "progression_to": "plank"
+    "progression_to": "plank",
+    "image_url": "/icons/exercises/plank_knee.png"
   },
   {
     "id": "plank",
@@ -29,7 +30,8 @@
     "contraindications": [],
     "instructions_fr": "Sur les avant-bras, corps droit des talons aux épaules. Contractez le ventre, les fessiers et les cuisses. Ne laissez pas les hanches s'affaisser.",
     "instructions_en": "On forearms, straight body from heels to shoulders. Brace core, glutes, and thighs. Don't let hips sag.",
-    "progression_to": "bear_hold"
+    "progression_to": "bear_hold",
+    "image_url": "/icons/exercises/plank.png"
   },
   {
     "id": "side_plank",
@@ -46,7 +48,8 @@
     ],
     "instructions_fr": "Sur un avant-bras, corps en ligne latérale. Soulevez les hanches, ne les laissez pas tomber. Alternez les côtés.",
     "instructions_en": "On one forearm, body in a lateral line. Lift hips, don't let them drop. Alternate sides.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/side_plank.png"
   },
   {
     "id": "dead_bug",
@@ -61,7 +64,8 @@
     "contraindications": [],
     "instructions_fr": "Allongé(e) sur le dos, bras vers le plafond, jambes à 90°. Abaissez simultanément le bras droit et la jambe gauche en gardant le dos collé au sol. Alternez.",
     "instructions_en": "Lie on back, arms to ceiling, legs at 90°. Lower right arm and left leg simultaneously keeping lower back flat. Alternate.",
-    "progression_to": "plank_shoulder_tap"
+    "progression_to": "plank_shoulder_tap",
+    "image_url": "/icons/exercises/dead_bug.png"
   },
   {
     "id": "bird_dog",
@@ -78,7 +82,8 @@
     ],
     "instructions_fr": "À quatre pattes, dos plat. Tendez simultanément le bras droit et la jambe gauche. Maintenez 3 secondes. Alternez. Excellent pour le bas du dos.",
     "instructions_en": "On all fours, flat back. Extend right arm and left leg simultaneously. Hold 3 seconds. Alternate. Excellent for lower back.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/bird_dog.png"
   },
   {
     "id": "hollow_hold",
@@ -96,7 +101,8 @@
     ],
     "instructions_fr": "Allongé(e), bras tendus au-dessus de la tête, jambes tendues légèrement soulevées. Creusez le ventre. Tout le bas du dos doit rester au sol.",
     "instructions_en": "Lying down, arms extended overhead, legs slightly raised. Hollow your belly. Lower back must stay on floor.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/hollow_hold.png"
   },
   {
     "id": "mountain_climber",
@@ -114,7 +120,8 @@
     ],
     "instructions_fr": "En position de planche sur les mains, ramenez alternativement les genoux vers la poitrine. Gardez les hanches basses.",
     "instructions_en": "In high plank, alternate driving knees toward your chest. Keep hips low.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/mountain_climber.png"
   },
   {
     "id": "kegel",
@@ -129,7 +136,8 @@
     "contraindications": [],
     "instructions_fr": "Allongé(e) ou assis(e), contractez les muscles du plancher pelvien (comme si vous reteniez une envie d'uriner). Maintenez 5 secondes, relâchez 5 secondes. Répétez 10 fois. Ne bloquez pas la respiration.",
     "instructions_en": "Lying or sitting, contract your pelvic floor muscles (as if stopping urine flow). Hold 5 seconds, release 5 seconds. Repeat 10 times. Don't hold your breath.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/kegel.png"
   },
   {
     "id": "pelvic_tilt",
@@ -144,7 +152,8 @@
     "contraindications": [],
     "instructions_fr": "Allongé(e) sur le dos, genoux fléchis. Appuyez le bas du dos contre le sol en contractant les abdominaux bas. Maintenez 5 secondes. Idéal pour activer le core profond.",
     "instructions_en": "Lie on back, knees bent. Press lower back into the floor by engaging lower abs. Hold 5 seconds. Great deep core activation.",
-    "progression_to": "toe_tap_supine"
+    "progression_to": "toe_tap_supine",
+    "image_url": "/icons/exercises/pelvic_tilt.png"
   },
   {
     "id": "side_plank_knee",
@@ -159,7 +168,8 @@
     "contraindications": [],
     "instructions_fr": "Sur un avant-bras et les genoux, corps en ligne droite des genoux à l'épaule. Levez les hanches. Tenez sans laisser les hanches tomber. Alternez les côtés.",
     "instructions_en": "On one forearm and knees, body in a straight line from knees to shoulder. Lift hips. Hold without letting hips drop. Alternate sides.",
-    "progression_to": "side_plank"
+    "progression_to": "side_plank",
+    "image_url": "/icons/exercises/side_plank_knee.png"
   },
   {
     "id": "heel_slide",
@@ -174,7 +184,8 @@
     "contraindications": [],
     "instructions_fr": "Allongé(e) sur le dos, genoux fléchis. Aplatissez le bas du dos sur le sol et maintenez cette pression. Faites glisser un talon pour tendre la jambe lentement, puis revenez. Alternez.",
     "instructions_en": "Lie on your back, knees bent. Press your lower back into the floor and maintain that pressure. Slide one heel to extend the leg slowly, then return. Alternate.",
-    "progression_to": "dead_bug"
+    "progression_to": "dead_bug",
+    "image_url": "/icons/exercises/heel_slide.png"
   },
   {
     "id": "toe_tap_supine",
@@ -189,7 +200,8 @@
     "contraindications": [],
     "instructions_fr": "Allongé(e) sur le dos, jambes à 90° (cuisses verticales, tibias horizontaux). Descendez lentement un pied pour effleurer le sol, remontez. Alternez. Bas du dos collé au sol.",
     "instructions_en": "Lie on back, legs at 90° (thighs vertical, shins horizontal). Slowly lower one foot to tap the floor, return. Alternate. Keep lower back pressed into the floor.",
-    "progression_to": "heel_slide"
+    "progression_to": "heel_slide",
+    "image_url": "/icons/exercises/toe_tap_supine.png"
   },
   {
     "id": "bear_hold",
@@ -206,7 +218,8 @@
     ],
     "instructions_fr": "À quatre pattes, mains sous les épaules, genoux sous les hanches. Soulevez les genoux à 3 cm du sol. Tenez en respirant normalement. Dos plat, ventre rentré.",
     "instructions_en": "On all fours, hands under shoulders, knees under hips. Lift knees 1 inch off the floor. Hold and breathe normally. Flat back, core braced.",
-    "progression_to": "mountain_climber"
+    "progression_to": "mountain_climber",
+    "image_url": "/icons/exercises/bear_hold.png"
   },
   {
     "id": "plank_shoulder_tap",
@@ -223,6 +236,7 @@
     ],
     "instructions_fr": "En position de planche sur les mains. Soulevez une main pour toucher l'épaule opposée. Posez, alternez. Gardez les hanches stables et évitez de pivoter.",
     "instructions_en": "In a high plank position. Lift one hand to tap the opposite shoulder. Replace, alternate. Keep hips level and resist rotating.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/plank_shoulder_tap.png"
   }
 ]

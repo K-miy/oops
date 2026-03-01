@@ -14,7 +14,8 @@
     ],
     "instructions_fr": "Pieds à largeur d'épaules, orteils légèrement tournés vers l'extérieur. Descendez comme pour vous asseoir sur une chaise, genoux dans l'axe des orteils. Remontez en poussant dans le sol.",
     "instructions_en": "Feet shoulder-width apart, toes slightly out. Descend as if sitting on a chair, knees tracking over toes. Drive through the floor to stand.",
-    "progression_to": "lunge_reverse"
+    "progression_to": "lunge_reverse",
+    "image_url": "/icons/exercises/squat_bodyweight.png"
   },
   {
     "id": "squat_sumo",
@@ -29,7 +30,8 @@
     "contraindications": [],
     "instructions_fr": "Écart de pieds large, orteils à 45°. Descendez en gardant le dos droit. Bonne sollicitation des adducteurs et fessiers.",
     "instructions_en": "Wide stance, toes at 45°. Descend with a straight back. Great for inner thighs and glutes.",
-    "progression_to": "squat_tempo"
+    "progression_to": "squat_tempo",
+    "image_url": "/icons/exercises/squat_sumo.png"
   },
   {
     "id": "squat_pulse",
@@ -46,7 +48,8 @@
     ],
     "instructions_fr": "Descendez en position squat à mi-hauteur. Faites de petits mouvements de montée/descente de 5 cm. Brûlure garantie.",
     "instructions_en": "Lower to a half-squat position. Perform small up/down pulses of 5cm. Guaranteed burn.",
-    "progression_to": "squat_jump"
+    "progression_to": "squat_jump",
+    "image_url": "/icons/exercises/squat_pulse.png"
   },
   {
     "id": "lunge_forward",
@@ -63,7 +66,8 @@
     ],
     "instructions_fr": "Pas large vers l'avant, genou arrière proche du sol. Revenez en position initiale. Alternez les jambes.",
     "instructions_en": "Step forward, lower rear knee near the floor. Return to start. Alternate legs.",
-    "progression_to": "curtsy_lunge"
+    "progression_to": "curtsy_lunge",
+    "image_url": "/icons/exercises/lunge_forward.png"
   },
   {
     "id": "lunge_reverse",
@@ -80,7 +84,8 @@
     ],
     "instructions_fr": "Reculez un pied, abaissez le genou arrière vers le sol. Plus stable que la fente avant, idéale pour débuter.",
     "instructions_en": "Step back, lower the rear knee toward the floor. More stable than forward lunge, great for beginners.",
-    "progression_to": "lunge_forward"
+    "progression_to": "lunge_forward",
+    "image_url": "/icons/exercises/lunge_reverse.png"
   },
   {
     "id": "lunge_lateral",
@@ -97,7 +102,8 @@
     ],
     "instructions_fr": "Pas latéral large, fléchissez le genou de la jambe active, l'autre reste tendue. Alternez côtés.",
     "instructions_en": "Wide lateral step, bend the active knee while keeping the other leg straight. Alternate sides.",
-    "progression_to": "step_up"
+    "progression_to": "step_up",
+    "image_url": "/icons/exercises/lunge_lateral.png"
   },
   {
     "id": "split_squat",
@@ -114,7 +120,8 @@
     ],
     "instructions_fr": "Pied arrière posé sur une surface élevée (canapé). Descendez le genou avant vers le sol. Très efficace pour les fessiers.",
     "instructions_en": "Rear foot on an elevated surface (couch). Lower front knee toward the floor. Highly effective for glutes.",
-    "progression_to": "pistol_squat_assisted"
+    "progression_to": "pistol_squat_assisted",
+    "image_url": "/icons/exercises/split_squat.png"
   },
   {
     "id": "squat_jump",
@@ -132,7 +139,8 @@
     ],
     "instructions_fr": "Squat standard puis explosez vers le haut. Réception souple sur les orteils. Cardio intense.",
     "instructions_en": "Standard squat then explode upward. Land softly on your toes. High cardio output.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/squat_jump.png"
   },
   {
     "id": "wall_sit",
@@ -149,7 +157,8 @@
     ],
     "instructions_fr": "Dos contre le mur, fléchissez les genoux à 90° comme assis(e) sur une chaise. Cuisses parallèles au sol. Tenez la position en respirant normalement.",
     "instructions_en": "Back against the wall, bend knees to 90° as if sitting on a chair. Thighs parallel to the floor. Hold the position and breathe normally.",
-    "progression_to": "squat_bodyweight"
+    "progression_to": "squat_bodyweight",
+    "image_url": "/icons/exercises/wall_sit.png"
   },
   {
     "id": "step_up",
@@ -166,7 +175,8 @@
     ],
     "instructions_fr": "Face à une marche ou une chaise solide. Montez un pied, poussez avec ce talon pour lever le corps. Descendez sous contrôle. Alternez les jambes.",
     "instructions_en": "Face a stair or sturdy chair. Step one foot up, drive through that heel to lift your body. Lower with control. Alternate legs.",
-    "progression_to": "split_squat"
+    "progression_to": "split_squat",
+    "image_url": "/icons/exercises/step_up.png"
   },
   {
     "id": "curtsy_lunge",
@@ -183,7 +193,8 @@
     ],
     "instructions_fr": "Debout, croisez la jambe droite derrière la jambe gauche (position de révérence). Fléchissez les deux genoux pour descendre. Remontez et alternez.",
     "instructions_en": "Standing, cross your right leg behind your left (curtsy position). Bend both knees to lower. Drive back up and alternate sides.",
-    "progression_to": "lunge_lateral"
+    "progression_to": "lunge_lateral",
+    "image_url": "/icons/exercises/curtsy_lunge.png"
   },
   {
     "id": "squat_tempo",
@@ -200,7 +211,8 @@
     ],
     "instructions_fr": "Squat classique avec descente en 3 secondes, pause d'1 seconde en bas, remontée explosive. Contrôle total de la phase descendante.",
     "instructions_en": "Standard squat with a 3-second lowering phase, 1-second pause at the bottom, then explosive drive up. Total control on the way down.",
-    "progression_to": "squat_pulse"
+    "progression_to": "squat_pulse",
+    "image_url": "/icons/exercises/squat_tempo.png"
   },
   {
     "id": "pistol_squat_assisted",
@@ -217,6 +229,7 @@
     ],
     "instructions_fr": "Tenez-vous à une porte ou un mur. Sur un seul pied, tendez l'autre jambe devant vous. Descendez le plus bas possible. Remontez en vous aidant légèrement si nécessaire.",
     "instructions_en": "Hold a door or wall for support. On one leg, extend the other leg forward. Lower as deep as possible. Drive back up, using slight support if needed.",
-    "progression_to": null
+    "progression_to": null,
+    "image_url": "/icons/exercises/pistol_squat_assisted.png"
   }
 ]

@@ -17,7 +17,7 @@ import { t, tRandom } from '../i18n.js';
  *   onOpenSettings: () => void,
  * }} opts
  */
-export function renderHome(container, { profile, plan, todaySession, streak, lang, exercises, weekPreview, progressionSuggestions, isDeload, onStartSession, onLevelUp }) {
+export function renderHome(container, { plan, todaySession, streak, lang, exercises, weekPreview, isDeload, onStartSession }) {
   const exerciseMap = Object.fromEntries(exercises.map((e) => [e.id, e]));
   const alreadyDone = !!todaySession;
   const today = new Date();
@@ -86,13 +86,10 @@ export function renderHome(container, { profile, plan, todaySession, streak, lan
       </div>
     </div>
 
-    ${progressionSuggestions?.length ? renderProgressionSuggestions(progressionSuggestions, lang, profile?.fitness_level === 'beginner') : ''}
-
     ${weekPreview?.length ? renderWeekPreview(weekPreview, lang) : ''}
   `;
 
   container.querySelector('#start-session-btn')?.addEventListener('click', onStartSession);
-  container.querySelector('#levelup-btn')?.addEventListener('click', () => { if (onLevelUp) onLevelUp(); });
 
   // Détails exercices dans l'aperçu semaine
   container.querySelectorAll('.day-card[data-day-idx]').forEach((card) => {
@@ -194,23 +191,3 @@ function estimateDuration(ex) {
   return totalWork + totalRest;
 }
 
-function renderProgressionSuggestions(suggestions, lang, showLevelUp) {
-  const items = suggestions.slice(0, 2).map(({ from, to }) => {
-    const fromName = lang === 'fr' ? from.name_fr : from.name_en;
-    const toName   = lang === 'fr' ? to.name_fr   : to.name_en;
-    return `
-      <div class="progression-item animate-in">
-        <span class="progression-from">${fromName}</span>
-        <span class="progression-arrow">→</span>
-        <span class="progression-to">${toName}</span>
-      </div>`;
-  }).join('');
-
-  return `
-    <div class="progression-card animate-in">
-      <div class="progression-card-title">${t('home.progression_title')}</div>
-      <div class="progression-card-desc">${t('home.progression_desc')}</div>
-      ${items}
-      ${showLevelUp ? `<button class="btn btn-outline" id="levelup-btn" style="margin-top:12px;width:100%">${t('home.level_up_btn')}</button>` : ''}
-    </div>`;
-}

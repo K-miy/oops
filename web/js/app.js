@@ -11,7 +11,7 @@
 import init, { build_session } from 'oops';
 import { initI18n, t, getLang } from './i18n.js';
 import { isWorkoutDay } from './schedule.js';
-import { getProfile, saveProfile, getSetting, setSetting, resetAll, saveSession, saveExerciseLog, getTodaySession, getCurrentStreak, getRecentSessions, getExerciseRpeStats } from './db.js';
+import { getProfile, saveProfile, getSetting, setSetting, resetAll, saveSession, getTodaySession, getCurrentStreak, getRecentSessions } from './db.js';
 import { renderDisclaimer } from './ui/disclaimer.js';
 import { renderOnboarding } from './ui/onboarding.js';
 import { renderHome } from './ui/home.js';
@@ -139,6 +139,28 @@ function applyDeload(plan) {
   };
 }
 
+/**
+ * Avance chaque exercice du plan vers sa progression si l'exercice est maîtrisé.
+ * Parcourt la chaîne progression_to récursivement.
+ */
+function applyProgressions(plan, profile) {
+  if (!plan) return plan;
+  const mastered = new Set(profile.mastered_exercises ?? []);
+  if (mastered.size === 0) return plan;
+
+  const exerciseMap = Object.fromEntries(state.exercises.map((e) => [e.id, e]));
+  return {
+    ...plan,
+    exercises: plan.exercises.map((ex) => {
+      let id = ex.exercise_id;
+      while (exerciseMap[id]?.progression_to && mastered.has(id)) {
+        id = exerciseMap[id].progression_to;
+      }
+      return id === ex.exercise_id ? ex : { ...ex, exercise_id: id };
+    }),
+  };
+}
+
 // ────────────────────────────────────────────────
 // Génération de séances (aujourd'hui + aperçu semaine)
 // ────────────────────────────────────────────────
@@ -246,23 +268,10 @@ async function route() {
 
 async function routeToHome() {
   const today = new Date().toISOString().slice(0, 10);
-  const [todaySession, streak, rpeStats] = await Promise.all([
+  const [todaySession, streak] = await Promise.all([
     getTodaySession(today),
     getCurrentStreak(),
-    getExerciseRpeStats(),
   ]);
-
-  // Exercices maîtrisés (avg RPE ≤ 5 sur ≥ 2 séances) avec une progression disponible
-  const progressionSuggestions = state.exercises
-    .filter((ex) => {
-      const stat = rpeStats[ex.id];
-      return ex.progression_to && stat && stat.count >= 2 && stat.avg_rpe <= 5;
-    })
-    .map((ex) => ({
-      from: ex,
-      to: state.exercises.find((e) => e.id === ex.progression_to),
-    }))
-    .filter((s) => s.to != null);
 
   const filteredExercises = getFilteredExercises(state.exercises, state.profile);
   const weekPreview = generateWeekPreview(state.profile, filteredExercises);
@@ -271,13 +280,15 @@ async function routeToHome() {
   const deload = isDeloadWeek(state.profile);
 
   if (todayEntry.isWorkout) {
-    // Réutilise le plan déjà calculé dans weekPreview[0] si pas de séance sauvegardée
-    // Applique le déload uniquement pour les nouvelles séances (pas l'historique)
-    state.currentPlan = todaySession
-      ? todaySession.plan
-      : (deload ? applyDeload(todayEntry.plan) : todayEntry.plan);
+    if (todaySession) {
+      state.currentPlan = todaySession.plan;
+    } else {
+      let plan = applyProgressions(todayEntry.plan, state.profile);
+      if (deload) plan = applyDeload(plan);
+      state.currentPlan = plan;
+    }
   } else {
-    state.currentPlan = null; // jour de repos
+    state.currentPlan = null;
   }
 
   renderHome(document.getElementById('home-main'), {
@@ -289,14 +300,8 @@ async function routeToHome() {
     lang: getLang(),
     exercises: state.exercises,
     weekPreview,
-    progressionSuggestions,
     onStartSession: () => startSession(),
     onOpenSettings: () => openSettings(),
-    onLevelUp: async () => {
-      state.profile = { ...state.profile, fitness_level: 'intermediate' };
-      await saveProfile(state.profile);
-      await routeToHome();
-    },
   });
 
   showScreen('home');
@@ -306,7 +311,6 @@ async function routeToHistory() {
   const sessions = await getRecentSessions(50);
   renderHistory(document.getElementById('history-main'), {
     sessions,
-    exercises: state.exercises,
     lang: getLang(),
   });
   showScreen('history');
@@ -320,20 +324,20 @@ function startSession() {
     lang: getLang(),
     onComplete: async (result) => {
       const today = new Date().toISOString().slice(0, 10);
-      const sessionId = await saveSession({
+      await saveSession({
         date: today,
         plan: state.currentPlan,
         ...result,
       });
-      // Enregistre un log RPE par exercice complété (approximation : RPE global de séance)
-      const rpe = result.rpe ?? null;
-      if (rpe != null && result.completed_exercise_ids?.length) {
-        await Promise.all(
-          result.completed_exercise_ids.map((exercise_id) =>
-            saveExerciseLog({ session_id: sessionId, exercise_id, rpe })
-          )
-        );
+
+      // Séance facile → marque les exercices comme maîtrisés
+      if (result.rpe != null && result.rpe <= 5 && result.completed_exercise_ids?.length) {
+        const mastered = new Set(state.profile.mastered_exercises ?? []);
+        for (const id of result.completed_exercise_ids) mastered.add(id);
+        state.profile = { ...state.profile, mastered_exercises: [...mastered] };
+        await saveProfile(state.profile);
       }
+
       await routeToHome();
       showScreen('home');
     },
