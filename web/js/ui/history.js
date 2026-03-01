@@ -16,6 +16,7 @@ export function renderHistory(container, { sessions, exercises, lang }) {
 
   const exerciseMap = Object.fromEntries(exercises.map((e) => [e.id, e]));
   const locale = lang === 'fr' ? 'fr-FR' : 'en-GB';
+  const summaryHtml = renderSummary(sessions, lang);
 
   // Grouper par mois (YYYY-MM)
   const byMonth = new Map();
@@ -75,9 +76,77 @@ export function renderHistory(container, { sessions, exercises, lang }) {
       </div>`;
   }).join('');
 
-  container.innerHTML = `<div class="history-list">${html}</div>`;
+  container.innerHTML = `${summaryHtml}<div class="history-list">${html}</div>`;
 }
 
 function capitalise(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function renderSummary(sessions, lang) {
+  // Last 8 weeks of session frequency (bar chart)
+  const now     = new Date();
+  const weeks   = Array.from({ length: 8 }, (_, i) => {
+    const d = new Date(now);
+    d.setDate(d.getDate() - (7 * (7 - i)));
+    const weekStart = d.toISOString().slice(0, 10);
+    const d2 = new Date(d);
+    d2.setDate(d2.getDate() + 6);
+    const weekEnd = d2.toISOString().slice(0, 10);
+    return { weekStart, weekEnd, count: 0 };
+  });
+
+  for (const s of sessions) {
+    const w = weeks.find((w) => s.date >= w.weekStart && s.date <= w.weekEnd);
+    if (w) w.count++;
+  }
+
+  const maxCount = Math.max(...weeks.map((w) => w.count), 1);
+
+  const bars = weeks.map((w, i) => {
+    const pct     = Math.round((w.count / maxCount) * 100);
+    const isNow   = i === 7;
+    const label   = isNow ? (lang === 'fr' ? 'Sem.' : 'Wk') : '';
+    return `
+      <div class="history-bar-col" title="${w.count} session${w.count !== 1 ? 's' : ''}">
+        <div class="history-bar-wrap">
+          <div class="history-bar-fill${isNow ? ' history-bar-now' : ''}" style="height:${pct}%"></div>
+        </div>
+        <div class="history-bar-label">${w.count > 0 ? w.count : label}</div>
+      </div>`;
+  }).join('');
+
+  // Stats
+  const total    = sessions.length;
+  const withRpe  = sessions.filter((s) => s.rpe != null);
+  const avgRpe   = withRpe.length
+    ? (withRpe.reduce((sum, s) => sum + s.rpe, 0) / withRpe.length).toFixed(1)
+    : null;
+  const totalMin = Math.round(
+    sessions.reduce((sum, s) => sum + (s.duration_actual_s ?? 0), 0) / 60
+  );
+
+  const statsHtml = `
+    <div class="history-stats">
+      <div class="history-stat">
+        <div class="history-stat-value">${total}</div>
+        <div class="history-stat-label">${lang === 'fr' ? 'séances' : 'sessions'}</div>
+      </div>
+      ${avgRpe != null ? `
+      <div class="history-stat">
+        <div class="history-stat-value">${avgRpe}</div>
+        <div class="history-stat-label">RPE ${lang === 'fr' ? 'moyen' : 'avg'}</div>
+      </div>` : ''}
+      ${totalMin > 0 ? `
+      <div class="history-stat">
+        <div class="history-stat-value">${totalMin}</div>
+        <div class="history-stat-label">min ${lang === 'fr' ? 'total' : 'total'}</div>
+      </div>` : ''}
+    </div>`;
+
+  return `
+    <div class="history-summary animate-in">
+      <div class="history-chart">${bars}</div>
+      ${statsHtml}
+    </div>`;
 }

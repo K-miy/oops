@@ -110,6 +110,9 @@
     ],
     "progression_title": "Ready to level up?",
     "progression_desc": "Your recent sessions suggest you're ready for the next step:",
+    "level_up_btn": "Switch to intermediate program",
+    "deload_badge": "Deload",
+    "deload_desc": "Reduced volume this week — your body recovers and gets stronger.",
     "streak": "Current streak",
     "streak_day": "consecutive day",
     "streak_days": "consecutive days",
@@ -155,6 +158,10 @@
     "reset_confirm": "All your data will be permanently deleted. Continue?",
     "privacy_note": "100% local, zero data sent.",
     "export": "Export my data",
+    "import": "Import a backup",
+    "import_loading": "Importing…",
+    "import_success": "Data imported. Reloading…",
+    "import_error": "Invalid or corrupted file.",
     "install_prompt": "Install OOPS on your home screen?"
   },
   "nav": {

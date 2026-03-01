@@ -17,7 +17,7 @@ import { t, tRandom } from '../i18n.js';
  *   onOpenSettings: () => void,
  * }} opts
  */
-export function renderHome(container, { profile, plan, todaySession, streak, lang, exercises, weekPreview, progressionSuggestions, onStartSession }) {
+export function renderHome(container, { profile, plan, todaySession, streak, lang, exercises, weekPreview, progressionSuggestions, isDeload, onStartSession, onLevelUp }) {
   const exerciseMap = Object.fromEntries(exercises.map((e) => [e.id, e]));
   const alreadyDone = !!todaySession;
   const today = new Date();
@@ -54,7 +54,9 @@ export function renderHome(container, { profile, plan, todaySession, streak, lan
         <span class="session-badge">⏱ ${totalMins} min</span>
         <span class="session-badge">🏋 ${plan.exercises.length} exercices</span>
         ${alreadyDone ? `<span class="session-badge" style="background:var(--color-success-soft);color:#1A1A1A">✓ ${t('home.done')}</span>` : ''}
+        ${isDeload ? `<span class="session-badge session-badge-deload">🔋 ${t('home.deload_badge')}</span>` : ''}
       </div>
+      ${isDeload ? `<div class="deload-hint animate-in">${t('home.deload_desc')}</div>` : ''}
       ${alreadyDone ? `
         <div class="post-session-message animate-in">${tRandom('home.post_session_messages')}</div>
       ` : ''}
@@ -84,12 +86,13 @@ export function renderHome(container, { profile, plan, todaySession, streak, lan
       </div>
     </div>
 
-    ${progressionSuggestions?.length ? renderProgressionSuggestions(progressionSuggestions, lang) : ''}
+    ${progressionSuggestions?.length ? renderProgressionSuggestions(progressionSuggestions, lang, profile?.fitness_level === 'beginner') : ''}
 
     ${weekPreview?.length ? renderWeekPreview(weekPreview, lang) : ''}
   `;
 
   container.querySelector('#start-session-btn')?.addEventListener('click', onStartSession);
+  container.querySelector('#levelup-btn')?.addEventListener('click', () => { if (onLevelUp) onLevelUp(); });
 
   // Détails exercices dans l'aperçu semaine
   container.querySelectorAll('.day-card[data-day-idx]').forEach((card) => {
@@ -191,7 +194,7 @@ function estimateDuration(ex) {
   return totalWork + totalRest;
 }
 
-function renderProgressionSuggestions(suggestions, lang) {
+function renderProgressionSuggestions(suggestions, lang, showLevelUp) {
   const items = suggestions.slice(0, 2).map(({ from, to }) => {
     const fromName = lang === 'fr' ? from.name_fr : from.name_en;
     const toName   = lang === 'fr' ? to.name_fr   : to.name_en;
@@ -208,5 +211,6 @@ function renderProgressionSuggestions(suggestions, lang) {
       <div class="progression-card-title">${t('home.progression_title')}</div>
       <div class="progression-card-desc">${t('home.progression_desc')}</div>
       ${items}
+      ${showLevelUp ? `<button class="btn btn-outline" id="levelup-btn" style="margin-top:12px;width:100%">${t('home.level_up_btn')}</button>` : ''}
     </div>`;
 }

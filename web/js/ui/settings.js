@@ -2,7 +2,7 @@
  * settings.js — Écran des paramètres
  */
 import { t, initI18n, getLang } from '../i18n.js';
-import { getSetting, setSetting, resetAll, exportData } from '../db.js';
+import { getSetting, setSetting, resetAll, exportData, importData } from '../db.js';
 import { applyFontScale } from './disclaimer.js';
 import { APP_VERSION } from '../version.js';
 
@@ -53,7 +53,7 @@ export function renderSettings(container, { profile, onLangChange, onReset, onEd
       </a>
     </div>
 
-    <!-- ── Export ── -->
+    <!-- ── Export / Import ── -->
     <div class="settings-section">
       <div class="settings-row" id="settings-export-row">
         <span class="settings-row-label" style="display:flex;align-items:center;gap:10px">
@@ -62,6 +62,15 @@ export function renderSettings(container, { profile, onLangChange, onReset, onEd
         </span>
         <span class="settings-row-value">›</span>
       </div>
+      <div class="settings-row" id="settings-import-row">
+        <span class="settings-row-label" style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:1.1rem">📂</span>
+          <span>${t('settings.import')}</span>
+        </span>
+        <span class="settings-row-value">›</span>
+      </div>
+      <input type="file" id="settings-import-file" accept=".json" style="display:none">
+      <div id="settings-import-status" style="font-size:.8rem;padding:4px 16px 8px;display:none"></div>
     </div>
 
     <!-- ── Taille du texte ── -->
@@ -122,6 +131,31 @@ export function renderSettings(container, { profile, onLangChange, onReset, onEd
     a.download = `oops-backup-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
+  });
+
+  // ── Import ──
+  container.querySelector('#settings-import-row').addEventListener('click', () => {
+    container.querySelector('#settings-import-file').click();
+  });
+  container.querySelector('#settings-import-file').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const $status = container.querySelector('#settings-import-status');
+    $status.style.display = 'block';
+    $status.style.color   = 'var(--color-text-muted)';
+    $status.textContent   = t('settings.import_loading');
+    try {
+      const text = await file.text();
+      const data = JSON.parse(text);
+      await importData(data);
+      $status.style.color = 'var(--color-success)';
+      $status.textContent = t('settings.import_success');
+      setTimeout(() => window.location.reload(), 1200);
+    } catch (err) {
+      $status.style.color = 'var(--color-error)';
+      $status.textContent = t('settings.import_error');
+    }
+    e.target.value = '';
   });
 
   // ── Taille du texte ──

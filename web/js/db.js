@@ -161,16 +161,40 @@ export async function resetAll() {
 
 /** Exporte toutes les données en un objet JSON sérialisable. */
 export async function exportData() {
-  const [profile, sessions] = await Promise.all([
+  const [profile, sessions, exercise_logs] = await Promise.all([
     getProfile(),
     db.sessions.orderBy('date').toArray(),
+    db.exercise_logs.toArray(),
   ]);
   return {
-    exported_at:  new Date().toISOString(),
-    app_version:  APP_VERSION,
+    exported_at:   new Date().toISOString(),
+    app_version:   APP_VERSION,
     profile,
     sessions,
+    exercise_logs,
   };
+}
+
+/**
+ * Importe une sauvegarde JSON (produite par exportData).
+ * Réinitialise toutes les données avant l'import.
+ */
+export async function importData(data) {
+  if (!data || typeof data !== 'object') throw new Error('Format invalide');
+  await resetAll();
+  if (data.profile)  await saveProfile({ ...data.profile, id: 1 });
+  if (Array.isArray(data.sessions)) {
+    for (const session of data.sessions) {
+      const { id, ...rest } = session;
+      await db.sessions.add(rest);
+    }
+  }
+  if (Array.isArray(data.exercise_logs)) {
+    for (const log of data.exercise_logs) {
+      const { id, ...rest } = log;
+      await db.exercise_logs.add(rest);
+    }
+  }
 }
 
 export default db;

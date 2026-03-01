@@ -167,9 +167,10 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
         ${instructions ? `<p class="session-ex-instructions">${instructions}</p>` : ''}
       </div>`;
 
+    const hasAlt = !!findAlternative(ex);
     $footer.innerHTML = `
       <button class="btn btn-ghost session-skip-btn" id="skip-set-btn">${t('session.skip_rest')}</button>
-      <button class="btn btn-ghost session-swap-btn" id="swap-ex-btn">${t('session.swap_exercise')}</button>`;
+      <button class="btn btn-ghost session-swap-btn" id="swap-ex-btn"${hasAlt ? '' : ' disabled'}>${t('session.swap_exercise')}</button>`;
 
     document.getElementById('skip-set-btn').addEventListener('click', () => {
       stopTimer();

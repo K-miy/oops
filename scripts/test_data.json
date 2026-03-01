@@ -1,0 +1,246 @@
+{
+  "exported_at": "2026-03-01T10:00:00.000Z",
+  "app_version": "0.2.0",
+  "profile": {
+    "id": 1,
+    "lang": "fr",
+    "sex": "female",
+    "age_bracket": "35_44",
+    "fitness_level": "beginner",
+    "workout_days": [0, 2, 4],
+    "minutes_per_session": 25,
+    "is_postpartum": false,
+    "has_anchor": false,
+    "injury_notes": [],
+    "disclaimer_accepted_at": "2026-02-02T08:00:00.000Z",
+    "created_at": "2026-02-02T08:00:00.000Z"
+  },
+  "sessions": [
+    {
+      "date": "2026-02-02",
+      "completed_exercise_ids": ["push_knee", "squat_bodyweight", "glute_bridge", "plank_knee", "cat_cow"],
+      "rpe": 6,
+      "duration_actual_s": 1380,
+      "plan": {
+        "exercises": [
+          { "exercise_id": "push_knee",       "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "squat_bodyweight", "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "glute_bridge",     "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "plank_knee",       "sets": 2, "duration_s": 30, "rest_s": 60 },
+          { "exercise_id": "cat_cow",          "sets": 2, "duration_s": 30, "rest_s": 45 }
+        ]
+      }
+    },
+    {
+      "date": "2026-02-04",
+      "completed_exercise_ids": ["push_incline", "squat_sumo", "donkey_kick", "dead_bug", "hip_flexor_stretch"],
+      "rpe": 7,
+      "duration_actual_s": 1500,
+      "plan": {
+        "exercises": [
+          { "exercise_id": "push_incline",     "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "squat_sumo",       "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "donkey_kick",      "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "dead_bug",         "sets": 2, "duration_s": 30, "rest_s": 60 },
+          { "exercise_id": "hip_flexor_stretch","sets": 2, "duration_s": 30, "rest_s": 45 }
+        ]
+      }
+    },
+    {
+      "date": "2026-02-06",
+      "completed_exercise_ids": ["push_knee", "lunge_forward", "glute_bridge_single", "plank_knee", "childs_pose"],
+      "rpe": 6,
+      "duration_actual_s": 1440,
+      "plan": {
+        "exercises": [
+          { "exercise_id": "push_knee",           "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "lunge_forward",       "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "glute_bridge_single", "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "plank_knee",          "sets": 2, "duration_s": 30, "rest_s": 60 },
+          { "exercise_id": "childs_pose",         "sets": 2, "duration_s": 30, "rest_s": 45 }
+        ]
+      }
+    },
+    {
+      "date": "2026-02-09",
+      "completed_exercise_ids": ["push_incline", "squat_bodyweight", "good_morning", "bird_dog", "cat_cow"],
+      "rpe": 6,
+      "duration_actual_s": 1410,
+      "plan": {
+        "exercises": [
+          { "exercise_id": "push_incline",    "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "squat_bodyweight","sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "good_morning",    "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "bird_dog",        "sets": 2, "duration_s": 30, "rest_s": 60 },
+          { "exercise_id": "cat_cow",         "sets": 2, "duration_s": 30, "rest_s": 45 }
+        ]
+      }
+    },
+    {
+      "date": "2026-02-11",
+      "completed_exercise_ids": ["push_knee", "squat_sumo", "glute_bridge", "dead_bug", "hip_flexor_stretch"],
+      "rpe": 5,
+      "duration_actual_s": 1350,
+      "plan": {
+        "exercises": [
+          { "exercise_id": "push_knee",        "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "squat_sumo",       "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "glute_bridge",     "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "dead_bug",         "sets": 2, "duration_s": 30, "rest_s": 60 },
+          { "exercise_id": "hip_flexor_stretch","sets": 2, "duration_s": 30, "rest_s": 45 }
+        ]
+      }
+    },
+    {
+      "date": "2026-02-13",
+      "completed_exercise_ids": ["push_incline", "lunge_reverse", "donkey_kick", "plank_knee", "thoracic_rotation"],
+      "rpe": 6,
+      "duration_actual_s": 1460,
+      "plan": {
+        "exercises": [
+          { "exercise_id": "push_incline",      "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "lunge_reverse",     "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "donkey_kick",       "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "plank_knee",        "sets": 2, "duration_s": 30, "rest_s": 60 },
+          { "exercise_id": "thoracic_rotation", "sets": 2, "duration_s": 30, "rest_s": 45 }
+        ]
+      }
+    },
+    {
+      "date": "2026-02-16",
+      "completed_exercise_ids": ["push_knee", "squat_bodyweight", "glute_bridge_single", "bird_dog", "cat_cow"],
+      "rpe": 5,
+      "duration_actual_s": 1380,
+      "plan": {
+        "exercises": [
+          { "exercise_id": "push_knee",           "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "squat_bodyweight",    "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "glute_bridge_single", "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "bird_dog",            "sets": 2, "duration_s": 30, "rest_s": 60 },
+          { "exercise_id": "cat_cow",             "sets": 2, "duration_s": 30, "rest_s": 45 }
+        ]
+      }
+    },
+    {
+      "date": "2026-02-18",
+      "completed_exercise_ids": ["push_incline", "squat_sumo", "good_morning", "dead_bug", "hip_flexor_stretch"],
+      "rpe": 5,
+      "duration_actual_s": 1320,
+      "plan": {
+        "exercises": [
+          { "exercise_id": "push_incline",     "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "squat_sumo",       "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "good_morning",     "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "dead_bug",         "sets": 2, "duration_s": 30, "rest_s": 60 },
+          { "exercise_id": "hip_flexor_stretch","sets": 2, "duration_s": 30, "rest_s": 45 }
+        ]
+      }
+    },
+    {
+      "date": "2026-02-20",
+      "completed_exercise_ids": ["push_knee", "lunge_lateral", "glute_bridge", "plank_knee", "childs_pose"],
+      "rpe": 4,
+      "duration_actual_s": 1290,
+      "plan": {
+        "exercises": [
+          { "exercise_id": "push_knee",      "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "lunge_lateral",  "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "glute_bridge",   "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "plank_knee",     "sets": 2, "duration_s": 30, "rest_s": 60 },
+          { "exercise_id": "childs_pose",    "sets": 2, "duration_s": 30, "rest_s": 45 }
+        ]
+      }
+    },
+    {
+      "date": "2026-02-23",
+      "completed_exercise_ids": ["push_incline", "squat_bodyweight", "glute_bridge_single", "bird_dog", "thoracic_rotation"],
+      "rpe": 5,
+      "duration_actual_s": 1360,
+      "plan": {
+        "exercises": [
+          { "exercise_id": "push_incline",        "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "squat_bodyweight",    "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "glute_bridge_single", "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "bird_dog",            "sets": 2, "duration_s": 30, "rest_s": 60 },
+          { "exercise_id": "thoracic_rotation",   "sets": 2, "duration_s": 30, "rest_s": 45 }
+        ]
+      }
+    },
+    {
+      "date": "2026-02-25",
+      "completed_exercise_ids": ["push_knee", "squat_sumo", "good_morning", "dead_bug", "hip_flexor_stretch"],
+      "rpe": 4,
+      "duration_actual_s": 1300,
+      "plan": {
+        "exercises": [
+          { "exercise_id": "push_knee",        "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "squat_sumo",       "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "good_morning",     "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "dead_bug",         "sets": 2, "duration_s": 30, "rest_s": 60 },
+          { "exercise_id": "hip_flexor_stretch","sets": 2, "duration_s": 30, "rest_s": 45 }
+        ]
+      }
+    },
+    {
+      "date": "2026-02-27",
+      "completed_exercise_ids": ["push_incline", "lunge_forward", "glute_bridge", "plank_knee", "cat_cow"],
+      "rpe": 4,
+      "duration_actual_s": 1310,
+      "plan": {
+        "exercises": [
+          { "exercise_id": "push_incline",   "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "lunge_forward",  "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "glute_bridge",   "sets": 2, "reps": 8,  "rest_s": 60 },
+          { "exercise_id": "plank_knee",     "sets": 2, "duration_s": 30, "rest_s": 60 },
+          { "exercise_id": "cat_cow",        "sets": 2, "duration_s": 30, "rest_s": 45 }
+        ]
+      }
+    }
+  ],
+  "exercise_logs": [
+    { "session_id": 1, "exercise_id": "push_knee",        "rpe": 6 },
+    { "session_id": 1, "exercise_id": "squat_bodyweight", "rpe": 6 },
+    { "session_id": 1, "exercise_id": "glute_bridge",     "rpe": 6 },
+    { "session_id": 1, "exercise_id": "plank_knee",       "rpe": 6 },
+    { "session_id": 2, "exercise_id": "push_incline",     "rpe": 7 },
+    { "session_id": 2, "exercise_id": "squat_sumo",       "rpe": 7 },
+    { "session_id": 2, "exercise_id": "donkey_kick",      "rpe": 7 },
+    { "session_id": 2, "exercise_id": "dead_bug",         "rpe": 7 },
+    { "session_id": 3, "exercise_id": "push_knee",        "rpe": 6 },
+    { "session_id": 3, "exercise_id": "lunge_forward",    "rpe": 6 },
+    { "session_id": 3, "exercise_id": "plank_knee",       "rpe": 6 },
+    { "session_id": 4, "exercise_id": "push_incline",     "rpe": 6 },
+    { "session_id": 4, "exercise_id": "squat_bodyweight", "rpe": 6 },
+    { "session_id": 4, "exercise_id": "bird_dog",         "rpe": 6 },
+    { "session_id": 5, "exercise_id": "push_knee",        "rpe": 5 },
+    { "session_id": 5, "exercise_id": "squat_sumo",       "rpe": 5 },
+    { "session_id": 5, "exercise_id": "glute_bridge",     "rpe": 5 },
+    { "session_id": 5, "exercise_id": "dead_bug",         "rpe": 5 },
+    { "session_id": 6, "exercise_id": "push_incline",     "rpe": 6 },
+    { "session_id": 6, "exercise_id": "lunge_reverse",    "rpe": 6 },
+    { "session_id": 6, "exercise_id": "donkey_kick",      "rpe": 6 },
+    { "session_id": 6, "exercise_id": "plank_knee",       "rpe": 6 },
+    { "session_id": 7, "exercise_id": "push_knee",        "rpe": 5 },
+    { "session_id": 7, "exercise_id": "squat_bodyweight", "rpe": 5 },
+    { "session_id": 7, "exercise_id": "bird_dog",         "rpe": 5 },
+    { "session_id": 8, "exercise_id": "push_incline",     "rpe": 5 },
+    { "session_id": 8, "exercise_id": "squat_sumo",       "rpe": 5 },
+    { "session_id": 8, "exercise_id": "good_morning",     "rpe": 5 },
+    { "session_id": 8, "exercise_id": "dead_bug",         "rpe": 5 },
+    { "session_id": 9, "exercise_id": "push_knee",        "rpe": 4 },
+    { "session_id": 9, "exercise_id": "lunge_lateral",    "rpe": 4 },
+    { "session_id": 9, "exercise_id": "glute_bridge",     "rpe": 4 },
+    { "session_id": 9, "exercise_id": "plank_knee",       "rpe": 4 },
+    { "session_id": 10, "exercise_id": "push_incline",    "rpe": 5 },
+    { "session_id": 10, "exercise_id": "squat_bodyweight","rpe": 5 },
+    { "session_id": 10, "exercise_id": "bird_dog",        "rpe": 5 },
+    { "session_id": 11, "exercise_id": "push_knee",       "rpe": 4 },
+    { "session_id": 11, "exercise_id": "squat_sumo",      "rpe": 4 },
+    { "session_id": 11, "exercise_id": "good_morning",    "rpe": 4 },
+    { "session_id": 11, "exercise_id": "dead_bug",        "rpe": 4 },
+    { "session_id": 12, "exercise_id": "push_incline",    "rpe": 4 },
+    { "session_id": 12, "exercise_id": "lunge_forward",   "rpe": 4 },
+    { "session_id": 12, "exercise_id": "glute_bridge",    "rpe": 4 },
+    { "session_id": 12, "exercise_id": "plank_knee",      "rpe": 4 }
+  ]
+}

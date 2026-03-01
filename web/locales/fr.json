@@ -110,6 +110,9 @@
     ],
     "progression_title": "Prêt(e) à progresser ?",
     "progression_desc": "Tes séances récentes suggèrent que tu es prêt(e) à monter d'un cran :",
+    "level_up_btn": "Passer au niveau intermédiaire",
+    "deload_badge": "Décharge",
+    "deload_desc": "Volume réduit cette semaine — votre corps récupère et se renforce.",
     "streak": "Série en cours",
     "streak_day": "jour consécutif",
     "streak_days": "jours consécutifs",
@@ -155,6 +158,10 @@
     "reset_confirm": "Toutes vos données seront supprimées définitivement. Continuer ?",
     "privacy_note": "100% local, zéro donnée envoyée.",
     "export": "Exporter mes données",
+    "import": "Importer une sauvegarde",
+    "import_loading": "Import en cours…",
+    "import_success": "Données importées. Rechargement…",
+    "import_error": "Fichier invalide ou corrompu.",
     "install_prompt": "Installer OOPS sur votre écran d'accueil ?"
   },
   "nav": {

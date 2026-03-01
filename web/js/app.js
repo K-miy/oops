@@ -120,6 +120,26 @@ function getFilteredExercises(exercises, profile) {
 }
 
 // ────────────────────────────────────────────────
+// Déload — semaine de récupération toutes les 4 semaines
+// ────────────────────────────────────────────────
+function isDeloadWeek(profile) {
+  const startStr = profile.disclaimer_accepted_at || profile.created_at;
+  if (!startStr) return false;
+  const daysSinceStart = Math.floor((Date.now() - new Date(startStr).getTime()) / 86_400_000);
+  const weekNumber     = Math.floor(daysSinceStart / 7); // 0-indexed
+  return (weekNumber + 1) % 4 === 0;                      // semaines 3, 7, 11…
+}
+
+/** Réduit le volume d'un plan de ~40% (1 série de moins, minimum 1). */
+function applyDeload(plan) {
+  if (!plan) return plan;
+  return {
+    ...plan,
+    exercises: plan.exercises.map((ex) => ({ ...ex, sets: Math.max(1, ex.sets - 1) })),
+  };
+}
+
+// ────────────────────────────────────────────────
 // Génération de séances (aujourd'hui + aperçu semaine)
 // ────────────────────────────────────────────────
 export function generateTodayPlan(profile, exercises) {
@@ -248,9 +268,14 @@ async function routeToHome() {
   const weekPreview = generateWeekPreview(state.profile, filteredExercises);
   const todayEntry = weekPreview[0];
 
+  const deload = isDeloadWeek(state.profile);
+
   if (todayEntry.isWorkout) {
     // Réutilise le plan déjà calculé dans weekPreview[0] si pas de séance sauvegardée
-    state.currentPlan = todaySession ? todaySession.plan : todayEntry.plan;
+    // Applique le déload uniquement pour les nouvelles séances (pas l'historique)
+    state.currentPlan = todaySession
+      ? todaySession.plan
+      : (deload ? applyDeload(todayEntry.plan) : todayEntry.plan);
   } else {
     state.currentPlan = null; // jour de repos
   }
@@ -259,6 +284,7 @@ async function routeToHome() {
     profile: state.profile,
     plan: state.currentPlan,
     todaySession,
+    isDeload: deload && todayEntry.isWorkout && !todaySession,
     streak,
     lang: getLang(),
     exercises: state.exercises,
@@ -266,6 +292,11 @@ async function routeToHome() {
     progressionSuggestions,
     onStartSession: () => startSession(),
     onOpenSettings: () => openSettings(),
+    onLevelUp: async () => {
+      state.profile = { ...state.profile, fitness_level: 'intermediate' };
+      await saveProfile(state.profile);
+      await routeToHome();
+    },
   });
 
   showScreen('home');
