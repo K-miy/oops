@@ -122,11 +122,16 @@ export function renderOnboarding(container, { onComplete, initialProfile = null 
         </div>
       </div>`;
 
+    function checkStep2Complete() {
+      if (draft.sex && draft.age_bracket) setTimeout(advance, 350);
+    }
+
     $content.querySelectorAll('#sex-choices .choice-card').forEach((card) => {
       card.addEventListener('click', () => {
         $content.querySelectorAll('#sex-choices .choice-card').forEach((c) => c.classList.remove('selected'));
         card.classList.add('selected');
         draft.sex = card.dataset.value;
+        checkStep2Complete();
       });
     });
 
@@ -135,6 +140,7 @@ export function renderOnboarding(container, { onComplete, initialProfile = null 
         $content.querySelectorAll('#age-bracket-choices .choice-card').forEach((c) => c.classList.remove('selected'));
         card.classList.add('selected');
         draft.age_bracket = card.dataset.value;
+        checkStep2Complete();
       });
     });
   }
