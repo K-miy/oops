@@ -100,6 +100,8 @@
       "Session terminée. Retour au mode Parent.",
       "La constance bat la motivation. Vous venez de prouver les deux."
     ],
+    "progression_title": "Prêt(e) à progresser ?",
+    "progression_desc": "Tes séances récentes suggèrent que tu es prêt(e) à monter d'un cran :",
     "streak": "Série en cours",
     "streak_day": "jour consécutif",
     "streak_days": "jours consécutifs",

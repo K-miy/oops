@@ -97,6 +97,26 @@ export async function getSessionLogs(sessionId) {
   return db.exercise_logs.where('session_id').equals(sessionId).toArray();
 }
 
+/**
+ * Retourne les statistiques RPE moyennes par exercice.
+ * { exercise_id: { avg_rpe: number, count: number } }
+ */
+export async function getExerciseRpeStats() {
+  const logs = await db.exercise_logs.toArray();
+  const map = {};
+  for (const log of logs) {
+    if (log.rpe == null) continue;
+    if (!map[log.exercise_id]) map[log.exercise_id] = { sum: 0, count: 0 };
+    map[log.exercise_id].sum   += log.rpe;
+    map[log.exercise_id].count += 1;
+  }
+  const result = {};
+  for (const [id, { sum, count }] of Object.entries(map)) {
+    result[id] = { avg_rpe: sum / count, count };
+  }
+  return result;
+}
+
 // ════════════════════════ POIDS ════════════════════════
 
 /** Enregistre une pesée. */

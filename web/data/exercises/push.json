@@ -9,9 +9,12 @@
     "duration_s": 30,
     "equipment_required": false,
     "postpartum_only": false,
-    "contraindications": ["wrist"],
+    "contraindications": [
+      "wrist"
+    ],
     "instructions_fr": "À genoux, mains à largeur d'épaules. Gardez le corps aligné des genoux aux épaules. Descendez la poitrine vers le sol, puis poussez pour revenir.",
-    "instructions_en": "On your knees, hands shoulder-width apart. Keep your body aligned from knees to shoulders. Lower your chest to the floor, then push back up."
+    "instructions_en": "On your knees, hands shoulder-width apart. Keep your body aligned from knees to shoulders. Lower your chest to the floor, then push back up.",
+    "progression_to": "push_standard"
   },
   {
     "id": "push_incline",
@@ -23,9 +26,12 @@
     "duration_s": 30,
     "equipment_required": false,
     "postpartum_only": false,
-    "contraindications": ["wrist"],
+    "contraindications": [
+      "wrist"
+    ],
     "instructions_fr": "Mains posées sur une surface élevée (mur, rebord). Corps droit, inclinez-vous vers la surface puis repoussez.",
-    "instructions_en": "Hands on an elevated surface (wall, counter). Body straight, lean in and push back."
+    "instructions_en": "Hands on an elevated surface (wall, counter). Body straight, lean in and push back.",
+    "progression_to": "push_knee"
   },
   {
     "id": "push_standard",
@@ -37,9 +43,12 @@
     "duration_s": 30,
     "equipment_required": false,
     "postpartum_only": false,
-    "contraindications": ["wrist"],
+    "contraindications": [
+      "wrist"
+    ],
     "instructions_fr": "Position de planche, mains à largeur d'épaules. Descendez jusqu'à 2 cm du sol en gardant les coudes à 45°, remontez.",
-    "instructions_en": "Plank position, hands shoulder-width apart. Lower until 2cm from the floor with elbows at 45°, push back up."
+    "instructions_en": "Plank position, hands shoulder-width apart. Lower until 2cm from the floor with elbows at 45°, push back up.",
+    "progression_to": "push_close"
   },
   {
     "id": "push_wide",
@@ -51,9 +60,13 @@
     "duration_s": 30,
     "equipment_required": false,
     "postpartum_only": false,
-    "contraindications": ["wrist", "shoulder"],
+    "contraindications": [
+      "wrist",
+      "shoulder"
+    ],
     "instructions_fr": "Pompe standard avec les mains plus larges que les épaules. Sollicite davantage les pectoraux.",
-    "instructions_en": "Standard push-up with hands wider than shoulders. More chest emphasis."
+    "instructions_en": "Standard push-up with hands wider than shoulders. More chest emphasis.",
+    "progression_to": "push_decline"
   },
   {
     "id": "push_diamond",
@@ -65,9 +78,12 @@
     "duration_s": 30,
     "equipment_required": false,
     "postpartum_only": false,
-    "contraindications": ["wrist"],
+    "contraindications": [
+      "wrist"
+    ],
     "instructions_fr": "Mains formant un triangle sous la poitrine. Descente contrôlée, coudes le long du corps. Triceps +++.",
-    "instructions_en": "Hands forming a triangle under your chest. Controlled descent, elbows close to body. Triceps focus."
+    "instructions_en": "Hands forming a triangle under your chest. Controlled descent, elbows close to body. Triceps focus.",
+    "progression_to": "push_archer"
   },
   {
     "id": "push_pike",
@@ -79,9 +95,13 @@
     "duration_s": 30,
     "equipment_required": false,
     "postpartum_only": false,
-    "contraindications": ["wrist", "shoulder"],
+    "contraindications": [
+      "wrist",
+      "shoulder"
+    ],
     "instructions_fr": "Fesses hautes, corps en V inversé. Pliez les coudes pour amener la tête vers le sol. Travail des épaules.",
-    "instructions_en": "Hips high, body in inverted V. Bend elbows to bring head toward floor. Shoulder focus."
+    "instructions_en": "Hips high, body in inverted V. Bend elbows to bring head toward floor. Shoulder focus.",
+    "progression_to": null
   },
   {
     "id": "push_negative",
@@ -93,9 +113,12 @@
     "duration_s": 30,
     "equipment_required": false,
     "postpartum_only": false,
-    "contraindications": ["wrist"],
+    "contraindications": [
+      "wrist"
+    ],
     "instructions_fr": "Position de pompe standard. Descendez la poitrine en 4 secondes jusqu'au sol. Remontez normalement. L'accent est sur la descente contrôlée.",
-    "instructions_en": "Standard push-up position. Lower your chest to the floor over 4 seconds. Push back up normally. The focus is on the slow, controlled lowering phase."
+    "instructions_en": "Standard push-up position. Lower your chest to the floor over 4 seconds. Push back up normally. The focus is on the slow, controlled lowering phase.",
+    "progression_to": null
   },
   {
     "id": "push_close",
@@ -107,9 +130,12 @@
     "duration_s": 30,
     "equipment_required": false,
     "postpartum_only": false,
-    "contraindications": ["wrist"],
+    "contraindications": [
+      "wrist"
+    ],
     "instructions_fr": "Mains plus proches que la largeur des épaules. Corps en planche. Descendez en gardant les coudes près du corps. Remontez.",
-    "instructions_en": "Hands closer than shoulder-width. Plank body position. Lower with elbows tracking close to your body. Push back up."
+    "instructions_en": "Hands closer than shoulder-width. Plank body position. Lower with elbows tracking close to your body. Push back up.",
+    "progression_to": "push_diamond"
   },
   {
     "id": "push_staggered",
@@ -121,9 +147,12 @@
     "duration_s": 30,
     "equipment_required": false,
     "postpartum_only": false,
-    "contraindications": ["wrist"],
+    "contraindications": [
+      "wrist"
+    ],
     "instructions_fr": "Position de pompe, une main avancée et l'autre reculée. Descendez et remontez. Alternez la position des mains à chaque série.",
-    "instructions_en": "Push-up position with one hand forward and one back. Lower and push up. Alternate hand position each set."
+    "instructions_en": "Push-up position with one hand forward and one back. Lower and push up. Alternate hand position each set.",
+    "progression_to": "push_t"
   },
   {
     "id": "push_decline",
@@ -135,9 +164,13 @@
     "duration_s": 30,
     "equipment_required": false,
     "postpartum_only": false,
-    "contraindications": ["wrist", "shoulder"],
+    "contraindications": [
+      "wrist",
+      "shoulder"
+    ],
     "instructions_fr": "Pieds sur une chaise ou un canapé, mains au sol à largeur d'épaules. Corps en ligne droite. Descendez la poitrine, remontez en poussant fort.",
-    "instructions_en": "Feet on a chair or couch, hands on the floor shoulder-width apart. Keep body in a straight line. Lower your chest, then push strongly back up."
+    "instructions_en": "Feet on a chair or couch, hands on the floor shoulder-width apart. Keep body in a straight line. Lower your chest, then push strongly back up.",
+    "progression_to": null
   },
   {
     "id": "push_t",
@@ -149,9 +182,13 @@
     "duration_s": 30,
     "equipment_required": false,
     "postpartum_only": false,
-    "contraindications": ["wrist", "shoulder"],
+    "contraindications": [
+      "wrist",
+      "shoulder"
+    ],
     "instructions_fr": "Faites une pompe standard, puis en remontant faites pivoter le buste et levez un bras vers le plafond (position en T). Alternez les côtés.",
-    "instructions_en": "Perform a standard push-up, then at the top rotate your torso and raise one arm to the ceiling (T position). Alternate sides."
+    "instructions_en": "Perform a standard push-up, then at the top rotate your torso and raise one arm to the ceiling (T position). Alternate sides.",
+    "progression_to": null
   },
   {
     "id": "push_archer",
@@ -163,8 +200,12 @@
     "duration_s": 30,
     "equipment_required": false,
     "postpartum_only": false,
-    "contraindications": ["wrist", "shoulder"],
+    "contraindications": [
+      "wrist",
+      "shoulder"
+    ],
     "instructions_fr": "Mains très écartées. En descendant, fléchissez un coude et tendez l'autre bras sur le côté. Alternez les côtés d'une rep à l'autre.",
-    "instructions_en": "Wide hand placement. As you lower, bend one elbow and extend the other arm straight to the side. Alternate sides each rep."
+    "instructions_en": "Wide hand placement. As you lower, bend one elbow and extend the other arm straight to the side. Alternate sides each rep.",
+    "progression_to": null
   }
 ]

@@ -1,5 +1,5 @@
 # OOPS — Exercise Image Prompts
-# 46 exercises | 3-panel comic strip | non-gendered figure
+# 75 exercises | 3-panel comic strip | non-gendered figure
 # Paste each prompt into DALL-E 3 / ChatGPT / Nano Banana
 # Request landscape / wide format (3:1 ratio)
 ================================================================================
@@ -76,6 +76,46 @@ Movement: Lie on back, knees bent. Press lower back into the floor by engaging l
 
 --------------------------------------------------------------------------------
 
+## side_plank_knee  [core]
+# Planche latérale sur les genoux / Kneeling side plank
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Kneeling side plank (core / core_anti_rotation).
+Movement: On one forearm and knees, body in a straight line from knees to shoulder. Lift hips. Hold without letting hips drop. Alternate sides. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## heel_slide  [core]
+# Glissé de talon / Heel slide
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Heel slide (core / core_anti_extension).
+Movement: Lie on your back, knees bent. Press your lower back into the floor and maintain that pressure. Slide one heel to extend the leg slowly, then return. Alternate. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## toe_tap_supine  [core]
+# Tap de pied (cuisses verticales) / Supine toe tap
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Supine toe tap (core / core_anti_extension).
+Movement: Lie on back, legs at 90° (thighs vertical, shins horizontal). Slowly lower one foot to tap the floor, return. Alternate. Keep lower back pressed into the floor. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## bear_hold  [core]
+# Position de l'ours (quadrupède) / Bear hold
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Bear hold (core / core_anti_extension).
+Movement: On all fours, hands under shoulders, knees under hips. Lift knees 1 inch off the floor. Hold and breathe normally. Flat back, core braced. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## plank_shoulder_tap  [core]
+# Planche avec tap épaule / Plank shoulder tap
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Plank shoulder tap (core / core_anti_rotation).
+Movement: In a high plank position. Lift one hand to tap the opposite shoulder. Replace, alternate. Keep hips level and resist rotating. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
 ## glute_bridge  [hinge]
 # Pont fessier / Glute bridge
 
@@ -129,6 +169,46 @@ Movement: On one leg, hinge forward while lifting the free leg behind. Balance, 
 
 3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Bodyweight hip thrust (hinge / hip_hinge).
 Movement: Upper back on a couch or bed, feet flat. Drive hips to the ceiling forming a plank. Squeeze glutes hard. Lower. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## hip_hinge_wall  [hinge]
+# Hip hinge au mur (apprentissage) / Wall hip hinge
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Wall hip hinge (hinge / hip_hinge).
+Movement: Stand 6 inches from a wall, feet hip-width apart. Push hips back to touch the wall while keeping your back flat and knees soft. Drive hips forward and squeeze glutes to stand. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## glute_bridge_march  [hinge]
+# Pont fessier avec marche / Glute bridge march
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Glute bridge march (hinge / hip_hinge).
+Movement: In a glute bridge position (hips raised). Keep hips stable and alternately lift each knee toward your chest. Keep pelvis level throughout. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## superman_hold  [hinge]
+# Superman (tenu) / Superman hold
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Superman hold (hinge / hip_hinge).
+Movement: Lie face down, arms extended overhead. Simultaneously lift arms, head, and legs off the floor. Hold 2 seconds. Lower slowly. Focus on lengthening, not arching. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## hip_thrust_elevated  [hinge]
+# Hip thrust (épaules surélevées) / Elevated hip thrust
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Elevated hip thrust (hinge / hip_hinge).
+Movement: Upper back on a couch or chair, feet on the floor, knees at 90°. Lower hips toward the floor then drive up powerfully, squeezing glutes hard. Brief hold at the top. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## sumo_deadlift_bw  [hinge]
+# Soulevé de terre sumo (au poids de corps) / Sumo bodyweight deadlift
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Sumo bodyweight deadlift (hinge / hip_hinge).
+Movement: Wide stance, toes pointed out. Hands between legs. Push hips back and lower hands toward the floor with a flat back. Drive through the floor to stand, squeezing glutes at the top. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
 
 --------------------------------------------------------------------------------
 
@@ -212,6 +292,30 @@ Movement: Standing, fold forward to touch the floor. Walk hands out to plank. Wa
 
 --------------------------------------------------------------------------------
 
+## thread_needle  [mobility]
+# Fil de l'aiguille / Thread the needle
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Thread the needle (mobility / mobility).
+Movement: On all fours. Thread one arm under your body toward the other side, shoulder and cheek resting on the floor. Hold and breathe deeply. Alternate sides. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## lizard_pose  [mobility]
+# Posture du lézard / Lizard pose
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Lizard pose (mobility / mobility).
+Movement: From a low lunge, place your front foot outside your same-side hand. Stay on hands or lower to forearms. Let the rear hip relax and open. Alternate sides. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## couch_stretch  [mobility]
+# Étirement du canapé (quadriceps/fléchisseur) / Couch stretch
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Couch stretch (mobility / mobility).
+Movement: Place one knee against the base of a couch or wall, foot folded back against it. Other foot flat on the floor in front. Stand tall. Feel the stretch across the front of the hip and thigh. Alternate sides. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
 ## incline_row_table  [pull]
 # Tirage incliné (table) / Incline row (table)
 
@@ -260,6 +364,46 @@ Movement: Grip the top of a sturdy door frame with both hands. Slightly lift you
 
 --------------------------------------------------------------------------------
 
+## prone_cobra  [pull]
+# Cobra dorsal (isométrique) / Prone cobra hold
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Prone cobra hold (pull / horizontal_pull).
+Movement: Lie face down, arms along your sides. Squeeze shoulder blades, gently lift your head and hands off the floor. Hold and breathe normally. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## reverse_snow_angel  [pull]
+# Ange de neige inversé / Prone snow angel
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Prone snow angel (pull / horizontal_pull).
+Movement: Lie face down, arms at your sides, palms facing down. Slide arms up overhead and back down. Keep arms slightly lifted off the floor throughout. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## wall_slide  [pull]
+# Glissement contre le mur / Wall slide
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Wall slide (pull / horizontal_pull).
+Movement: Stand with back and forearms against a wall. Slide arms upward keeping contact with the wall. Lower slowly. Keep lower back flat against the wall. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## towel_row  [pull]
+# Tirage à la serviette (porte) / Towel door row
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Towel door row (pull / horizontal_pull).
+Movement: Loop a rolled towel around a stable open door. Grip both ends, bend knees slightly and lean back. Pull your chest toward the door, squeezing shoulder blades together. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## scapular_pushup  [pull]
+# Pompe scapulaire / Scapular push-up
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Scapular push-up (pull / horizontal_pull).
+Movement: In a high plank position (arms straight). Without bending elbows, let your chest sink as shoulder blades pinch together, then push the floor to spread them apart. Scapular control work. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
 ## push_knee  [push]
 # Pompe sur les genoux / Knee push-up
 
@@ -305,6 +449,54 @@ Movement: Hands forming a triangle under your chest. Controlled descent, elbows 
 
 3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Pike push-up (push / vertical_push).
 Movement: Hips high, body in inverted V. Bend elbows to bring head toward floor. Shoulder focus. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## push_negative  [push]
+# Pompe excentrique (descente lente) / Slow negative push-up
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Slow negative push-up (push / horizontal_push).
+Movement: Standard push-up position. Lower your chest to the floor over 4 seconds. Push back up normally. The focus is on the slow, controlled lowering phase. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## push_close  [push]
+# Pompe mains serrées / Close-grip push-up
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Close-grip push-up (push / horizontal_push).
+Movement: Hands closer than shoulder-width. Plank body position. Lower with elbows tracking close to your body. Push back up. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## push_staggered  [push]
+# Pompe en décalage / Staggered push-up
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Staggered push-up (push / horizontal_push).
+Movement: Push-up position with one hand forward and one back. Lower and push up. Alternate hand position each set. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## push_decline  [push]
+# Pompe déclinée (pieds surélevés) / Decline push-up
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Decline push-up (push / horizontal_push).
+Movement: Feet on a chair or couch, hands on the floor shoulder-width apart. Keep body in a straight line. Lower your chest, then push strongly back up. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## push_t  [push]
+# Pompe en T (rotation) / T push-up
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: T push-up (push / horizontal_push).
+Movement: Perform a standard push-up, then at the top rotate your torso and raise one arm to the ceiling (T position). Alternate sides. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## push_archer  [push]
+# Pompe archer / Archer push-up
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Archer push-up (push / horizontal_push).
+Movement: Wide hand placement. As you lower, bend one elbow and extend the other arm straight to the side. Alternate sides each rep. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
 
 --------------------------------------------------------------------------------
 
@@ -369,6 +561,46 @@ Movement: Rear foot on an elevated surface (couch). Lower front knee toward the 
 
 3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Jump squat (squat / squat).
 Movement: Standard squat then explode upward. Land softly on your toes. High cardio output. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## wall_sit  [squat]
+# Chaise au mur (isométrique) / Wall sit
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Wall sit (squat / squat).
+Movement: Back against the wall, bend knees to 90° as if sitting on a chair. Thighs parallel to the floor. Hold the position and breathe normally. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## step_up  [squat]
+# Montée de marche / Step-up
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Step-up (squat / lunge).
+Movement: Face a stair or sturdy chair. Step one foot up, drive through that heel to lift your body. Lower with control. Alternate legs. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## curtsy_lunge  [squat]
+# Fente en révérence / Curtsy lunge
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Curtsy lunge (squat / lunge).
+Movement: Standing, cross your right leg behind your left (curtsy position). Bend both knees to lower. Drive back up and alternate sides. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## squat_tempo  [squat]
+# Squat tempo (descente lente) / Tempo squat
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Tempo squat (squat / squat).
+Movement: Standard squat with a 3-second lowering phase, 1-second pause at the bottom, then explosive drive up. Total control on the way down. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
+
+--------------------------------------------------------------------------------
+
+## pistol_squat_assisted  [squat]
+# Squat pistol assisté / Assisted pistol squat
+
+3-panel horizontal comic strip, minimalist flat illustration style, bold black outlines, pure white background. The character is a non-gendered rounded figure: smooth oval head, no facial features, no hair, gender-neutral body with simple rounded limbs. Panels flow left-to-right showing: [Panel 1] starting position → [Panel 2] mid-movement → [Panel 3] peak or return position. Flat colors only, no gradients, no shadows. Accent colors: forest green #2D6A4F for the figure body, orange #F4A261 for motion highlights or active limbs. No text, no numbers, no labels anywhere. Consistent figure size and style across all 3 panels. Landscape format 3:1 ratio. Exercise: Assisted pistol squat (squat / squat).
+Movement: Hold a door or wall for support. On one leg, extend the other leg forward. Lower as deep as possible. Drive back up, using slight support if needed. Clean, friendly, app illustration aesthetic. Each panel separated by a thin black line.
 
 --------------------------------------------------------------------------------
 

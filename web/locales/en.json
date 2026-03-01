@@ -100,6 +100,8 @@
       "Mission complete. Back to Parent Mode.",
       "Consistency beats motivation. You just proved both."
     ],
+    "progression_title": "Ready to level up?",
+    "progression_desc": "Your recent sessions suggest you're ready for the next step:",
     "streak": "Current streak",
     "streak_day": "consecutive day",
     "streak_days": "consecutive days",

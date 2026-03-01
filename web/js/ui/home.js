@@ -17,7 +17,7 @@ import { t, tRandom } from '../i18n.js';
  *   onOpenSettings: () => void,
  * }} opts
  */
-export function renderHome(container, { profile, plan, todaySession, streak, lang, exercises, weekPreview, onStartSession }) {
+export function renderHome(container, { profile, plan, todaySession, streak, lang, exercises, weekPreview, progressionSuggestions, onStartSession }) {
   const exerciseMap = Object.fromEntries(exercises.map((e) => [e.id, e]));
   const alreadyDone = !!todaySession;
   const today = new Date();
@@ -83,6 +83,8 @@ export function renderHome(container, { profile, plan, todaySession, streak, lan
         <div class="streak-label">${streak === 1 ? t('home.streak_day') : t('home.streak_days')}</div>
       </div>
     </div>
+
+    ${progressionSuggestions?.length ? renderProgressionSuggestions(progressionSuggestions, lang) : ''}
 
     ${weekPreview?.length ? renderWeekPreview(weekPreview, lang) : ''}
   `;
@@ -187,4 +189,24 @@ function estimateDuration(ex) {
   const totalWork  = workPerSet * ex.sets;
   const totalRest  = ex.rest_s * Math.max(0, ex.sets - 1);
   return totalWork + totalRest;
+}
+
+function renderProgressionSuggestions(suggestions, lang) {
+  const items = suggestions.slice(0, 2).map(({ from, to }) => {
+    const fromName = lang === 'fr' ? from.name_fr : from.name_en;
+    const toName   = lang === 'fr' ? to.name_fr   : to.name_en;
+    return `
+      <div class="progression-item animate-in">
+        <span class="progression-from">${fromName}</span>
+        <span class="progression-arrow">→</span>
+        <span class="progression-to">${toName}</span>
+      </div>`;
+  }).join('');
+
+  return `
+    <div class="progression-card animate-in">
+      <div class="progression-card-title">${t('home.progression_title')}</div>
+      <div class="progression-card-desc">${t('home.progression_desc')}</div>
+      ${items}
+    </div>`;
 }

@@ -483,6 +483,51 @@ body {
   color: var(--color-text-muted);
 }
 
+.progression-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+  border-left: 3px solid var(--color-accent);
+  margin-bottom: 12px;
+}
+
+.progression-card-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  margin-bottom: 2px;
+}
+
+.progression-card-desc {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+}
+
+.progression-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  padding: 4px 0;
+}
+
+.progression-from {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+.progression-arrow {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.progression-to {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
 .streak-card {
   display: flex;
   align-items: center;

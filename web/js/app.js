@@ -11,7 +11,7 @@
 import init, { build_session } from 'oops';
 import { initI18n, t, getLang } from './i18n.js';
 import { isWorkoutDay } from './schedule.js';
-import { getProfile, saveProfile, getSetting, setSetting, resetAll, saveSession, getTodaySession, getCurrentStreak, getRecentSessions } from './db.js';
+import { getProfile, saveProfile, getSetting, setSetting, resetAll, saveSession, saveExerciseLog, getTodaySession, getCurrentStreak, getRecentSessions, getExerciseRpeStats } from './db.js';
 import { renderDisclaimer } from './ui/disclaimer.js';
 import { renderOnboarding } from './ui/onboarding.js';
 import { renderHome } from './ui/home.js';
@@ -190,10 +190,23 @@ async function route() {
 
 async function routeToHome() {
   const today = new Date().toISOString().slice(0, 10);
-  const [todaySession, streak] = await Promise.all([
+  const [todaySession, streak, rpeStats] = await Promise.all([
     getTodaySession(today),
     getCurrentStreak(),
+    getExerciseRpeStats(),
   ]);
+
+  // Exercices maîtrisés (avg RPE ≤ 5 sur ≥ 2 séances) avec une progression disponible
+  const progressionSuggestions = state.exercises
+    .filter((ex) => {
+      const stat = rpeStats[ex.id];
+      return ex.progression_to && stat && stat.count >= 2 && stat.avg_rpe <= 5;
+    })
+    .map((ex) => ({
+      from: ex,
+      to: state.exercises.find((e) => e.id === ex.progression_to),
+    }))
+    .filter((s) => s.to != null);
 
   const weekPreview = generateWeekPreview(state.profile, state.exercises);
   const todayEntry = weekPreview[0];
@@ -213,6 +226,7 @@ async function routeToHome() {
     lang: getLang(),
     exercises: state.exercises,
     weekPreview,
+    progressionSuggestions,
     onStartSession: () => startSession(),
     onOpenSettings: () => openSettings(),
   });
@@ -238,11 +252,20 @@ function startSession() {
     lang: getLang(),
     onComplete: async (result) => {
       const today = new Date().toISOString().slice(0, 10);
-      await saveSession({
+      const sessionId = await saveSession({
         date: today,
         plan: state.currentPlan,
         ...result,
       });
+      // Enregistre un log RPE par exercice complété (approximation : RPE global de séance)
+      const rpe = result.rpe ?? null;
+      if (rpe != null && result.completed_exercise_ids?.length) {
+        await Promise.all(
+          result.completed_exercise_ids.map((exercise_id) =>
+            saveExerciseLog({ session_id: sessionId, exercise_id, rpe })
+          )
+        );
+      }
       await routeToHome();
       showScreen('home');
     },
