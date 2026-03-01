@@ -189,6 +189,9 @@ export function renderOnboarding(container, { onComplete, initialProfile = null 
               ${t('onboarding.workout_days.days.' + d)}
             </button>`).join('')}
         </div>
+        <div class="rest-warning" id="day-rest-warning" hidden>
+          ⚠️ ${t('onboarding.workout_days.rest_warning')}
+        </div>
       </div>
       <div class="onboarding-question mt-24">
         <h2>${t('onboarding.minutes_per_session.label')}</h2>
@@ -199,6 +202,19 @@ export function renderOnboarding(container, { onComplete, initialProfile = null 
             </button>`).join('')}
         </div>
       </div>`;
+
+    function hasConsecutiveDays(days) {
+      const s = [...days].sort((a, b) => a - b);
+      for (let i = 0; i < s.length - 1; i++) {
+        if (s[i + 1] - s[i] === 1) return true;
+      }
+      return s.includes(0) && s.includes(6); // Sun → Mon wrap
+    }
+
+    function updateRestWarning() {
+      const $w = document.getElementById('day-rest-warning');
+      if ($w) $w.hidden = !hasConsecutiveDays(draft.workout_days);
+    }
 
     // Multi-select : toggle les jours
     $content.querySelectorAll('#day-chips .chip').forEach((chip) => {
@@ -211,8 +227,11 @@ export function renderOnboarding(container, { onComplete, initialProfile = null 
           draft.workout_days = [...draft.workout_days, val].sort((a, b) => a - b);
           chip.classList.add('selected');
         }
+        updateRestWarning();
       });
     });
+
+    updateRestWarning();
 
     $content.querySelectorAll('#duration-chips .chip').forEach((chip) => {
       chip.addEventListener('click', () => {

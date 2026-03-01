@@ -246,6 +246,7 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
           <span class="rpe-zone-target">${t('session.rpe_target')}</span>
           <span>${t('session.rpe_hard')}</span>
         </div>
+        <div class="rpe-hint" id="rpe-hint"></div>
       </div>`;
 
     $footer.innerHTML = `
@@ -259,7 +260,20 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
         $main.querySelectorAll('.rpe-btn').forEach((b) => b.classList.remove('selected'));
         btn.classList.add('selected');
         selectedRpe = parseInt(btn.dataset.rpe, 10);
-        setTimeout(() => finishSession(selectedRpe), 350);
+
+        const $hint = document.getElementById('rpe-hint');
+        let hint = '';
+        let delay = 350;
+        if (selectedRpe <= 4) {
+          hint = t('session.rpe_hint_easy');
+          delay = 1500;
+        } else if (selectedRpe >= 9) {
+          hint = t('session.rpe_hint_hard');
+          delay = 1500;
+        }
+        if ($hint && hint) { $hint.textContent = hint; $hint.classList.add('animate-in'); }
+
+        setTimeout(() => finishSession(selectedRpe), delay);
       });
     });
 

@@ -40,6 +40,7 @@
     "workout_days": {
       "label": "Tes jours d'entraînement",
       "hint": "Sélectionne au moins 2 jours",
+      "rest_warning": "48h de repos recommandées entre deux séances.",
       "days": {
         "0": "Lun", "1": "Mar", "2": "Mer",
         "3": "Jeu", "4": "Ven", "5": "Sam", "6": "Dim"
@@ -128,7 +129,9 @@
     "rpe_easy": "Trop facile",
     "rpe_hard": "Maximum",
     "rest": "Repos",
-    "abort_confirm": "Abandonner la séance en cours ?"
+    "abort_confirm": "Abandonner la séance en cours ?",
+    "rpe_hint_easy": "Tu peux pousser un peu plus la prochaine fois.",
+    "rpe_hint_hard": "Bien récupéré — tu avais besoin de cette séance."
   },
   "settings": {
     "title": "Paramètres",

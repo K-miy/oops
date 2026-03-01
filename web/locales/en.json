@@ -40,6 +40,7 @@
     "workout_days": {
       "label": "Your training days",
       "hint": "Select at least 2 days",
+      "rest_warning": "48h rest recommended between sessions.",
       "days": {
         "0": "Mon", "1": "Tue", "2": "Wed",
         "3": "Thu", "4": "Fri", "5": "Sat", "6": "Sun"
@@ -128,7 +129,9 @@
     "rpe_easy": "Too easy",
     "rpe_hard": "Maximum",
     "rest": "Rest",
-    "abort_confirm": "Abandon the current session?"
+    "abort_confirm": "Abandon the current session?",
+    "rpe_hint_easy": "You can push a little harder next time.",
+    "rpe_hint_hard": "Good recovery — you needed that session."
   },
   "settings": {
     "title": "Settings",
