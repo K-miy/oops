@@ -32,6 +32,7 @@ pub enum MovementPattern {
 #[serde(rename_all = "snake_case")]
 pub enum Contraindication {
     Postpartum,
+    Back,
     LowerBack,
     Knee,
     Hip,
