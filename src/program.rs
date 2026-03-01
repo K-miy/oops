@@ -1,4 +1,4 @@
-use crate::exercise::{Category, Exercise};
+use crate::exercise::{Category, Exercise, MovementPattern};
 use crate::profile::Profile;
 use crate::session::{SessionExercise, SessionPlan};
 
@@ -54,10 +54,12 @@ impl<'a> ProgramBuilder<'a> {
                 Category::Hinge,
                 Category::Squat,
                 Category::Push,
+                Category::Pull,
             ]
         } else {
             &[
                 Category::Push,
+                Category::Pull,
                 Category::Squat,
                 Category::Hinge,
                 Category::Core,
@@ -74,11 +76,22 @@ impl<'a> ProgramBuilder<'a> {
             }
 
             if let Some(exercise) = self.pick_from_category(&eligible, category, seed) {
+                // Les exercices isométriques / mobilité sont affichés en temps,
+                // les exercices dynamiques en répétitions.
+                let is_timed = matches!(
+                    exercise.movement_pattern,
+                    MovementPattern::CoreAntiExtension
+                        | MovementPattern::CoreAntiRotation
+                        | MovementPattern::CoreFlexion
+                        | MovementPattern::PelvicFloor
+                        | MovementPattern::Mobility
+                );
+
                 let candidate = SessionExercise {
                     exercise_id: exercise.id.clone(),
                     sets,
-                    reps: Some(10),
-                    duration_s: Some(exercise.duration_s),
+                    reps: if is_timed { None } else { Some(self.reps_per_set()) },
+                    duration_s: if is_timed { Some(exercise.duration_s) } else { None },
                     rest_s,
                 };
 
@@ -95,9 +108,19 @@ impl<'a> ProgramBuilder<'a> {
 
     fn sets_and_rest(&self) -> (u8, u32) {
         use crate::profile::FitnessLevel;
-        match self.profile.fitness_level {
+        let (sets, base_rest) = match self.profile.fitness_level {
             FitnessLevel::Beginner => (2, BEGINNER_REST_S),
             FitnessLevel::Intermediate => (3, INTERMEDIATE_REST_S),
+        };
+        (sets, base_rest + self.profile.rest_bonus_s())
+    }
+
+    /// Nombre de répétitions par série pour les exercices dynamiques.
+    fn reps_per_set(&self) -> u8 {
+        use crate::profile::FitnessLevel;
+        match self.profile.fitness_level {
+            FitnessLevel::Beginner => 8,
+            FitnessLevel::Intermediate => 12,
         }
     }
 
@@ -125,7 +148,7 @@ impl<'a> ProgramBuilder<'a> {
 mod tests {
     use super::*;
     use crate::exercise::{Category, Contraindication, Exercise, MovementPattern};
-    use crate::profile::{FitnessLevel, Lang, Profile, Sex};
+    use crate::profile::{AgeBracket, FitnessLevel, Lang, Profile, Sex};
 
     fn make_exercise(
         id: &str,
@@ -153,8 +176,7 @@ mod tests {
     fn make_profile(level: FitnessLevel, minutes: u8, postpartum: bool) -> Profile {
         Profile {
             sex: Sex::Female,
-            age_years: 32,
-            weight_kg: 65.0,
+            age_bracket: AgeBracket::Under35,
             fitness_level: level,
             sessions_per_week: 3,
             minutes_per_session: minutes,
@@ -289,6 +311,18 @@ mod tests {
         let plan = ProgramBuilder::new(&profile, &catalog).build_session(0);
         let ids: Vec<&str> = plan.exercises.iter().map(|e| e.exercise_id.as_str()).collect();
         assert!(!ids.contains(&"push_hard"), "L'exercice difficulty=3 doit être exclu pour un débutant");
+    }
+
+    #[test]
+    fn age_45_plus_gets_longer_rest() {
+        let mut profile = make_profile(FitnessLevel::Beginner, 30, false);
+        profile.age_bracket = AgeBracket::Age45Plus;
+        let catalog = full_catalog();
+        let plan = ProgramBuilder::new(&profile, &catalog).build_session(0);
+        // rest_s doit être BEGINNER_REST_S (60) + 15 = 75
+        for ex in &plan.exercises {
+            assert_eq!(ex.rest_s, 75, "Les 45+ doivent avoir 75s de repos");
+        }
     }
 
     #[test]

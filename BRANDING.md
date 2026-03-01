@@ -56,12 +56,12 @@ Cette distinction gouverne toutes les décisions de branding :
 ## 4. Audience cible
 
 **Parents (mères et pères)**, 28–42 ans, milléniaux / Gen X :
-- Ont des fenêtres de temps courtes (sieste = créneau)
+- Ont des fenêtres de temps courtes (après le coucher, avant le lever, 20 min volées)
 - Rapport complexe avec leur corps post-bébé, sans honte mais avec lucidité
 - Méfiants envers les apps qui collectent leurs données
 - Cherchent quelque chose qui leur ressemble — humain, réaliste, non-jugeant
 
-**Contexte :** téléphone, debout dans le salon, bébé qui dort à côté.
+**Contexte :** téléphone, debout dans le salon, avant que ça recommence.
 
 ---
 
@@ -128,7 +128,7 @@ Reconnaissance en vision périphérique : 4 lettres suffisent.
 1. **100% offline** — "Fonctionne même si le wifi du parc est nul."
 2. **Zéro donnée collectée** — "Vos séances restent dans votre téléphone."
 3. **Adapté post-partum** — "On sait ce que votre corps vient de traverser."
-4. **Séances courtes** — "Fits in nap time." / "Tient dans une sieste."
+4. **Séances courtes** — "15 minutes. Où que vous en soyez."
 5. **Non-genré** — Pour les mamans ET les papas
 
 ---
@@ -139,9 +139,9 @@ Reconnaissance en vision périphérique : 4 lettres suffisent.
 > *"Out of Parent's Shape. Back in yours."*
 
 **Alternatives validées**
-- *"Fits in nap time."*
-- *"Nap time is go time."*
+- *"15 minutes. No excuses."*
 - *"Your body changed. Let's work with it."*
+- *"Find your window. We'll handle the rest."*
 
 ---
 
@@ -176,7 +176,7 @@ Tout le reste (messages de célébration, repos, streaks...) **tourne** dans un 
 6. "On a fait ça ?"
 7. "Voilà. C'est fait."
 8. "Encore une d'ajoutée au compteur."
-9. "Votre sieste était productive."
+9. "15 minutes bien investies."
 10. "C'est ça, la différence."
 11. "Personne ne l'a jamais regretté."
 12. "Petit à petit, l'oiseau fait son nid. Et ses squats."
@@ -187,7 +187,7 @@ Tout le reste (messages de célébration, repos, streaks...) **tourne** dans un 
 ### Jour de repos
 *Affiché sur l'écran d'accueil les jours sans séance.*
 
-1. "Même les héros récupèrent. (Surtout quand le bébé a dormi cette nuit.)"
+1. "Même les héros récupèrent."
 2. "Votre corps compile les gains. Laissez-le faire son travail."
 3. "Même les routines respirent."
 4. "Repos autorisé. Recommandé, même."
@@ -241,8 +241,8 @@ Tout le reste (messages de célébration, repos, streaks...) **tourne** dans un 
 
 ### Notifications (future feature)
 
-1. "Chut... c'est calme. On s'y met 15 minutes ?"
-2. "La sieste tient. C'est le moment."
+1. "C'est calme. On s'y met 15 minutes ?"
+2. "Vous avez une fenêtre. On y va ?"
 3. "Votre créneau est là. 15 minutes. Go."
 
 ---
@@ -259,7 +259,7 @@ Tout le reste (messages de célébration, repos, streaks...) **tourne** dans un 
 6. "We did that?"
 7. "That's done. On to nap duty."
 8. "One more in the books."
-9. "Productive nap time."
+9. "15 minutes well spent."
 10. "That's the difference, right there."
 11. "No one ever regretted a workout."
 12. "Slowly but surely. And squatting."
@@ -269,7 +269,7 @@ Tout le reste (messages de célébration, repos, streaks...) **tourne** dans un 
 
 ### Rest day
 
-1. "Even heroes rest. (Especially when the baby slept.)"
+1. "Even heroes rest."
 2. "Your body's compiling gains. Let it work."
 3. "Even routines need to breathe."
 4. "Rest authorized. Recommended, even."
@@ -323,8 +323,8 @@ Tout le reste (messages de célébration, repos, streaks...) **tourne** dans un 
 
 ### Notifications (future feature)
 
-1. "Psst... it's quiet. 15 minutes?"
-2. "Nap is holding. Now's the moment."
+1. "It's quiet. 15 minutes?"
+2. "You have a window. Take it."
 3. "Your window is open. 15 minutes. Go."
 
 ---

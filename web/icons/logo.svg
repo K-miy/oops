@@ -1,0 +1,46 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Rounded square background -->
+  <rect x="8" y="8" width="496" height="496" rx="96" fill="#FFFFFF"/>
+
+<g transform="translate(-23,0)">
+  <!-- FIRST O — tired eye (FIXED) -->
+  <g transform="translate(110,256)">
+    <!-- orange base -->
+    <circle r="64" fill="#F4A261"/>
+
+    <!-- white eye -->
+    <ellipse cx="0" cy="0" rx="38" ry="38" fill="#FFFFFF"/>
+
+    <!-- pupil (now inside eye) -->
+    <ellipse cx="0" cy="5" rx="20" ry="20" fill="#2A2A2A"/>
+
+    <!-- orange eyelid overlay (the fix) -->
+    <path d="
+      M -48 -15
+      Q -15 26 55 0
+      L 0 -60
+      L 0 -60
+      Z"
+      fill="#F4A261"/>
+  </g>
+
+  <!-- SECOND O — awake eye -->
+  <g transform="translate(240,256)">
+    <circle r="64" fill="#A3BFA8"/>
+    <circle r="38" fill="#FFFFFF"/>
+    <circle r="20" fill="#2D6A4F"/>
+    <circle cx="-8" cy="-8" r="6" fill="#FFFFFF"/>
+  </g>
+
+  <!-- PS typography -->
+  <g fill="#2D6A4F"
+     font-family="Inter, Arial, Helvetica, sans-serif"
+     font-weight="700"
+     font-size="170"
+     dominant-baseline="middle">
+    <text x="300" y="273">PS</text>
+  </g>
+  </g>
+
+</svg>

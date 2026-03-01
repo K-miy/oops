@@ -6,7 +6,7 @@
 **A privacy-first, offline-only PWA to help parents get back in shape — no account, no data collection, no excuses.**
 
 [![License: MIT](https://img.shields.io/badge/code-MIT-2D6A4F?style=flat-square)](LICENSE)
-[![Data: CC BY-SA 4.0](https://img.shields.io/badge/exercise%20data-CC%20BY--SA%204.0-F4A261?style=flat-square)](data/exercises/LICENSE)
+[![Data: CC BY-SA 4.0](https://img.shields.io/badge/exercise%20data-CC%20BY--SA%204.0-F4A261?style=flat-square)](web/data/exercises/LICENSE)
 [![Built with Rust](https://img.shields.io/badge/built%20with-Rust%20%2B%20WASM-orange?style=flat-square)](Cargo.toml)
 [![PWA](https://img.shields.io/badge/PWA-offline--first-blue?style=flat-square)](web/manifest.json)
 
@@ -86,7 +86,7 @@ oops/
 │   ├── session.rs        # Session plan, completion tracking
 │   ├── program.rs        # Session generation algorithm (FITT-VP)
 │   └── lib.rs            # WASM bindings
-├── data/exercises/       # JSON exercise database (CC BY-SA 4.0)
+├── web/data/exercises/       # JSON exercise database (CC BY-SA 4.0)
 │   ├── push.json         # 6 exercises
 │   ├── squat.json        # 8 exercises
 │   ├── hinge.json        # 7 exercises
@@ -129,7 +129,7 @@ Contributions are very welcome! A few things to keep in mind:
 - **TDD is mandatory** — write the test first, then the implementation
 - **KISS** — every added feature must justify its complexity
 - **No equipment** — exercises must be performable without any gear (Phase 1)
-- Exercise data in `data/exercises/` is licensed **CC BY-SA 4.0** — attribute your sources
+- Exercise data in `web/data/exercises/` is licensed **CC BY-SA 4.0** — attribute your sources
 
 ```bash
 # Run all checks before submitting a PR
@@ -145,4 +145,4 @@ If OOPS helps you get back on track, consider buying the dev a coffee ☕
 ## License
 
 - **Code** — [MIT](LICENSE) © 2026 Camille (K-miy)
-- **Exercise data** (`data/exercises/`) — [CC BY-SA 4.0](data/exercises/LICENSE), sources include [Wger](https://wger.de)
+- **Exercise data** (`web/data/exercises/`) — [CC BY-SA 4.0](web/data/exercises/LICENSE), sources include [Wger](https://wger.de)

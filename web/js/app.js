@@ -266,6 +266,17 @@ function openSettings() {
       state.currentPlan = null;
       window.location.reload();
     },
+    onEditProfile: () => {
+      renderOnboarding(document.getElementById('screen-onboarding'), {
+        initialProfile: state.profile,
+        onComplete: async (updatedProfile) => {
+          state.profile = updatedProfile;
+          await saveProfile(updatedProfile);
+          await routeToHome();
+        },
+      });
+      showScreen('onboarding');
+    },
   });
   showScreen('settings');
 }

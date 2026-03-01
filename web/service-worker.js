@@ -2,7 +2,7 @@
 // Phase 1 : offline shell + assets
 // Phase 3 : notifications push
 
-const CACHE_VERSION = 'oops-v2';
+const CACHE_VERSION = 'oops-v4';
 
 const PRECACHE_URLS = [
   '/',
@@ -24,6 +24,11 @@ const PRECACHE_URLS = [
   // WASM (généré par wasm-pack)
   '/pkg/oops.js',
   '/pkg/oops_bg.wasm',
+  // Icônes
+  '/favicon.svg',
+  '/icons/logo.svg',
+  '/icons/icon-192.png',
+  '/icons/icon-512.png',
   // Exercices
   '/data/exercises/push.json',
   '/data/exercises/squat.json',

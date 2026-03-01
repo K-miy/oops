@@ -45,8 +45,7 @@ mod tests {
 
     const PROFILE_JSON: &str = r#"{
         "sex": "female",
-        "age_years": 32,
-        "weight_kg": 65.0,
+        "age_bracket": "under_35",
         "fitness_level": "beginner",
         "sessions_per_week": 3,
         "minutes_per_session": 30,

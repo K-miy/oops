@@ -50,6 +50,21 @@ export function getLang() {
 }
 
 /**
+ * Retourne un élément aléatoire si la valeur de la clé est un tableau,
+ * sinon délègue à t(). Utile pour les pools de phrases.
+ */
+export function tRandom(key) {
+  const parts = key.split('.');
+  let value = _translations;
+  for (const part of parts) {
+    value = value?.[part];
+    if (value === undefined) return t(key);
+  }
+  if (Array.isArray(value)) return value[Math.floor(Math.random() * value.length)];
+  return t(key);
+}
+
+/**
  * Applique les traductions sur tous les [data-i18n] dans le DOM.
  * Appelé automatiquement après initI18n(), et peut être rappelé
  * après un changement de contenu dynamique.

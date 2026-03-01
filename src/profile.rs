@@ -24,11 +24,22 @@ pub enum Lang {
     En,
 }
 
+/// Tranche d'âge — utilisée à la place d'un âge exact (inutile pour un programme au poids de corps).
+/// Sérialisé en snake_case explicite pour correspondre aux valeurs JS stockées dans IndexedDB.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub enum AgeBracket {
+    #[serde(rename = "under_35")]
+    Under35,
+    #[serde(rename = "35_44")]
+    Age3544,
+    #[serde(rename = "45_plus")]
+    Age45Plus,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Profile {
     pub sex: Sex,
-    pub age_years: u8,
-    pub weight_kg: f32,
+    pub age_bracket: AgeBracket,
     pub fitness_level: FitnessLevel,
     /// 2–5 séances par semaine
     pub sessions_per_week: u8,
@@ -41,11 +52,24 @@ pub struct Profile {
 }
 
 impl Profile {
-    /// Difficulté maximale des exercices autorisés
+    /// Difficulté maximale des exercices autorisés.
+    /// Les 45+ ont une difficulté max réduite de 1 (récupération plus longue, prudence).
     pub fn max_difficulty(&self) -> u8 {
-        match self.fitness_level {
+        let base: u8 = match self.fitness_level {
             FitnessLevel::Beginner => 2,
             FitnessLevel::Intermediate => 3,
+        };
+        match self.age_bracket {
+            AgeBracket::Age45Plus => base.saturating_sub(1).max(1),
+            _ => base,
+        }
+    }
+
+    /// Bonus de repos entre séries pour les 45+ (récupération neuromusculaire plus lente).
+    pub fn rest_bonus_s(&self) -> u32 {
+        match self.age_bracket {
+            AgeBracket::Age45Plus => 15,
+            _ => 0,
         }
     }
 
@@ -79,8 +103,7 @@ mod tests {
     fn make_profile(level: FitnessLevel, postpartum: bool) -> Profile {
         Profile {
             sex: Sex::Female,
-            age_years: 32,
-            weight_kg: 65.0,
+            age_bracket: AgeBracket::Under35,
             fitness_level: level,
             sessions_per_week: 3,
             minutes_per_session: 30,
@@ -101,6 +124,34 @@ mod tests {
     fn intermediate_max_difficulty_is_3() {
         let p = make_profile(FitnessLevel::Intermediate, false);
         assert_eq!(p.max_difficulty(), 3);
+    }
+
+    #[test]
+    fn age_45_plus_reduces_max_difficulty_by_1() {
+        let mut p = make_profile(FitnessLevel::Intermediate, false);
+        p.age_bracket = AgeBracket::Age45Plus;
+        assert_eq!(p.max_difficulty(), 2);
+    }
+
+    #[test]
+    fn age_45_plus_beginner_difficulty_capped_at_1() {
+        let mut p = make_profile(FitnessLevel::Beginner, false);
+        p.age_bracket = AgeBracket::Age45Plus;
+        // beginner base=2, -1=1, max(1)=1
+        assert_eq!(p.max_difficulty(), 1);
+    }
+
+    #[test]
+    fn under_35_has_no_rest_bonus() {
+        let p = make_profile(FitnessLevel::Beginner, false);
+        assert_eq!(p.rest_bonus_s(), 0);
+    }
+
+    #[test]
+    fn age_45_plus_has_15s_rest_bonus() {
+        let mut p = make_profile(FitnessLevel::Beginner, false);
+        p.age_bracket = AgeBracket::Age45Plus;
+        assert_eq!(p.rest_bonus_s(), 15);
     }
 
     #[test]

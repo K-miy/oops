@@ -12,7 +12,7 @@ import { getSetting, setSetting, resetAll } from '../db.js';
  *   onReset: () => void,
  * }} opts
  */
-export function renderSettings(container, { profile, onLangChange, onReset }) {
+export function renderSettings(container, { profile, onLangChange, onReset, onEditProfile }) {
   const lang = getLang();
 
   container.innerHTML = `
@@ -68,6 +68,11 @@ export function renderSettings(container, { profile, onLangChange, onReset }) {
     await setSetting('lang', newLang);
     await initI18n(newLang);
     onLangChange(newLang);
+  });
+
+  // ── Modifier le profil ──
+  container.querySelector('#settings-profile-row').addEventListener('click', () => {
+    if (onEditProfile) onEditProfile();
   });
 
   // ── Reset ──

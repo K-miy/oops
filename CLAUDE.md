@@ -31,7 +31,7 @@ Fonctionne entièrement en local, sans serveur, sans collecte de données.
 | Tests Rust | `cargo test` + `wasm-pack test` | Unit + intégration WASM |
 | Tests E2E | `Playwright` (viewport mobile) | Simulation iPhone/Android dans les tests |
 | i18n | Fichiers JSON FR/EN + fonction `t()` JS minimale | Simple, extensible |
-| Base exercices | Fichiers JSON dans `data/exercises/` | Éditables sans toucher au code |
+| Base exercices | Fichiers JSON dans `web/data/exercises/` | Éditables sans toucher au code |
 | Notifications | **Post-MVP** — Web Push API + Service Worker | Débloqué après MVP stable |
 
 > **Pourquoi pas Trunk ?** Trunk est optimisé pour les projets Yew/Dioxus. Pour une UI vanilla HTML/JS,
@@ -275,7 +275,7 @@ Base initiale constituée à partir de :
 - **Wger** (wger.de) — base open-source d'exercices (filtrer `equipment: none`)
 - Curation manuelle pour valider les contraindications et instructions
 
-Fichiers JSON dans `data/exercises/` — modifiables directement pour ajouter des exercices sans toucher au code Rust ou JS.
+Fichiers JSON dans `web/data/exercises/` — modifiables directement pour ajouter des exercices sans toucher au code Rust ou JS.
 
 ---
 

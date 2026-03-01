@@ -24,13 +24,11 @@
       "female": "Femme",
       "other": "Autre / Ne pas préciser"
     },
-    "age": {
-      "label": "Âge",
-      "placeholder": "32"
-    },
-    "weight": {
-      "label": "Poids (kg)",
-      "placeholder": "70"
+    "age_bracket": {
+      "label": "Votre tranche d'âge",
+      "under_35": "Moins de 35 ans",
+      "35_44": "35 – 44 ans",
+      "45_plus": "45 ans et plus"
     },
     "fitness_level": {
       "label": "Niveau de forme actuel",
@@ -65,12 +63,44 @@
     "done": "Faite",
     "rest_day": "Jour de repos",
     "rest_day_desc": "Vous n'avez pas de séance prévue aujourd'hui. Profitez-en pour récupérer !",
+    "rest_day_messages": [
+      "Même les héros récupèrent.",
+      "Votre corps compile les gains. Laissez-le faire son travail.",
+      "Même les routines respirent.",
+      "Repos autorisé. Recommandé, même.",
+      "Le progrès se construit aussi immobile.",
+      "Aujourd'hui, on recharge.",
+      "Les muscles grandissent au repos. C'est de la science, pas une excuse.",
+      "Votre prochaine séance sera meilleure pour ça.",
+      "Profitez. Demain, on bouge.",
+      "Récupération en cours. Ne pas déranger.",
+      "Le repos fait partie du programme. Pas de culpabilité autorisée.",
+      "Vous construisez quelque chose. Lentement. Parfaitement."
+    ],
+    "post_session_messages": [
+      "Oops. Progress happened.",
+      "Votre corps compile les gains.",
+      "Et pourtant, vous étiez là.",
+      "Le futur vous dit merci.",
+      "Séance dans les livres.",
+      "On a fait ça ?",
+      "Voilà. C'est fait.",
+      "Encore une d'ajoutée au compteur.",
+      "15 minutes bien investies.",
+      "C'est ça, la différence.",
+      "Personne ne l'a jamais regretté.",
+      "Petit à petit, l'oiseau fait son nid. Et ses squats.",
+      "Votre futur vous applaudit doucement.",
+      "Session terminée. Retour au mode Parent.",
+      "La constance bat la motivation. Vous venez de prouver les deux."
+    ],
     "streak": "Série en cours",
     "streak_day": "jour consécutif",
     "streak_days": "jours consécutifs",
     "more_exercises": "autres exercices",
     "week": "Cette semaine",
-    "rest_short": "Repos"
+    "rest_short": "Repos",
+    "exercises_label": "Exercices"
   },
   "history": {
     "empty_title": "Pas encore de séance",

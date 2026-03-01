@@ -3,7 +3,7 @@
  *
  * Étapes :
  *  1. Langue
- *  2. Sexe, âge, poids
+ *  2. Sexe, tranche d'âge
  *  3. Niveau de forme
  *  4. Fréquence & durée
  *  5. Conditions spéciales (post-partum, blessures)
@@ -14,21 +14,25 @@ const TOTAL_STEPS = 5;
 
 /**
  * @param {HTMLElement} container - #screen-onboarding
- * @param {{ onComplete: (profile: object) => void, exercises: object[] }} opts
+ * @param {{
+ *   onComplete: (profile: object) => void,
+ *   initialProfile?: object,  // si fourni : mode édition (saute étape 1)
+ * }} opts
  */
-export function renderOnboarding(container, { onComplete }) {
-  let step = 1;
+export function renderOnboarding(container, { onComplete, initialProfile = null }) {
+  const isEditing = !!initialProfile;
+  let step = isEditing ? 2 : 1;  // saute l'étape langue en mode édition
+
   const draft = {
-    lang: 'fr',
-    sex: null,
-    age_years: null,
-    weight_kg: null,
-    fitness_level: null,
-    sessions_per_week: 3,
-    minutes_per_session: 30,
-    is_postpartum: false,
-    injury_notes: [],
-    disclaimer_accepted_at: new Date().toISOString().slice(0, 10),
+    lang: initialProfile?.lang ?? 'fr',
+    sex: initialProfile?.sex ?? null,
+    age_bracket: initialProfile?.age_bracket ?? null,
+    fitness_level: initialProfile?.fitness_level ?? null,
+    sessions_per_week: initialProfile?.sessions_per_week ?? 3,
+    minutes_per_session: initialProfile?.minutes_per_session ?? 30,
+    is_postpartum: initialProfile?.is_postpartum ?? false,
+    injury_notes: initialProfile?.injury_notes ?? [],
+    disclaimer_accepted_at: initialProfile?.disclaimer_accepted_at ?? new Date().toISOString().slice(0, 10),
   };
 
   const $content    = container.querySelector('#onboarding-step-content');
@@ -89,8 +93,10 @@ export function renderOnboarding(container, { onComplete }) {
     });
   }
 
-  // ── Étape 2 : Infos personnelles ──
+  // ── Étape 2 : Sexe + tranche d'âge ──
   function renderPersonalStep() {
+    const ageBrackets = ['under_35', '35_44', '45_plus'];
+
     $content.innerHTML = `
       <div class="onboarding-question">
         <h2>${t('onboarding.sex.label')}</h2>
@@ -106,20 +112,17 @@ export function renderOnboarding(container, { onComplete }) {
           </button>
         </div>
       </div>
-      <div class="field mt-24">
-        <label for="input-age">${t('onboarding.age.label')}</label>
-        <input id="input-age" type="number" inputmode="numeric" min="18" max="80"
-          placeholder="${t('onboarding.age.placeholder')}"
-          value="${draft.age_years ?? ''}" />
-      </div>
-      <div class="field">
-        <label for="input-weight">${t('onboarding.weight.label')}</label>
-        <input id="input-weight" type="number" inputmode="decimal" min="30" max="250" step="0.1"
-          placeholder="${t('onboarding.weight.placeholder')}"
-          value="${draft.weight_kg ?? ''}" />
+      <div class="onboarding-question mt-24">
+        <h2>${t('onboarding.age_bracket.label')}</h2>
+        <div class="choice-list" id="age-bracket-choices">
+          ${ageBrackets.map((b) => `
+            <button class="choice-card${draft.age_bracket === b ? ' selected' : ''}" data-value="${b}" id="age-bracket-${b}">
+              <div class="choice-title">${t('onboarding.age_bracket.' + b)}</div>
+            </button>`).join('')}
+        </div>
       </div>`;
 
-    $content.querySelectorAll('[data-value]').forEach((card) => {
+    $content.querySelectorAll('#sex-choices .choice-card').forEach((card) => {
       card.addEventListener('click', () => {
         $content.querySelectorAll('#sex-choices .choice-card').forEach((c) => c.classList.remove('selected'));
         card.classList.add('selected');
@@ -127,11 +130,12 @@ export function renderOnboarding(container, { onComplete }) {
       });
     });
 
-    $content.querySelector('#input-age').addEventListener('input', (e) => {
-      draft.age_years = parseInt(e.target.value, 10) || null;
-    });
-    $content.querySelector('#input-weight').addEventListener('input', (e) => {
-      draft.weight_kg = parseFloat(e.target.value) || null;
+    $content.querySelectorAll('#age-bracket-choices .choice-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        $content.querySelectorAll('#age-bracket-choices .choice-card').forEach((c) => c.classList.remove('selected'));
+        card.classList.add('selected');
+        draft.age_bracket = card.dataset.value;
+      });
     });
   }
 
@@ -262,7 +266,7 @@ export function renderOnboarding(container, { onComplete }) {
   function validateStep() {
     switch (step) {
       case 1: return !!draft.lang;
-      case 2: return draft.sex && draft.age_years >= 18 && draft.weight_kg > 0;
+      case 2: return !!draft.sex && !!draft.age_bracket;
       case 3: return !!draft.fitness_level;
       case 4: return draft.sessions_per_week > 0 && draft.minutes_per_session > 0;
       case 5: return true; // conditions spéciales = optionnelles

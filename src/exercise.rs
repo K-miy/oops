@@ -4,6 +4,7 @@ use serde::{Deserialize, Serialize};
 #[serde(rename_all = "snake_case")]
 pub enum Category {
     Push,
+    Pull,
     Squat,
     Hinge,
     Core,
@@ -15,6 +16,8 @@ pub enum Category {
 pub enum MovementPattern {
     HorizontalPush,
     VerticalPush,
+    HorizontalPull,
+    VerticalPull,
     Squat,
     Lunge,
     HipHinge,

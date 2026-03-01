@@ -90,7 +90,7 @@ export function renderSession(container, { plan, exercises, lang, onComplete, on
     const allDone = completed.size >= plan.exercises.length;
 
     $footer.innerHTML = allDone
-      ? `<button class="btn btn-accent" id="finish-session-btn">${t('session.finish')}</button>`
+      ? `<button class="btn btn-accent" id="finish-session-btn">I did it again</button>`
       : `<button class="btn btn-ghost" id="skip-session-btn" style="margin-top:0">${t('session.skip_rest')}</button>`;
 
     $footer.querySelector('#finish-session-btn')?.addEventListener('click', () => {

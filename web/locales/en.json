@@ -24,13 +24,11 @@
       "female": "Female",
       "other": "Other / Prefer not to say"
     },
-    "age": {
-      "label": "Age",
-      "placeholder": "32"
-    },
-    "weight": {
-      "label": "Weight (kg)",
-      "placeholder": "70"
+    "age_bracket": {
+      "label": "Your age group",
+      "under_35": "Under 35",
+      "35_44": "35 – 44",
+      "45_plus": "45 and over"
     },
     "fitness_level": {
       "label": "Current fitness level",
@@ -65,12 +63,44 @@
     "done": "Done",
     "rest_day": "Rest day",
     "rest_day_desc": "No session scheduled today. Rest up and recover!",
+    "rest_day_messages": [
+      "Even heroes rest.",
+      "Your body's compiling gains. Let it work.",
+      "Even routines need to breathe.",
+      "Rest authorized. Recommended, even.",
+      "Progress happens here too.",
+      "Recharging.",
+      "Muscles grow at rest. Science, not an excuse.",
+      "Your next session will be better for this.",
+      "Enjoy. Tomorrow, we move.",
+      "Recovery in progress. Do not disturb.",
+      "Rest is part of the plan. No guilt allowed.",
+      "You're building something. Slowly. Perfectly."
+    ],
+    "post_session_messages": [
+      "Oops. Progress happened.",
+      "Your body's taking notes.",
+      "And yet, you showed up.",
+      "Future you says thanks.",
+      "Session logged.",
+      "We did that?",
+      "That's done. Back to it.",
+      "One more in the books.",
+      "15 minutes well spent.",
+      "That's the difference, right there.",
+      "No one ever regretted a workout.",
+      "Slowly but surely. And squatting.",
+      "Your future self is quietly applauding.",
+      "Mission complete. Back to Parent Mode.",
+      "Consistency beats motivation. You just proved both."
+    ],
     "streak": "Current streak",
     "streak_day": "consecutive day",
     "streak_days": "consecutive days",
     "more_exercises": "more exercises",
     "week": "This week",
-    "rest_short": "Rest"
+    "rest_short": "Rest",
+    "exercises_label": "Exercises"
   },
   "history": {
     "empty_title": "No sessions yet",

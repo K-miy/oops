@@ -15,9 +15,11 @@
   --color-text:        #1A1A1A;
   --color-text-muted:  #6B7280;
   --color-border:      #E5E7EB;
-  --color-success:     #10B981;
-  --color-error:       #EF4444;
-  --color-warning:     #F59E0B;
+  --color-success:      #10B981;
+  --color-success-soft: #A3BFA8;  /* sauge clair — victoire douce */
+  --color-surface-alt2: #CCD5AE;  /* vert amande — surfaces secondaires */
+  --color-error:        #EF4444;
+  --color-warning:      #F59E0B;
 
   --radius-sm:  6px;
   --radius-md:  12px;
@@ -828,6 +830,36 @@ body {
   font-size: 0.65rem;
   color: var(--color-text-muted);
   font-weight: 600;
+}
+
+.day-card-selected {
+  border-color: var(--color-accent);
+  background: var(--color-surface-alt2);
+}
+
+/* ── Week day detail ── */
+.week-detail {
+  padding: 12px 0 4px;
+}
+
+.week-detail-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+  text-transform: capitalize;
+}
+
+/* ── Post-session message ── */
+.post-session-message {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-primary-dk);
+  background: var(--color-surface-alt2);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  line-height: 1.4;
 }
 
 /* ── Animations ── */
