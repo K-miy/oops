@@ -44,7 +44,7 @@ export function renderHome(container, { profile, plan, todaySession, streak, lan
   const moreCount = (plan?.exercises.length ?? 0) - 4;
 
   container.innerHTML = `
-    <div class="home-greeting animate-in">${greeting(lang)}, 💪</div>
+    <div class="home-greeting animate-in">${greeting(lang)}!</div>
     <div class="home-date animate-in">${capitalise(dateStr)}</div>
 
     ${plan && plan.exercises.length > 0 ? `

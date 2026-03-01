@@ -500,10 +500,179 @@ body {
   padding: 16px;
 }
 
-.session-progress {
-  font-size: 0.875rem;
+/* Progress bar (replaces text counter) */
+.session-progress { width: 100%; }
+
+.session-prog-bar {
+  width: 100%;
+  height: 5px;
+  background: var(--color-border);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.session-prog-fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 100px;
+  transition: width 0.4s ease;
+}
+
+/* ── Preview ── */
+.session-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.session-preview-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preview-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  transition: opacity 0.25s ease;
+}
+
+.preview-row--skipped {
+  opacity: 0.35;
+  text-decoration: line-through;
+}
+
+.preview-row-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.preview-row-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.preview-row-spec {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.preview-skip-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition);
+}
+
+.preview-skip-btn:hover { color: var(--color-error); }
+
+.session-start-btn { width: 100%; }
+
+/* ── Exercice guidé ── */
+.session-exercise {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 16px;
+  gap: 16px;
+}
+
+.session-ex-meta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.session-ex-counter { font-weight: 600; }
+.session-ex-setlabel { font-weight: 600; color: var(--color-primary); }
+
+.session-ex-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.session-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.session-timer-value {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.session-timer-rep {
+  font-size: 0.9rem;
   color: var(--color-text-muted);
   font-weight: 600;
+}
+
+.session-ex-instructions {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: 340px;
+  text-align: left;
+}
+
+.session-skip-btn { margin: 0 auto; }
+
+/* ── Repos ── */
+.session-rest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  gap: 12px;
+}
+
+.session-rest-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.session-rest-timer {
+  font-size: 5rem;
+  font-weight: 900;
+  color: var(--color-success-soft);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.session-rest-next {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
 }
 
 .exercise-card {
@@ -576,31 +745,34 @@ body {
 
 /* ── RPE selector ── */
 .rpe-container {
-  padding: 20px;
+  padding: 24px 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .rpe-title {
-  font-size: 1.125rem;
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-size: 1.25rem;
+  font-weight: 800;
 }
 
 .rpe-subtitle {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--color-text-muted);
-  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 .rpe-scale {
   display: flex;
-  gap: 4px;
+  gap: 5px;
   justify-content: center;
+  margin-top: 4px;
 }
 
 .rpe-btn {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 44px;
   border-radius: var(--radius-sm);
   border: 2px solid var(--color-border);
   background: var(--color-surface);
@@ -613,11 +785,47 @@ body {
   justify-content: center;
 }
 
-.rpe-btn:hover   { border-color: var(--color-primary); }
-.rpe-btn.selected {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
+/* Zones de couleur sur la scale */
+.rpe-btn.rpe-easy   { border-color: var(--color-border); color: var(--color-text-muted); }
+.rpe-btn.rpe-target { border-color: var(--color-primary); color: var(--color-primary); background: color-mix(in srgb, var(--color-primary) 8%, transparent); }
+.rpe-btn.rpe-hard   { border-color: var(--color-accent);  color: var(--color-accent); }
+
+.rpe-btn.selected { color: #fff; }
+.rpe-btn.rpe-easy.selected   { background: var(--color-text-muted); border-color: var(--color-text-muted); }
+.rpe-btn.rpe-target.selected { background: var(--color-primary);     border-color: var(--color-primary); }
+.rpe-btn.rpe-hard.selected   { background: var(--color-accent);      border-color: var(--color-accent); }
+
+.rpe-zone-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+.rpe-zone-target {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* ── Bouton "I did it again" ── */
+.btn-finish {
+  width: 100%;
+  padding: 20px 24px;
+  background: var(--color-accent);
   color: #fff;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+.btn-finish:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--color-accent) 30%, transparent);
 }
 
 /* ── Bottom navigation (fixe globale) ── */
