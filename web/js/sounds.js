@@ -4,14 +4,17 @@
  * Zéro fichier, fonctionne offline. Synthèse pure.
  *
  * Palette :
- *   playClave()  — clave / wood block, countdown 3-2-1
- *   playTick()   — tick léger, chaque rep
- *   playSnare()  — caisse claire, fin de série → repos
- *   playKick()   — grosse caisse, fin de séance
+ *   scheduleCountdown()  — accélération 60→120→240 BPM avant un exercice
+ *   cancelCountdown()    — annule les beats non encore joués
+ *   playTick()           — tick léger, chaque rep (20 BPM = toutes les 3s)
+ *   playSnare()          — caisse claire, fin de série → repos
+ *   playClave()          — clave, countdown repos 3-2-1
+ *   playKick()           — grosse caisse, fin de séance
  */
 
 let _ctx = null;
 let _enabled = true;
+let _pendingNodes = [];  // nœuds audio schedulés pour le countdown
 
 function ac() {
   if (!_ctx) _ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -23,7 +26,77 @@ export function setSoundsEnabled(val) {
   _enabled = !!val;
 }
 
-/** Clave (wood block) — countdown 3-2-1 avant une série */
+// ── Helpers internes ──
+
+function schedBeat(c, beatTime, freq, dur, vol = 0.45) {
+  const osc = c.createOscillator();
+  const g   = c.createGain();
+  osc.connect(g); g.connect(c.destination);
+  osc.type = 'square';
+  osc.frequency.setValueAtTime(freq, beatTime);
+  g.gain.setValueAtTime(vol, beatTime);
+  g.gain.exponentialRampToValueAtTime(0.001, beatTime + dur);
+  osc.start(beatTime);
+  osc.stop(beatTime + dur + 0.005);
+  _pendingNodes.push(osc);
+}
+
+// ── API publique ──
+
+/**
+ * Countdown d'accélération sur 10s.
+ * 60 BPM × 4s → 120 BPM × 4s → 240 BPM × 2s
+ * Beats schedulés au microseconde près via AudioContext.
+ */
+export function scheduleCountdown() {
+  if (!_enabled) return;
+  cancelCountdown();
+  try {
+    const c   = ac();
+    const now = c.currentTime;
+
+    // Section 1 : 60 BPM (interval = 1s) pendant 4s → 4 beats
+    for (let i = 0; i < 4; i++) {
+      schedBeat(c, now + i * 1.0, 700, 0.07);
+    }
+
+    // Section 2 : 120 BPM (interval = 0.5s) pendant 4s → 8 beats
+    for (let i = 0; i < 8; i++) {
+      schedBeat(c, now + 4 + i * 0.5, 900, 0.045);
+    }
+
+    // Section 3 : 240 BPM (interval = 0.25s) pendant 2s → 8 beats
+    for (let i = 0; i < 8; i++) {
+      schedBeat(c, now + 8 + i * 0.25, 1100, 0.025, 0.55);
+    }
+  } catch (_) { /* pas de Web Audio */ }
+}
+
+/** Annule les beats du countdown pas encore joués. */
+export function cancelCountdown() {
+  for (const node of _pendingNodes) {
+    try { node.stop(0); } catch (_) {}
+  }
+  _pendingNodes = [];
+}
+
+/** Tick léger — chaque nouvelle rep (20 BPM = toutes les 3s) */
+export function playTick() {
+  if (!_enabled) return;
+  try {
+    const c = ac(), t = c.currentTime;
+    const osc = c.createOscillator();
+    const g   = c.createGain();
+    osc.connect(g); g.connect(c.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(880, t);
+    g.gain.setValueAtTime(0.18, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.035);
+    osc.start(t); osc.stop(t + 0.04);
+  } catch (_) { /* pas de Web Audio */ }
+}
+
+/** Clave — countdown repos 3-2-1 */
 export function playClave() {
   if (!_enabled) return;
   try {
@@ -37,22 +110,6 @@ export function playClave() {
     g.gain.setValueAtTime(0.45, t);
     g.gain.exponentialRampToValueAtTime(0.001, t + 0.07);
     osc.start(t); osc.stop(t + 0.08);
-  } catch (_) { /* pas de Web Audio */ }
-}
-
-/** Tick léger — chaque nouvelle rep */
-export function playTick() {
-  if (!_enabled) return;
-  try {
-    const c = ac(), t = c.currentTime;
-    const osc = c.createOscillator();
-    const g   = c.createGain();
-    osc.connect(g); g.connect(c.destination);
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(880, t);
-    g.gain.setValueAtTime(0.18, t);
-    g.gain.exponentialRampToValueAtTime(0.001, t + 0.035);
-    osc.start(t); osc.stop(t + 0.04);
   } catch (_) { /* pas de Web Audio */ }
 }
 

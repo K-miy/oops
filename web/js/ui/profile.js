@@ -15,8 +15,8 @@ import { t, initI18n } from '../i18n.js';
  */
 export function renderProfileEdit(container, { profile, onSave }) {
   const draft = {
-    sound_enabled: true,
     ...profile,
+    sound_enabled: profile.sound_enabled ?? false,
     workout_days: profile.workout_days ? [...profile.workout_days] : [],
     injury_notes: profile.injury_notes ? [...profile.injury_notes] : [],
   };

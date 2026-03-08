@@ -324,7 +324,7 @@ function startSession() {
     plan: state.currentPlan,
     exercises: state.exercises,
     lang: getLang(),
-    soundEnabled: state.profile?.sound_enabled !== false,
+    soundEnabled: state.profile?.sound_enabled === true,
     onComplete: async (result) => {
       const today = new Date().toISOString().slice(0, 10);
       await saveSession({

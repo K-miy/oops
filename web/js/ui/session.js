@@ -9,7 +9,7 @@
  * RPE        : évaluation de l'effort + gros bouton "I did it again"
  */
 import { t } from '../i18n.js';
-import { setSoundsEnabled, playClave, playTick, playSnare, playKick } from '../sounds.js';
+import { setSoundsEnabled, scheduleCountdown, cancelCountdown, playClave, playTick, playSnare, playKick } from '../sounds.js';
 
 /**
  * @param {HTMLElement} container - #screen-session
@@ -150,7 +150,8 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
   function showReading(ex) {
     state.phase = 'reading';
     stopTimer();
-    state.timeLeft = 15;
+    state.timeLeft = 10;
+    scheduleCountdown();
 
     const imgUrl = getInfo(ex)?.image_url ?? null;
     const instructions = exInstructions(ex);
@@ -169,6 +170,7 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
 
     setFooterBtn(t('session.start_now'), 'start-exercise-btn');
     document.getElementById('start-exercise-btn').addEventListener('click', () => {
+      cancelCountdown();
       stopTimer();
       showExercise();
     });
@@ -177,8 +179,7 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
       state.timeLeft--;
       const $rt = document.getElementById('reading-timer');
       if ($rt) $rt.textContent = `${state.timeLeft}s`;
-      if (state.timeLeft > 0 && state.timeLeft <= 3) playClave();
-      if (state.timeLeft <= 0) { stopTimer(); showExercise(); }
+      if (state.timeLeft <= 0) { cancelCountdown(); stopTimer(); showExercise(); }
     }, 1000);
   }
 
