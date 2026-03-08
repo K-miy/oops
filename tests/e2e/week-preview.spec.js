@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 import { setupProfile } from './helpers.js';
 
 test.describe('Aperçu semaine — détails au clic', () => {
-  test.beforeEach(setupProfile);
+  test.beforeEach(async ({ page }) => setupProfile(page));
 
   test('cliquer sur une carte d\'entraînement affiche les exercices', async ({ page }) => {
     const todayCard = page.locator('.day-card-today');

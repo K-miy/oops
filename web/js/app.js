@@ -327,6 +327,10 @@ function startSession() {
     exercises: state.exercises,
     lang: getLang(),
     soundEnabled: state.soundEnabled,
+    onSoundToggle: async (val) => {
+      state.soundEnabled = val;
+      await setSetting('sound_enabled', val);
+    },
     onComplete: async (result) => {
       const today = new Date().toISOString().slice(0, 10);
       await saveSession({

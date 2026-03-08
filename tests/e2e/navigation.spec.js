@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 import { setupProfile } from './helpers.js';
 
 test.describe('Navigation — barre du bas', () => {
-  test.beforeEach(setupProfile);
+  test.beforeEach(async ({ page }) => setupProfile(page));
 
   test('la barre de navigation est visible sur l\'accueil', async ({ page }) => {
     await expect(page.locator('#bottom-nav')).toBeVisible();
@@ -49,7 +49,7 @@ test.describe('Navigation — barre du bas', () => {
 });
 
 test.describe('Accueil — aperçu semaine', () => {
-  test.beforeEach(setupProfile);
+  test.beforeEach(async ({ page }) => setupProfile(page));
 
   test('affiche la section "Cette semaine"', async ({ page }) => {
     await expect(page.locator('.week-preview')).toBeVisible();
@@ -65,7 +65,7 @@ test.describe('Accueil — aperçu semaine', () => {
 });
 
 test.describe('Historique — état vide', () => {
-  test.beforeEach(setupProfile);
+  test.beforeEach(async ({ page }) => setupProfile(page));
 
   test('affiche l\'écran historique', async ({ page }) => {
     await page.locator('.nav-item[data-screen="history"]').click();

@@ -1,12 +1,55 @@
 /**
  * session.js — Déroulement guidé d'une séance
  *
- * Machine à états : PREVIEW → EXERCISING ↔ RESTING → RPE
+ * ═══════════════════════════════════════════════════════════════════
+ * MACHINE À ÉTATS
+ * ═══════════════════════════════════════════════════════════════════
  *
- * PREVIEW    : liste des exercices, skip individuel possible avant départ
- * EXERCISING : chrono automatique (reps × 3s ou duration_s), une série à la fois
- * RESTING    : décompte inter-séries ou inter-exercices, auto-avance
- * RPE        : évaluation de l'effort + gros bouton "I did it again"
+ *   ┌─────────┐  [start]  ┌─────────┐  [15s / btn]  ┌────────────┐
+ *   │ PREVIEW │──────────▶│ READING │──────────────▶│ EXERCISING │
+ *   └─────────┘           └─────────┘               └────────────┘
+ *       ↑                                                  │
+ *       │ (abort)                                 [fin de série]
+ *       │                                               │
+ *       │                              ┌────────────────┤
+ *       │                              │                │
+ *       │               [last set,     ▼                ▼
+ *       │               last ex]   RESTING          RESTING
+ *       │                         inter-sets     inter-exercices
+ *       │                              │          (image suivant)
+ *       │                              └────────────────┤
+ *       │                                     [skip rest / timer]
+ *       │                                               │
+ *       │                                               ▼
+ *       │                                        ┌────────────┐
+ *       │                                        │ EXERCISING │ ◀─ (setIdx++)
+ *       │                                        └────────────┘
+ *       │
+ *       │           [last set of last ex]
+ *       │ ◀──────────────────────────────────
+ *       │                    ▼
+ *       │               ┌─────┐
+ *       │               │ RPE │
+ *       │               └─────┘
+ *       │                  │
+ *       └──────────────────┘  [I did it again → onComplete()]
+ *
+ * ───────────────────────────────────────────────────────────────────
+ * ÉTATS
+ *   preview     : liste des exercices, toggle skip (✕) par exercice
+ *   reading     : 15s de lecture du 1er exercice; BPM à 10s restantes
+ *   exercising  : timer auto (reps×3s ou duration_s); son tick par rep
+ *   resting     : inter-sets (clave 3-2-1) ou inter-exercices (image suivant + BPM)
+ *   rpe         : échelle 1-10; hint si hors zone 5-7; bouton "I did it again"
+ *
+ * RÈGLES SONORES
+ *   stopAll()   appelé à chaque entrée d'état → aucun son orphelin possible
+ *   reading     → scheduleCountdown() à 10s restantes (4×60BPM + 8×120BPM + 8×240BPM)
+ *   exercising  → playTick() à chaque nouvelle rep (toutes les 3s)
+ *   resting     → playSnare() à l'entrée; clave (3-2-1) si inter-sets;
+ *                 scheduleCountdown() à 10s si inter-exercices
+ *   rpe         → playKick() à l'entrée
+ * ═══════════════════════════════════════════════════════════════════
  */
 import { t } from '../i18n.js';
 import { setSoundsEnabled, scheduleCountdown, cancelCountdown, playClave, playTick, playSnare, playKick } from '../sounds.js';
@@ -21,11 +64,28 @@ import { setSoundsEnabled, scheduleCountdown, cancelCountdown, playClave, playTi
  *   onAbort: () => void,
  * }} opts
  */
-export function renderSession(container, { plan, exercises, lang, soundEnabled, onComplete }) {
-  setSoundsEnabled(soundEnabled !== false);
+export function renderSession(container, { plan, exercises, lang, soundEnabled, onSoundToggle, onComplete }) {
+  let _soundEnabled = soundEnabled !== false;
+  setSoundsEnabled(_soundEnabled);
+
   const $main     = container.querySelector('#session-main');
   const $footer   = container.querySelector('#session-footer');
   const $progress = container.querySelector('#session-progress');
+  const $muteBtn  = container.querySelector('#session-mute-btn');
+
+  function updateMuteBtn() {
+    if ($muteBtn) $muteBtn.textContent = _soundEnabled ? '🔊' : '🔇';
+  }
+  updateMuteBtn();
+
+  if ($muteBtn) {
+    $muteBtn.addEventListener('click', () => {
+      _soundEnabled = !_soundEnabled;
+      setSoundsEnabled(_soundEnabled);
+      updateMuteBtn();
+      if (onSoundToggle) onSoundToggle(_soundEnabled);
+    });
+  }
 
   const exerciseMap = Object.fromEntries(exercises.map((e) => [e.id, e]));
   const startTime   = Date.now();
@@ -77,6 +137,12 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
     if (state.timer) { clearInterval(state.timer); state.timer = null; }
   }
 
+  /** Stoppe timer ET tous les sons planifiés — appelé à chaque transition de phase */
+  function stopAll() {
+    stopTimer();
+    cancelCountdown();
+  }
+
   function setFooterBtn(label, id, ghost = false) {
     $footer.innerHTML = `<button class="btn ${ghost ? 'btn-ghost' : 'btn-outline'} session-skip-btn" id="${id}">${label}</button>`;
   }
@@ -95,7 +161,7 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
   // ── PHASE : PREVIEW ──
   function showPreview() {
     state.phase = 'preview';
-    stopTimer();
+    stopAll();
     renderProgress();
 
     const rows = plan.exercises.map((ex, idx) => {
@@ -143,7 +209,7 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
   // BPM countdown démarre à 10s restantes (5s de lecture silencieuse).
   function showReading(ex) {
     state.phase = 'reading';
-    stopTimer();
+    stopAll();
     state.timeLeft = 15;
 
     const imgUrl = getInfo(ex)?.image_url ?? null;
@@ -162,11 +228,7 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
       </div>`;
 
     setFooterBtn(t('session.start_now'), 'start-exercise-btn');
-    document.getElementById('start-exercise-btn').addEventListener('click', () => {
-      cancelCountdown();
-      stopTimer();
-      showExercise();
-    });
+    document.getElementById('start-exercise-btn').addEventListener('click', showExercise);
 
     state.timer = setInterval(() => {
       state.timeLeft--;
@@ -179,6 +241,7 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
 
   // ── PHASE : EXERCISING ──
   function showExercise() {
+    stopAll();
     state.phase = 'exercising';
     renderProgress();
 
@@ -226,7 +289,6 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
       showExercise();
     });
 
-    stopTimer();
     let lastRep = 1; // skip first rep sound, premier tick à 3s (rep 2)
     state.timer = setInterval(() => {
       state.timeLeft--;
@@ -271,6 +333,7 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
   // Entre exercices : image du prochain exercice visible dès le début,
   //                   BPM countdown à 10s restantes, puis exercice direct.
   function showRest(restSeconds, nextExerciseName) {
+    stopAll();
     const isBetweenEx = nextExerciseName !== null;
     state.phase    = 'resting';
     state.timeLeft = restSeconds;
@@ -291,8 +354,6 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
       </div>`;
 
     function finishRest() {
-      cancelCountdown();
-      stopTimer();
       showExercise();
     }
 
@@ -302,7 +363,6 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
     // Repos court entre exercices → BPM démarre tout de suite
     if (isBetweenEx && restSeconds <= 10) scheduleCountdown();
 
-    stopTimer();
     state.timer = setInterval(() => {
       state.timeLeft--;
       const $rt = document.getElementById('rest-timer');
@@ -319,8 +379,8 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
 
   // ── PHASE : RPE ──
   function showRpe() {
+    stopAll();
     state.phase = 'rpe';
-    stopTimer();
     playKick();
     renderProgress();
 
@@ -366,7 +426,7 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
 
   // ── Fin de séance ──
   function finishSession(rpe) {
-    stopTimer();
+    stopAll();
     onComplete({
       completed_exercise_ids: (state.activeList ?? []).map((ex) => ex.exercise_id),
       rpe,

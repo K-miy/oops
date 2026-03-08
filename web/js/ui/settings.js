@@ -18,61 +18,6 @@ export function renderSettings(container, { profile, soundEnabled, onLangChange,
   const lang = getLang();
 
   container.innerHTML = `
-    <!-- ── Langue ── -->
-    <div class="settings-section">
-      <div class="settings-row" id="settings-lang-row">
-        <span class="settings-row-label">${t('settings.lang')}</span>
-        <span class="settings-row-value">${lang === 'fr' ? '🇫🇷 Français' : '🇬🇧 English'} ›</span>
-      </div>
-    </div>
-
-    <!-- ── Profil ── -->
-    <div class="settings-section">
-      <div class="settings-row" id="settings-profile-row">
-        <span class="settings-row-label">${t('settings.profile')}</span>
-        <span class="settings-row-value">›</span>
-      </div>
-      <div class="settings-row" id="settings-about-row">
-        <span class="settings-row-label">${t('settings.about')}</span>
-        <span class="settings-row-value">›</span>
-      </div>
-    </div>
-
-    <!-- ── Soutenir le projet ── -->
-    <div class="settings-section">
-      <a href="https://buymeacoffee.com/cbesse"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="settings-row"
-         style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:16px">
-        <span class="settings-row-label" style="display:flex;align-items:center;gap:10px">
-          <span style="font-size:1.25rem">☕</span>
-          <span>${t('settings.buy_coffee')}</span>
-        </span>
-        <span class="settings-row-value" style="color:var(--color-accent);font-weight:600">buymeacoffee.com ›</span>
-      </a>
-    </div>
-
-    <!-- ── Export / Import ── -->
-    <div class="settings-section">
-      <div class="settings-row" id="settings-export-row">
-        <span class="settings-row-label" style="display:flex;align-items:center;gap:10px">
-          <span style="font-size:1.1rem">💾</span>
-          <span>${t('settings.export')}</span>
-        </span>
-        <span class="settings-row-value">›</span>
-      </div>
-      <div class="settings-row" id="settings-import-row">
-        <span class="settings-row-label" style="display:flex;align-items:center;gap:10px">
-          <span style="font-size:1.1rem">📂</span>
-          <span>${t('settings.import')}</span>
-        </span>
-        <span class="settings-row-value">›</span>
-      </div>
-      <input type="file" id="settings-import-file" accept=".json" style="display:none">
-      <div id="settings-import-status" style="font-size:.8rem;padding:4px 16px 8px;display:none"></div>
-    </div>
-
     <!-- ── Sons ── -->
     <div class="settings-section">
       <label class="profile-toggle-row" style="padding:4px 0" id="settings-sound-row">
@@ -97,6 +42,61 @@ export function renderSettings(container, { profile, soundEnabled, onLangChange,
           <span class="font-label-lg">Aa</span>
         </div>
       </div>
+    </div>
+
+    <!-- ── Langue ── -->
+    <div class="settings-section">
+      <div class="settings-row" id="settings-lang-row">
+        <span class="settings-row-label">${t('settings.lang')}</span>
+        <span class="settings-row-value">${lang === 'fr' ? '🇫🇷 Français' : '🇬🇧 English'} ›</span>
+      </div>
+    </div>
+
+    <!-- ── Profil ── -->
+    <div class="settings-section">
+      <div class="settings-row" id="settings-profile-row">
+        <span class="settings-row-label">${t('settings.profile')}</span>
+        <span class="settings-row-value">›</span>
+      </div>
+      <div class="settings-row" id="settings-about-row">
+        <span class="settings-row-label">${t('settings.about')}</span>
+        <span class="settings-row-value">›</span>
+      </div>
+    </div>
+
+    <!-- ── Export / Import ── -->
+    <div class="settings-section">
+      <div class="settings-row" id="settings-export-row">
+        <span class="settings-row-label" style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:1.1rem">💾</span>
+          <span>${t('settings.export')}</span>
+        </span>
+        <span class="settings-row-value">›</span>
+      </div>
+      <div class="settings-row" id="settings-import-row">
+        <span class="settings-row-label" style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:1.1rem">📂</span>
+          <span>${t('settings.import')}</span>
+        </span>
+        <span class="settings-row-value">›</span>
+      </div>
+      <input type="file" id="settings-import-file" accept=".json" style="display:none">
+      <div id="settings-import-status" style="font-size:.8rem;padding:4px 16px 8px;display:none"></div>
+    </div>
+
+    <!-- ── Soutenir le projet ── -->
+    <div class="settings-section">
+      <a href="https://buymeacoffee.com/cbesse"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="settings-row"
+         style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:16px">
+        <span class="settings-row-label" style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:1.25rem">☕</span>
+          <span>${t('settings.buy_coffee')}</span>
+        </span>
+        <span class="settings-row-value" style="color:var(--color-accent);font-weight:600">buymeacoffee.com ›</span>
+      </a>
     </div>
 
     <!-- ── Zone danger ── -->

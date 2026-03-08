@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 import { setupProfile } from './helpers.js';
 
 test.describe('Modifier le profil', () => {
-  test.beforeEach(setupProfile);
+  test.beforeEach(async ({ page }) => setupProfile(page));
 
   test('ouvre l\'onboarding depuis les paramètres', async ({ page }) => {
     await page.locator('.nav-item[data-screen="settings"]').click();
