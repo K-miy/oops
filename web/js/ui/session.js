@@ -9,6 +9,7 @@
  * RPE        : évaluation de l'effort + gros bouton "I did it again"
  */
 import { t } from '../i18n.js';
+import { setSoundsEnabled, playClave, playTick, playSnare, playKick } from '../sounds.js';
 
 /**
  * @param {HTMLElement} container - #screen-session
@@ -20,7 +21,8 @@ import { t } from '../i18n.js';
  *   onAbort: () => void,
  * }} opts
  */
-export function renderSession(container, { plan, exercises, lang, onComplete }) {
+export function renderSession(container, { plan, exercises, lang, soundEnabled, onComplete }) {
+  setSoundsEnabled(soundEnabled !== false);
   const $main     = container.querySelector('#session-main');
   const $footer   = container.querySelector('#session-footer');
   const $progress = container.querySelector('#session-progress');
@@ -175,6 +177,7 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
       state.timeLeft--;
       const $rt = document.getElementById('reading-timer');
       if ($rt) $rt.textContent = `${state.timeLeft}s`;
+      if (state.timeLeft > 0 && state.timeLeft <= 3) playClave();
       if (state.timeLeft <= 0) { stopTimer(); showExercise(); }
     }, 1000);
   }
@@ -229,6 +232,7 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
     });
 
     stopTimer();
+    let lastRep = 0;
     state.timer = setInterval(() => {
       state.timeLeft--;
       const $v = document.getElementById('timer-value');
@@ -239,6 +243,7 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
         const currentRep = Math.min(Math.floor(elapsed / 3) + 1, ex.reps);
         const $r = document.getElementById('timer-rep');
         if ($r) $r.textContent = `${t('session.rep')} ${currentRep} / ${ex.reps}`;
+        if (currentRep > lastRep) { lastRep = currentRep; playTick(); }
       }
 
       if (state.timeLeft <= 0) { stopTimer(); advanceAfterSet(); }
@@ -270,6 +275,7 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
   function showRest(restSeconds, nextExerciseName) {
     state.phase    = 'resting';
     state.timeLeft = restSeconds;
+    playSnare();
 
     const nextLabel = nextExerciseName
       ? `${t('session.next_exercise')} : ${nextExerciseName}`
@@ -293,6 +299,7 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
       state.timeLeft--;
       const $rt = document.getElementById('rest-timer');
       if ($rt) $rt.textContent = `${state.timeLeft}s`;
+      if (state.timeLeft > 0 && state.timeLeft <= 3) playClave();
       if (state.timeLeft <= 0) { stopTimer(); startNextStep(); }
     }, 1000);
   }
@@ -301,6 +308,7 @@ export function renderSession(container, { plan, exercises, lang, onComplete }) 
   function showRpe() {
     state.phase = 'rpe';
     stopTimer();
+    playKick();
     renderProgress();
 
     $main.innerHTML = `
