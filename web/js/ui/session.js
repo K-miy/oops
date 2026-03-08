@@ -139,19 +139,12 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
     });
   }
 
-  /** Choisit lecture (nouveau ex) ou exercice direct (même ex, set suivant). */
-  function startNextStep() {
-    const ex = state.activeList[state.exIdx];
-    if (state.setIdx === 0) showReading(ex);
-    else showExercise();
-  }
-
-  // ── PHASE : READING (15s avant le 1er set de chaque exercice) ──
+  // ── PHASE : READING (15s, premier exercice uniquement) ──
+  // BPM countdown démarre à 10s restantes (5s de lecture silencieuse).
   function showReading(ex) {
     state.phase = 'reading';
     stopTimer();
-    state.timeLeft = 10;
-    scheduleCountdown();
+    state.timeLeft = 15;
 
     const imgUrl = getInfo(ex)?.image_url ?? null;
     const instructions = exInstructions(ex);
@@ -179,6 +172,7 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
       state.timeLeft--;
       const $rt = document.getElementById('reading-timer');
       if ($rt) $rt.textContent = `${state.timeLeft}s`;
+      if (state.timeLeft === 10) scheduleCountdown();
       if (state.timeLeft <= 0) { cancelCountdown(); stopTimer(); showExercise(); }
     }, 1000);
   }
@@ -233,7 +227,7 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
     });
 
     stopTimer();
-    let lastRep = 0;
+    let lastRep = 1; // skip first rep sound, premier tick à 3s (rep 2)
     state.timer = setInterval(() => {
       state.timeLeft--;
       const $v = document.getElementById('timer-value');
@@ -273,35 +267,53 @@ export function renderSession(container, { plan, exercises, lang, soundEnabled, 
   }
 
   // ── PHASE : RESTING ──
+  // Entre séries : clave 3-2-1, retour direct à l'exercice.
+  // Entre exercices : image du prochain exercice visible dès le début,
+  //                   BPM countdown à 10s restantes, puis exercice direct.
   function showRest(restSeconds, nextExerciseName) {
+    const isBetweenEx = nextExerciseName !== null;
     state.phase    = 'resting';
     state.timeLeft = restSeconds;
     playSnare();
 
-    const nextLabel = nextExerciseName
+    const nextEx     = isBetweenEx ? state.activeList[state.exIdx] : null;
+    const nextImgUrl = nextEx ? (getInfo(nextEx)?.image_url ?? null) : null;
+    const nextLabel  = nextExerciseName
       ? `${t('session.next_exercise')} : ${nextExerciseName}`
       : t('session.next_set');
 
     $main.innerHTML = `
       <div class="session-rest animate-in">
+        ${nextImgUrl ? `<img class="session-ex-img" src="${nextImgUrl}" alt="${nextExerciseName}" loading="eager" />` : ''}
         <div class="session-rest-label">${t('session.rest')}</div>
         <div class="session-rest-timer" id="rest-timer">${state.timeLeft}s</div>
         <div class="session-rest-next">${nextLabel}</div>
       </div>`;
 
-    setFooterBtn(t('session.skip_rest'), 'skip-rest-btn', true);
-    document.getElementById('skip-rest-btn').addEventListener('click', () => {
+    function finishRest() {
+      cancelCountdown();
       stopTimer();
-      startNextStep();
-    });
+      showExercise();
+    }
+
+    setFooterBtn(t('session.skip_rest'), 'skip-rest-btn', true);
+    document.getElementById('skip-rest-btn').addEventListener('click', finishRest);
+
+    // Repos court entre exercices → BPM démarre tout de suite
+    if (isBetweenEx && restSeconds <= 10) scheduleCountdown();
 
     stopTimer();
     state.timer = setInterval(() => {
       state.timeLeft--;
       const $rt = document.getElementById('rest-timer');
       if ($rt) $rt.textContent = `${state.timeLeft}s`;
-      if (state.timeLeft > 0 && state.timeLeft <= 3) playClave();
-      if (state.timeLeft <= 0) { stopTimer(); startNextStep(); }
+      if (isBetweenEx) {
+        if (state.timeLeft === 10) scheduleCountdown();
+        if (state.timeLeft <= 0) finishRest();
+      } else {
+        if (state.timeLeft > 0 && state.timeLeft <= 3) playClave();
+        if (state.timeLeft <= 0) finishRest();
+      }
     }, 1000);
   }
 

@@ -28,11 +28,11 @@ export function setSoundsEnabled(val) {
 
 // ── Helpers internes ──
 
-function schedBeat(c, beatTime, freq, dur, vol = 0.45) {
+function schedBeat(c, beatTime, freq, dur, vol = 0.22) {
   const osc = c.createOscillator();
   const g   = c.createGain();
   osc.connect(g); g.connect(c.destination);
-  osc.type = 'square';
+  osc.type = 'sine';
   osc.frequency.setValueAtTime(freq, beatTime);
   g.gain.setValueAtTime(vol, beatTime);
   g.gain.exponentialRampToValueAtTime(0.001, beatTime + dur);
@@ -55,19 +55,19 @@ export function scheduleCountdown() {
     const c   = ac();
     const now = c.currentTime;
 
-    // Section 1 : 60 BPM (interval = 1s) pendant 4s → 4 beats
+    // Section 1 : 60 BPM (interval = 1s) pendant 4s → 4 beats — 440 Hz (La)
     for (let i = 0; i < 4; i++) {
-      schedBeat(c, now + i * 1.0, 700, 0.07);
+      schedBeat(c, now + i * 1.0, 440, 0.07);
     }
 
-    // Section 2 : 120 BPM (interval = 0.5s) pendant 4s → 8 beats
+    // Section 2 : 120 BPM (interval = 0.5s) pendant 4s → 8 beats — 660 Hz (Mi)
     for (let i = 0; i < 8; i++) {
-      schedBeat(c, now + 4 + i * 0.5, 900, 0.045);
+      schedBeat(c, now + 4 + i * 0.5, 660, 0.045);
     }
 
-    // Section 3 : 240 BPM (interval = 0.25s) pendant 2s → 8 beats
+    // Section 3 : 240 BPM (interval = 0.25s) pendant 2s → 8 beats — 880 Hz (La)
     for (let i = 0; i < 8; i++) {
-      schedBeat(c, now + 8 + i * 0.25, 1100, 0.025, 0.55);
+      schedBeat(c, now + 8 + i * 0.25, 880, 0.025);
     }
   } catch (_) { /* pas de Web Audio */ }
 }
