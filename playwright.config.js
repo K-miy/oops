@@ -24,10 +24,9 @@ export default defineConfig({
       name: 'Mobile Chrome',
       use: { ...devices['Pixel 7'] },
     },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 14'] },
-    },
+    // Mobile Safari désactivé en dev WSL (libs webkit manquantes)
+    // Décommenter sur macOS ou CI :
+    // { name: 'Mobile Safari', use: { ...devices['iPhone 14'] } },
   ],
 
   // Lance le serveur statique avant les tests (si pas déjà démarré)
