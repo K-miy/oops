@@ -150,9 +150,7 @@
   "profile": {
     "title": "My profile",
     "save": "Save",
-    "lang": "Language",
-    "sounds": "Session sounds",
-    "sounds_hint": "Percussion during sets and at the end of the session"
+    "lang": "Language"
   },
   "settings": {
     "title": "Settings",
@@ -169,7 +167,8 @@
     "import_loading": "Importing…",
     "import_success": "Data imported. Reloading…",
     "import_error": "Invalid or corrupted file.",
-    "install_prompt": "Install OOPS on your home screen?"
+    "install_prompt": "Install OOPS on your home screen?",
+    "sounds": "Session sounds"
   },
   "nav": {
     "home": "Home",

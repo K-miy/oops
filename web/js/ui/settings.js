@@ -14,7 +14,7 @@ import { APP_VERSION } from '../version.js';
  *   onReset: () => void,
  * }} opts
  */
-export function renderSettings(container, { profile, onLangChange, onReset, onEditProfile, onAbout }) {
+export function renderSettings(container, { profile, soundEnabled, onLangChange, onSoundChange, onReset, onEditProfile, onAbout }) {
   const lang = getLang();
 
   container.innerHTML = `
@@ -71,6 +71,17 @@ export function renderSettings(container, { profile, onLangChange, onReset, onEd
       </div>
       <input type="file" id="settings-import-file" accept=".json" style="display:none">
       <div id="settings-import-status" style="font-size:.8rem;padding:4px 16px 8px;display:none"></div>
+    </div>
+
+    <!-- ── Sons ── -->
+    <div class="settings-section">
+      <label class="profile-toggle-row" style="padding:4px 0" id="settings-sound-row">
+        <span class="settings-row-label">${t('settings.sounds')}</span>
+        <div class="toggle-switch">
+          <input type="checkbox" id="settings-sound-toggle" ${soundEnabled ? 'checked' : ''}>
+          <span class="toggle-slider"></span>
+        </div>
+      </label>
     </div>
 
     <!-- ── Taille du texte ── -->
@@ -156,6 +167,11 @@ export function renderSettings(container, { profile, onLangChange, onReset, onEd
       $status.textContent = t('settings.import_error');
     }
     e.target.value = '';
+  });
+
+  // ── Sons ──
+  container.querySelector('#settings-sound-toggle')?.addEventListener('change', (e) => {
+    if (onSoundChange) onSoundChange(e.target.checked);
   });
 
   // ── Taille du texte ──

@@ -48,6 +48,7 @@ const state = {
   profile: null,
   exercises: [],       // catalogue complet
   currentPlan: null,   // SessionPlan JSON (objet parsé)
+  soundEnabled: false, // préférence UI, lue depuis settings table
   wasmReady: false,
 };
 
@@ -213,10 +214,11 @@ async function boot() {
   await init();
   state.wasmReady = true;
 
-  // 2. Profil & langue
+  // 2. Profil & langue & préférences
   $msg.textContent = 'Initialisation…';
   state.profile = await getProfile();
   const lang = state.profile?.lang ?? (await getSetting('lang')) ?? 'fr';
+  state.soundEnabled = (await getSetting('sound_enabled')) === true;
 
   // 3. i18n
   await initI18n(lang);
@@ -324,7 +326,7 @@ function startSession() {
     plan: state.currentPlan,
     exercises: state.exercises,
     lang: getLang(),
-    soundEnabled: state.profile?.sound_enabled === true,
+    soundEnabled: state.soundEnabled,
     onComplete: async (result) => {
       const today = new Date().toISOString().slice(0, 10);
       await saveSession({
@@ -369,6 +371,11 @@ function startQuickSession() {
 function openSettings() {
   renderSettings(document.getElementById('settings-main'), {
     profile: state.profile,
+    soundEnabled: state.soundEnabled,
+    onSoundChange: async (val) => {
+      state.soundEnabled = val;
+      await setSetting('sound_enabled', val);
+    },
     onLangChange: async (newLang) => {
       await routeToHome();
       showScreen('settings');

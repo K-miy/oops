@@ -16,7 +16,6 @@ import { t, initI18n } from '../i18n.js';
 export function renderProfileEdit(container, { profile, onSave }) {
   const draft = {
     ...profile,
-    sound_enabled: profile.sound_enabled ?? false,
     workout_days: profile.workout_days ? [...profile.workout_days] : [],
     injury_notes: profile.injury_notes ? [...profile.injury_notes] : [],
   };
@@ -149,20 +148,6 @@ export function renderProfileEdit(container, { profile, onSave }) {
         </div>
       </div>
 
-      <!-- Sons -->
-      <div class="profile-section">
-        <label class="profile-toggle-row">
-          <div>
-            <div class="profile-section-title" style="margin-bottom:2px">${t('profile.sounds')}</div>
-            <div class="hint" style="margin:0">${t('profile.sounds_hint')}</div>
-          </div>
-          <div class="toggle-switch">
-            <input type="checkbox" id="profile-sound" ${draft.sound_enabled !== false ? 'checked' : ''}>
-            <span class="toggle-slider"></span>
-          </div>
-        </label>
-      </div>
-
       <!-- Sauvegarder -->
       <button class="btn btn-primary" id="profile-save-btn" style="margin:8px 0 40px;width:100%">
         ${t('profile.save')}
@@ -231,11 +216,6 @@ export function renderProfileEdit(container, { profile, onSave }) {
           draft.injury_notes = draft.injury_notes.filter((x) => x !== val);
         }
       });
-    });
-
-    // Sons
-    container.querySelector('#profile-sound')?.addEventListener('change', (e) => {
-      draft.sound_enabled = e.target.checked;
     });
 
     // Sauvegarder

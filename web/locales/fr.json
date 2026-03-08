@@ -150,9 +150,7 @@
   "profile": {
     "title": "Mon profil",
     "save": "Sauvegarder",
-    "lang": "Langue",
-    "sounds": "Sons de séance",
-    "sounds_hint": "Percussions pendant les séries et à la fin de la séance"
+    "lang": "Langue"
   },
   "settings": {
     "title": "Paramètres",
@@ -169,7 +167,8 @@
     "import_loading": "Import en cours…",
     "import_success": "Données importées. Rechargement…",
     "import_error": "Fichier invalide ou corrompu.",
-    "install_prompt": "Installer OOPS sur votre écran d'accueil ?"
+    "install_prompt": "Installer OOPS sur votre écran d'accueil ?",
+    "sounds": "Sons de séance"
   },
   "nav": {
     "home": "Accueil",
