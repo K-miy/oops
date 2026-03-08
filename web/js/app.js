@@ -19,6 +19,7 @@ import { renderSession } from './ui/session.js';
 import { renderSettings } from './ui/settings.js';
 import { renderHistory } from './ui/history.js';
 import { renderAbout } from './ui/about.js';
+import { renderProfileEdit } from './ui/profile.js';
 
 // ────────────────────────────────────────────────
 // SW update banner — enregistré immédiatement (avant boot)
@@ -377,17 +378,7 @@ function openSettings() {
       state.currentPlan = null;
       window.location.reload();
     },
-    onEditProfile: () => {
-      renderOnboarding(document.getElementById('screen-onboarding'), {
-        initialProfile: state.profile,
-        onComplete: async (updatedProfile) => {
-          state.profile = updatedProfile;
-          await saveProfile(updatedProfile);
-          await routeToHome();
-        },
-      });
-      showScreen('onboarding');
-    },
+    onEditProfile: () => openProfileEdit(),
     onAbout: () => {
       renderAbout(document.getElementById('about-main'));
       showScreen('about');
@@ -396,8 +387,26 @@ function openSettings() {
   showScreen('settings');
 }
 
+function openProfileEdit() {
+  renderProfileEdit(document.getElementById('profile-content'), {
+    profile: state.profile,
+    onSave: async (updatedProfile) => {
+      const langChanged = updatedProfile.lang !== state.profile.lang;
+      state.profile = updatedProfile;
+      await saveProfile(updatedProfile);
+      if (langChanged) {
+        await initI18n(updatedProfile.lang);
+        await setSetting('lang', updatedProfile.lang);
+      }
+      await routeToHome();
+    },
+  });
+  showScreen('profile');
+}
+
 document.getElementById('home-settings-btn')?.addEventListener('click', openSettings);
 document.getElementById('settings-back-btn')?.addEventListener('click', () => showScreen('home'));
+document.getElementById('profile-back-btn')?.addEventListener('click', () => showScreen('settings'));
 document.getElementById('about-back-btn')?.addEventListener('click', () => showScreen('settings'));
 document.getElementById('session-close-btn')?.addEventListener('click', () => {
   if (confirm(t('session.abort_confirm') ?? 'Abandonner la séance ?')) {

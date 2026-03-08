@@ -147,6 +147,13 @@
     "rpe_hint_easy": "Tu peux pousser un peu plus la prochaine fois.",
     "rpe_hint_hard": "Bien récupéré — tu avais besoin de cette séance."
   },
+  "profile": {
+    "title": "Mon profil",
+    "save": "Sauvegarder",
+    "lang": "Langue",
+    "sounds": "Sons de séance",
+    "sounds_hint": "Percussions pendant les séries et à la fin de la séance"
+  },
   "settings": {
     "title": "Paramètres",
     "lang": "Langue",

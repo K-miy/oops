@@ -147,6 +147,13 @@
     "rpe_hint_easy": "You can push a little harder next time.",
     "rpe_hint_hard": "Good recovery — you needed that session."
   },
+  "profile": {
+    "title": "My profile",
+    "save": "Save",
+    "lang": "Language",
+    "sounds": "Session sounds",
+    "sounds_hint": "Percussion during sets and at the end of the session"
+  },
   "settings": {
     "title": "Settings",
     "lang": "Language",
